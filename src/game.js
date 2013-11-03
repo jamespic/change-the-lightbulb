@@ -6,5 +6,6 @@ Game = {
     Crafty.init(1050, 700);
     Crafty.background('grey');
     Crafty.scene("Load")
+    
   }
 }

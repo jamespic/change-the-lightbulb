@@ -1,3 +1,4 @@
+var box
 Crafty.scene("Game", function() {
   Crafty.e("2D,DOM,Text")
     .attr({maxValues:10})
@@ -17,16 +18,20 @@ Crafty.scene("Game", function() {
       "w": 140
     })
     .color("blue")
-  Crafty.e("2d, Canvas, Color, Obstacle")
+  Crafty.e("2D, Canvas, Color, Obstacle")
     .attr({
       "x": 0,
       "y": 0,
-      "w":16,
+      "w": 16,
       "h": 700
     })
     .color("black")
   Crafty.e("Player")
     .attr({"x": 320, "y": 100})
+  box = Crafty.e("2D, Canvas, Color, Phys")
+    .attr({"x": 70, "y": 0, "w": 70, "h":70})
+    .color("green")
+    .physicsOn()
 })
 
 Crafty.scene("Load", function() {
