@@ -29,11 +29,41 @@ function signum(x) {
   if (i == 0) return 0
 }
 
+Crafty.c("Followable", {
+  // Abstract class. Must define moved(), xPos() and yPos() methods
+  "init": function() {
+  },
+})
+
+Crafty.c("Camera", {
+  "init": function() {
+  },
+  "follow": function(target) {
+    this.unbind("EnterFrame", this._cameraEnterFrame)
+    this._target = target
+    this.bind("EnterFrame", this._cameraEnterFrame)
+    return this
+  },
+  "unfollow": function() {
+    this.unbind("EnterFrame", this._cameraEnterFrame)
+    this._target = null
+    return this
+  },
+  "_cameraEnterFrame": function() {
+    if (this._target.moved()) {
+      Crafty.viewport.scroll('_x', Crafty.viewport.width / 2 - this._target.xPos());
+      Crafty.viewport.scroll('_y', Crafty.viewport.height / 2 - this._target.yPos());
+      Crafty.viewport._clamp();
+    }
+  }
+})
+  
+
 Crafty.c("Phys", {
   "xAccel": 0.0,
   "yAccel": 0.0,
   "xGravity": 0.0,
-  "yGravity": 0.4,
+  "yGravity": 0.8,
   "xVelocity": 0.0,
   "yVelocity": 0.0,
   "groundFriction": 0.1,
@@ -41,7 +71,7 @@ Crafty.c("Phys", {
   "_falling": true,
   
   "init": function() {
-    this.requires("2D")
+    this.requires("2D, Followable")
   },
   
   "physicsOn": function(params) {
@@ -72,8 +102,8 @@ Crafty.c("Phys", {
   
   "_enterFrame": function() {
     var self = this
-    var prevX = self.x
-    var prevY = self.y
+    self.prevX = self.x
+    self.prevY = self.y
     var oldXSignum = signum(self.xVelocity)
     var oldYSignum = signum(self.yVelocity)
     
@@ -99,25 +129,27 @@ Crafty.c("Phys", {
     var q = Crafty.map.search(pos);
     self._falling = true // Falling, unless proven otherwise
     
+    var hit = false
+    
     q.forEach(function(obj) {
         //check for an intersection directly below the player
         if ((obj !== self) && obj.intersect(pos)) {
             // Stop the player, and position them at the most sensible edge
 
-            if ((prevY + self.h <= obj.y) && obj.has("Platform")) {
+            if ((self.prevY + self.h <= obj.y) && obj.has("Platform")) {
               // On top
               self.yVelocity = 0
               self.y = obj.y - self.h
               self._falling = false
-            } else if ((prevX + self.w <= obj.x) && obj.has("Wall")) {
+            } else if ((self.prevX + self.w <= obj.x) && obj.has("Wall")) {
               //On left
               self.xVelocity = 0
               self.x = obj.x - self.w
-            } else if ((prevX >= obj.x + obj.w) && obj.has("Wall")) {
+            } else if ((self.prevX >= obj.x + obj.w) && obj.has("Wall")) {
               // On right
               self.xVelocity = 0
               self.x = obj.x + obj.w
-            } else if ((prevY >= obj.y + obj.h) && obj.has("Ceiling")) {
+            } else if ((self.prevY >= obj.y + obj.h) && obj.has("Ceiling")) {
               // below
               self.yVelocity = 0
               self.y = obj.y + obj.h
@@ -131,12 +163,19 @@ Crafty.c("Phys", {
     if ((newXSignum != oldXSignum) || (newYSignum != oldYSignum)) {
       self.trigger("NewDirection",{"x":Math.round(self.xVelocity), "y": Math.round(self.yVelocity)})
     }
-  }
+    if (hit) {
+      self.trigger("hit")
+    }
+  },
+  
+  "xPos": function() {return this.x + this.w / 2},
+  "yPos": function() {return this.y + this.h / 2},
+  "moved": function() {return (this.y !== this.prevY) || (this.x !== this.prevX)}
 })
 
 Crafty.c("Platformer", {
   "speed": 9,
-  "jump": 15,
+  "jump": 20,
   "acceleration": 3,
   "airAcceleration": 0.4,
   "disableControls": false,

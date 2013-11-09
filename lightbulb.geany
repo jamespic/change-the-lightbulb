@@ -23,12 +23,14 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=3
-FILE_NAME_0=57;HTML;0;16;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Findex.html;0;2
-FILE_NAME_1=227;Javascript;0;16;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fgame.js;0;2
-FILE_NAME_2=0;XML;0;16;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fassets%2Fplatformer_graphics_deluxe%2FTiles%2Ftiles_spritesheet.xml;0;2
-FILE_NAME_3=3707;Javascript;0;16;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fcomponents.js;0;2
-FILE_NAME_4=88;Javascript;0;16;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fscenes.js;0;2
+current_page=6
+FILE_NAME_0=57;HTML;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Findex.html;0;2
+FILE_NAME_1=0;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fgame.js;0;2
+FILE_NAME_2=0;XML;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fassets%2Fplatformer_graphics_deluxe%2FTiles%2Ftiles_spritesheet.xml;0;2
+FILE_NAME_3=3348;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fcomponents.js;0;2
+FILE_NAME_4=695;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fscenes.js;0;2
+FILE_NAME_5=0;CSS;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2FMeerkat%2Fmeerkat-web%2Fpublic%2Fbootstrap%2Fcss%2Fbootstrap.css;0;2
+FILE_NAME_6=0;None;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FDesktop%2FTrust%20iV%20Logo.eps;0;2
 
 [VTE]
 last_dir=/home/james
