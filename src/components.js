@@ -294,14 +294,16 @@ Crafty.c("Phys", {
 })
 
 Crafty.c("Telekinesis", {
-  "minRadius": 100,
   "maxRadius": 600,
   "_player": null,
   "_held": false,
+  "_tinted": false,
+  "tintColour": "#DEEFFF",
+  "tintOpacity": 0.7,
   "init": function() {
     var self = this
     
-    self.requires("Phys, SHMFollower, Mouse")
+    self.requires("Phys, SHMFollower, Mouse, Tint")
     
     if (Crafty("MouseFollower").length !== 0) {
       self._mouseFollower = Crafty(Crafty("MouseFollower")[0])
@@ -328,7 +330,6 @@ Crafty.c("Telekinesis", {
         self._letGo()
       }
     }
-  
   },
   
   "startTelekinesis": function(player) {
@@ -336,11 +337,13 @@ Crafty.c("Telekinesis", {
     this._player = player
     this.bind("MouseDown",this._telekinesisMouseDown)
     this._mouseFollower.bind("Moved", this._mouseMovedHandler)
+    this.bind("PhysicsCallbacks", this._telekinesisPhysicsHandler)
     return this
   },
   
   "endTelekinesis": function() {
     this._letGo()
+    this.unbind("PhysicsCallbacks", this._telekinesisPhysicsHandler)
     this._mouseFollower.unbind("Moved", this._mouseMovedHandler)
     this.unbind("MouseDown",this._telekinesisMouseDown)
     this._player = null
@@ -348,7 +351,7 @@ Crafty.c("Telekinesis", {
   },
   "_inRange": function() {
     var dist = this.distFrom(this._player)
-    return (dist >= this.minRadius) && (dist <= this.maxRadius)
+    return dist <= this.maxRadius
   },
   "_telekinesisMouseDown": function(e) {
     if (e.mouseButton === Crafty.mouseButtons.LEFT && this._inRange()) {
@@ -360,6 +363,19 @@ Crafty.c("Telekinesis", {
       this._letGo()
     }
   },
+  "_telekinesisPhysicsHandler": function(e) {
+    if (this._tinted) {
+      if (!this._inRange()) {
+        this.tint(this.tintColour, this.tintOpacity)
+        this._tinted = false
+      }
+    } else {
+      if (this._inRange()) {
+        this.tint("#ffffff", 0.0)
+        this._tinted = true
+      }
+    }
+  }
 })
 
 Crafty.c("Platformer", {
