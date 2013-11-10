@@ -37,7 +37,7 @@ Crafty.c("Followable", {
   "distFrom": function(o) {
     var dx = this.xPos() - o.xPos(),
         dy = this.yPos() - o.yPos()
-    return Math.sqrt(dx * dx + dy + dy)
+    return Math.sqrt(dx * dx + dy * dy)
   }
 })
 
@@ -294,9 +294,10 @@ Crafty.c("Phys", {
 })
 
 Crafty.c("Telekinesis", {
-  "minRadius": 70,
-  "maxRadius": 350,
+  "minRadius": 100,
+  "maxRadius": 600,
   "_player": null,
+  "_held": false,
   "init": function() {
     var self = this
     
@@ -311,31 +312,36 @@ Crafty.c("Telekinesis", {
     self._holdOn = function() {
       self.followSHM(self._mouseFollower)
       Crafty.addEvent(self, Crafty.stage.elem, "mouseup", self._telekinesisMouseUp)
-      self._mouseFollower.bind("Moved", self._mouseMovedHandler)
+      self._held = true
     }
     
     self._letGo = function() {
+      self._held = false
       self.unfollowSHM(self._mouseFollower)
       Crafty.removeEvent(self, Crafty.stage.elem, "mouseup", self._telekinesisMouseUp)
       self.bind("MouseDown",self._telekinesisMouseDown)
-      self._mouseFollower.unbind("Moved", self._mouseMovedHandler)
+      //self._mouseFollower.unbind("Moved", self._mouseMovedHandler)
     }
     
     self._mouseMovedHandler =  function() {
-      if (!self._inRange()) {
+      if (!self._inRange() && self._held) {
         self._letGo()
       }
     }
   
   },
+  
   "startTelekinesis": function(player) {
     this.endTelekinesis()
     this._player = player
     this.bind("MouseDown",this._telekinesisMouseDown)
+    this._mouseFollower.bind("Moved", this._mouseMovedHandler)
     return this
   },
+  
   "endTelekinesis": function() {
     this._letGo()
+    this._mouseFollower.unbind("Moved", this._mouseMovedHandler)
     this.unbind("MouseDown",this._telekinesisMouseDown)
     this._player = null
     return this
