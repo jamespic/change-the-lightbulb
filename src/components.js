@@ -30,21 +30,39 @@ function signum(x) {
 }
 
 Crafty.c("Followable", {
-  // Abstract class. Must define moved(), xPos() and yPos() methods
+  // Abstract class. Must define xPos() and yPos() methods, and emit
+  // "Moved" events
   "init": function() {
   },
+  "distFrom": function(o) {
+    var dx = this.xPos() - o.xPos(),
+        dy = this.yPos() - o.yPos()
+    return Math.sqrt(dx * dx + dy + dy)
+  }
 })
 
 Crafty.c("LeadingFollower", {
   "_xFactor": 30.0,
   "_yFactor": 20.0,
+  "_target": null,
+  "_movedCallback": null,
   "init": function() {
+    var self = this
     this.requires("Followable")
+    this._movedCallback = function() {
+      self.trigger("Moved")
+    }
   },
-  "lead": function(target, factor) {
+  "lead": function(target) {
+    this.unlead()
     this._target = target
-    if (factor !== undefined) {
-      this._factor = factor
+    target.bind("Moved", this._movedCallback)
+    return this
+  },
+  "unlead": function() {
+    if (this._target !== null) {
+      this._target.unbind("Moved", this._movedCallback)
+      this._target !== null
     }
     return this
   },
@@ -54,14 +72,11 @@ Crafty.c("LeadingFollower", {
   "yPos": function() {
     return this._target.yPos() + this._yFactor * this._target.yVelocity
   },
-  "moved": function() {
-    return this._target.moved()
-  }
 })
 
 Crafty.c("SHMFollower", {
   "vCoeff": -0.3,
-  "sCoeff": -0.02,
+  "sCoeff": -0.1,
   "init": function() {
     this.requires("BasicPhys")
   },
@@ -69,13 +84,11 @@ Crafty.c("SHMFollower", {
     this.unbind("EnterFrame", this._shmEnterFrame)
     this._target = target
     this.bind("EnterFrame", this._shmEnterFrame)
-    this.physicsOn()
     return this
   },
   "unfollowSHM": function() {
     this.unbind("EnterFrame", this._shmEnterFrame)
     this._target = null
-    this.physicsOff()
     return this
   },
   "_shmEnterFrame": function() {
@@ -84,27 +97,70 @@ Crafty.c("SHMFollower", {
   }
 })
 
-Crafty.c("Camera", {
+Crafty.c("MouseFollower", {
+  "_following": false,
   "init": function() {
+    var self = this
+    
+    self.requires("Followable")
+    if (self.x === undefined) self.x = 0
+    if (self.y === undefined) self.y = 0
+    
+    self._onMove = function(e) {
+      var pos = Crafty.DOM.translate(e.clientX, e.clientY)
+      self.x = pos.x
+      self.y = pos.y
+      self.trigger("Moved")
+    }
+  },
+  
+  
+  
+  "followMouse": function() {
+    if (!this._following) {
+      Crafty.addEvent(this, Crafty.stage.elem, "mousemove", this._onMove)
+      this._following = true
+    }
+    return this
+  },
+  "unfollowMouse": function() {
+    if (this._following) {
+      Crafty.removeEvent(this, Crafty.stage.elem, "mousemove", this._onMove)
+      this._following = false
+    }
+    return this
+  },
+  "xPos": function() {
+    return this.x
+  },
+  "yPos": function() {
+    return this.y
+  },
+})
+
+Crafty.c("Camera", {
+  "_target": null,
+  "init": function() {
+    var self = this
+    self._movedHandler = function() {
+      Crafty.viewport.scroll('_x', Crafty.viewport.width / 2 - self._target.xPos());
+      Crafty.viewport.scroll('_y', Crafty.viewport.height / 2 - self._target.yPos());
+      Crafty.viewport._clamp();
+    }
   },
   "follow": function(target) {
-    this.unbind("EnterFrame", this._cameraEnterFrame)
+    this.unfollow()
     this._target = target
-    this.bind("EnterFrame", this._cameraEnterFrame)
+    target.bind("Moved", this._movedHandler)
     return this
   },
   "unfollow": function() {
-    this.unbind("EnterFrame", this._cameraEnterFrame)
-    this._target = null
+    if (this._target !== null) {
+      this._target.unbind("Moved", this._movedHandler)
+      this._target = null
+    }
     return this
   },
-  "_cameraEnterFrame": function() {
-    if (this._target.moved()) {
-      Crafty.viewport.scroll('_x', Crafty.viewport.width / 2 - this._target.xPos());
-      Crafty.viewport.scroll('_y', Crafty.viewport.height / 2 - this._target.yPos());
-      Crafty.viewport._clamp();
-    }
-  }
 })
 
 Crafty.c("BasicPhys", {
@@ -168,14 +224,14 @@ Crafty.c("BasicPhys", {
     if ((newXSignum != oldXSignum) || (newYSignum != oldYSignum)) {
       self.trigger("NewDirection",{"x":Math.round(self.xVelocity), "y": Math.round(self.yVelocity)})
     }
+    if ((self.prevX !== self.x) || (self.prevY !== self.y)) {
+      self.trigger("Moved")
+    }
   },
   
   "xPos": function() {return this.x + this.w / 2},
   "yPos": function() {return this.y + this.h / 2},
-  "moved": function() {return (this.y !== this.prevY) || (this.x !== this.prevX)}
-  
 })
-  
 
 Crafty.c("Phys", {
   "groundFriction": 0.1,
@@ -235,6 +291,69 @@ Crafty.c("Phys", {
       self.trigger("hit")
     }
   }
+})
+
+Crafty.c("Telekinesis", {
+  "minRadius": 70,
+  "maxRadius": 350,
+  "_player": null,
+  "init": function() {
+    var self = this
+    
+    self.requires("Phys, SHMFollower, Mouse")
+    
+    if (Crafty("MouseFollower").length !== 0) {
+      self._mouseFollower = Crafty(Crafty("MouseFollower")[0])
+    } else {
+      self._mouseFollower = Crafty.e("MouseFollower").followMouse()
+    }
+    
+    self._holdOn = function() {
+      self.followSHM(self._mouseFollower)
+      Crafty.addEvent(self, Crafty.stage.elem, "mouseup", self._telekinesisMouseUp)
+      self._mouseFollower.bind("Moved", self._mouseMovedHandler)
+    }
+    
+    self._letGo = function() {
+      self.unfollowSHM(self._mouseFollower)
+      Crafty.removeEvent(self, Crafty.stage.elem, "mouseup", self._telekinesisMouseUp)
+      self.bind("MouseDown",self._telekinesisMouseDown)
+      self._mouseFollower.unbind("Moved", self._mouseMovedHandler)
+    }
+    
+    self._mouseMovedHandler =  function() {
+      if (!self._inRange()) {
+        self._letGo()
+      }
+    }
+  
+  },
+  "startTelekinesis": function(player) {
+    this.endTelekinesis()
+    this._player = player
+    this.bind("MouseDown",this._telekinesisMouseDown)
+    return this
+  },
+  "endTelekinesis": function() {
+    this._letGo()
+    this.unbind("MouseDown",this._telekinesisMouseDown)
+    this._player = null
+    return this
+  },
+  "_inRange": function() {
+    var dist = this.distFrom(this._player)
+    return (dist >= this.minRadius) && (dist <= this.maxRadius)
+  },
+  "_telekinesisMouseDown": function(e) {
+    if (e.mouseButton === Crafty.mouseButtons.LEFT && this._inRange()) {
+      this._holdOn()
+    }
+  },
+  "_telekinesisMouseUp": function(e) {
+    if (e.mouseButton === Crafty.mouseButtons.LEFT) {
+      this._letGo()
+    }
+  },
 })
 
 Crafty.c("Platformer", {
@@ -383,7 +502,9 @@ function followPlayerWithCamera(showCameraPos) {
   } else {
     playerFollower = Crafty.e("SHMFollower")
   }
-  playerFollower.followSHM(playerLeader)
+  playerFollower
+    .followSHM(playerLeader)
+    .physicsOn()
     .attr({
       "yGravity": 0.0,
       "xGravity": 0.0,

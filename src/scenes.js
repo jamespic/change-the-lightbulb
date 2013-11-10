@@ -1,5 +1,7 @@
 var box
+var box2
 var player
+var mouseFollower
 Crafty.scene("Game", function() {
   Crafty.e("2D,DOM,Text")
     .attr({maxValues:10})
@@ -29,17 +31,23 @@ Crafty.scene("Game", function() {
     .color("black")
   player = Crafty.e("Player")
     .attr({"x": 320, "y": 100})
-  box = Crafty.e("2D, Canvas, Color, Phys")
+  box = Crafty.e("2D, Canvas, Color, Telekinesis, Platform")
     .attr({"x": 70, "y": 0, "w": 70, "h":70})
     .color("green")
     .physicsOn()
+    .startTelekinesis(player)
+  box2 = Crafty.e("2D, Canvas, Color, Telekinesis, Platform")
+    .attr({"x": 210, "y": 0, "w": 70, "h":70})
+    .color("green")
+    .physicsOn()
+    .startTelekinesis(player)
   Crafty.e("2D,DOM,FPS,Text")
     .attr({maxValues:10, x: 100})
     .bind("MessureFPS", function(fps){
       this.text("FPS: "+fps.value); //Display Current FPS
       //console.log(this.values); // Display last x Values
     })
-  followPlayerWithCamera()
+  followPlayerWithCamera(false)
 })
 
 Crafty.scene("Load", function() {
