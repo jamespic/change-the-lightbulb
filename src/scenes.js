@@ -1,6 +1,5 @@
 var box
 var player
-var camera
 Crafty.scene("Game", function() {
   Crafty.e("2D,DOM,Text")
     .attr({maxValues:10})
@@ -28,10 +27,8 @@ Crafty.scene("Game", function() {
       "h": 700
     })
     .color("black")
-    
   player = Crafty.e("Player")
     .attr({"x": 320, "y": 100})
-  camera = Crafty.e("Camera").follow(player)
   box = Crafty.e("2D, Canvas, Color, Phys")
     .attr({"x": 70, "y": 0, "w": 70, "h":70})
     .color("green")
@@ -42,6 +39,7 @@ Crafty.scene("Game", function() {
       this.text("FPS: "+fps.value); //Display Current FPS
       //console.log(this.values); // Display last x Values
     })
+  followPlayerWithCamera()
 })
 
 Crafty.scene("Load", function() {

@@ -35,6 +35,55 @@ Crafty.c("Followable", {
   },
 })
 
+Crafty.c("LeadingFollower", {
+  "_xFactor": 30.0,
+  "_yFactor": 20.0,
+  "init": function() {
+    this.requires("Followable")
+  },
+  "lead": function(target, factor) {
+    this._target = target
+    if (factor !== undefined) {
+      this._factor = factor
+    }
+    return this
+  },
+  "xPos": function() {
+    return this._target.xPos() + this._xFactor * this._target.xVelocity
+  },
+  "yPos": function() {
+    return this._target.yPos() + this._yFactor * this._target.yVelocity
+  },
+  "moved": function() {
+    return this._target.moved()
+  }
+})
+
+Crafty.c("SHMFollower", {
+  "vCoeff": -0.3,
+  "sCoeff": -0.02,
+  "init": function() {
+    this.requires("Phys")
+  },
+  "followSHM": function(target) {
+    this.unbind("EnterFrame", this._shmEnterFrame)
+    this._target = target
+    this.bind("EnterFrame", this._shmEnterFrame)
+    this.physicsOn()
+    return this
+  },
+  "unfollowSHM": function() {
+    this.unbind("EnterFrame", this._shmEnterFrame)
+    this._target = null
+    this.physicsOff()
+    return this
+  },
+  "_shmEnterFrame": function() {
+    this.xAccel += this.vCoeff * this.xVelocity + this.sCoeff * (this.xPos() - this._target.xPos())
+    this.yAccel += this.vCoeff * this.yVelocity + this.sCoeff * (this.yPos() - this._target.yPos())
+  }
+})
+
 Crafty.c("Camera", {
   "init": function() {
   },
@@ -69,6 +118,7 @@ Crafty.c("Phys", {
   "groundFriction": 0.1,
   "density": 1.0,
   "_falling": true,
+  "_collisionsEnabled": true,
   
   "init": function() {
     this.requires("2D, Followable")
@@ -118,53 +168,56 @@ Crafty.c("Phys", {
     self.x += Math.round(self.xVelocity)
     self.y += Math.ceil(self.yVelocity)
     
-    // Resolve collisions
-    var pos = self.pos()
-    
-    pos.x = pos._x
-    pos.y = pos._y
-    pos.h = pos._h
-    pos.w = pos._w
-    
-    var q = Crafty.map.search(pos);
-    self._falling = true // Falling, unless proven otherwise
-    
-    var hit = false
-    
-    q.forEach(function(obj) {
-        //check for an intersection directly below the player
-        if ((obj !== self) && obj.intersect(pos)) {
-            // Stop the player, and position them at the most sensible edge
+    if (this._collisionsEnabled) {
+      // Resolve collisions
+      var pos = self.pos()
+      
+      pos.x = pos._x
+      pos.y = pos._y
+      pos.h = pos._h
+      pos.w = pos._w
+      
+      var q = Crafty.map.search(pos);
+      self._falling = true // Falling, unless proven otherwise
+      
+      var hit = false
+      
+      q.forEach(function(obj) {
+          //check for an intersection directly below the player
+          if ((obj !== self) && obj.intersect(pos)) {
+              // Stop the player, and position them at the most sensible edge
 
-            if ((self.prevY + self.h <= obj.y) && obj.has("Platform")) {
-              // On top
-              self.yVelocity = 0
-              self.y = obj.y - self.h
-              self._falling = false
-            } else if ((self.prevX + self.w <= obj.x) && obj.has("Wall")) {
-              //On left
-              self.xVelocity = 0
-              self.x = obj.x - self.w
-            } else if ((self.prevX >= obj.x + obj.w) && obj.has("Wall")) {
-              // On right
-              self.xVelocity = 0
-              self.x = obj.x + obj.w
-            } else if ((self.prevY >= obj.y + obj.h) && obj.has("Ceiling")) {
-              // below
-              self.yVelocity = 0
-              self.y = obj.y + obj.h
-            }
-        }
-    })
+              if ((self.prevY + self.h <= obj.y) && obj.has("Platform")) {
+                // On top
+                self.yVelocity = 0
+                self.y = obj.y - self.h
+                self._falling = false
+              } else if ((self.prevX + self.w <= obj.x) && obj.has("Wall")) {
+                //On left
+                self.xVelocity = 0
+                self.x = obj.x - self.w
+              } else if ((self.prevX >= obj.x + obj.w) && obj.has("Wall")) {
+                // On right
+                self.xVelocity = 0
+                self.x = obj.x + obj.w
+              } else if ((self.prevY >= obj.y + obj.h) && obj.has("Ceiling")) {
+                // below
+                self.yVelocity = 0
+                self.y = obj.y + obj.h
+              }
+          }
+      })
+      
+      if (hit) {
+        self.trigger("hit")
+      }
+    }
     
     // Trigger NewDirection listener.
     var newXSignum = signum(self.xVelocity)
     var newYSignum = signum(self.yVelocity)
     if ((newXSignum != oldXSignum) || (newYSignum != oldYSignum)) {
       self.trigger("NewDirection",{"x":Math.round(self.xVelocity), "y": Math.round(self.yVelocity)})
-    }
-    if (hit) {
-      self.trigger("hit")
     }
   },
   
@@ -305,3 +358,25 @@ Crafty.c("Player", {
     })
   }
 })
+
+function followPlayerWithCamera() {
+  var playerId = Crafty("Player")[0]
+  var player = Crafty(playerId)
+  var playerLeader = Crafty.e("LeadingFollower")
+    .lead(player)
+  var playerFollower = Crafty.e("SHMFollower")
+    .followSHM(playerLeader)
+    .attr({
+      "_collisionsEnabled": false,
+      "yGravity": 0.0,
+      "xGravity": 0.0,
+      "vCoeff": -0.3,
+      "sCoeff": -0.02
+      })
+  /*
+   * playerFollower a phantom entity, that shouldn't affect boundary,
+   * so we remove it from the map
+   */
+  Crafty.map.remove(playerFollower)
+  var camera = Crafty.e("Camera").follow(playerFollower)
+}
