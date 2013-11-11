@@ -1,10 +1,12 @@
-import re
+from __future__ import division
+import re, math
 from wand.image import Image
 from wand.color import Color
 
 image_re = re.compile(r"(\w+) = (\d+) (\d+) (\d+) (\d+)[^\d]*")
-source_png = "assets/platformer_graphics_deluxe/Player/p1_spritesheet.png"
-source_txt = "assets/platformer_graphics_deluxe/Player/p1_spritesheet.txt"
+source_png = "platformer_graphics_deluxe/Player/p1_spritesheet.png"
+source_txt = "platformer_graphics_deluxe/Player/p1_spritesheet.txt"
+scale_factor = 5/7
 
 with open(source_txt) as f:
     files = []
@@ -17,8 +19,8 @@ with open(source_txt) as f:
         h = int(match.group(5))
         files.append((filename, x, y, w, h))
 
-width = max(row[3] for row in files)
-height = max(row[4] for row in files)
+width = int(math.ceil(max(row[3] for row in files) * scale_factor))
+height = int(math.ceil(max(row[4] for row in files) * scale_factor))
 
 print width, height
 
@@ -32,8 +34,12 @@ with Image(filename=source_png) as source:
         filename, x, y, w, h = row
         src_img = source.clone()
         src_img.crop(left=x, top=y, width=w, height=h)
+        if scale_factor != 1.0:
+            h = int(math.ceil(h * scale_factor))
+            w = int(math.ceil(w * scale_factor))
+            src_img.resize(w, h)
         top_padding = height - h
-        left_padding = (width - w) / 2
+        left_padding = int((width - w) / 2)
         dest.composite(src_img,
                        left = i * width + left_padding,
                        top = top_padding)

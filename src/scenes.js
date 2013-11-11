@@ -50,9 +50,35 @@ Crafty.scene("Game", function() {
   followPlayerWithCamera(false)
 })
 
+Crafty.scene("Untitled", function() {
+  var map = Crafty.e("TiledLevel")
+  map.tiledLevel("/levels/untitled.json")
+  map.bind("TiledLevelLoaded", function () {
+    player = Crafty.e("Player")
+      .attr({"x": 300, "y": 100})
+    var telekinetics = Crafty("Telekinesis")
+    telekinetics.each(function(i) {
+      var o = Crafty(telekinetics[i])
+      console.log(o)
+      if (o.has("Telekinesis")) {
+        o.physicsOn().startTelekinesis(player)
+        console.log("Started telekinesis")
+      }
+    })
+    Crafty.e("2D,DOM,FPS,Text")
+      .attr({maxValues:10, x: 100})
+      .bind("MessureFPS", function(fps){
+        this.text("FPS: "+fps.value); //Display Current FPS
+        //console.log(this.values); // Display last x Values
+      })
+    followPlayerWithCamera(false)
+  })
+  
+})
+
 Crafty.scene("Load", function() {
   Crafty.load(["assets/p1_sprites.png"], function() {
-    Crafty.sprite(72, 97, "assets/p1_sprites.png", {
+    Crafty.sprite(52, 70, "assets/p1_sprites.png", {
       "p1_duck_l": [0, 0],
       "p1_duck_r": [0, 1],
       "p1_front_l": [1, 0],
@@ -84,8 +110,8 @@ Crafty.scene("Load", function() {
       "p1_walk10_l": [14, 0],
       "p1_walk10_r": [14, 1],
       "p1_walk11_l": [15, 0],
-      "p1_walk11_r": [15, 1]
+      "p1_walk11_r": [15, 1],
     })
-    Crafty.scene("Game")
+    Crafty.scene("Untitled")
   })
 })

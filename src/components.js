@@ -43,7 +43,7 @@ Crafty.c("Followable", {
 
 Crafty.c("LeadingFollower", {
   "_xFactor": 30.0,
-  "_yFactor": 20.0,
+  "_yFactor": 15.0,
   "_target": null,
   "_movedCallback": null,
   "init": function() {
@@ -294,12 +294,12 @@ Crafty.c("Phys", {
 })
 
 Crafty.c("Telekinesis", {
-  "maxRadius": 600,
+  "maxRadius":400,
   "_player": null,
   "_held": false,
   "_tinted": false,
-  "tintColour": "#DEEFFF",
-  "tintOpacity": 0.7,
+  "tintColour": "#4D94FF",
+  "tintOpacity": 0.3,
   "init": function() {
     var self = this
     
@@ -366,12 +366,12 @@ Crafty.c("Telekinesis", {
   "_telekinesisPhysicsHandler": function(e) {
     if (this._tinted) {
       if (!this._inRange()) {
-        this.tint(this.tintColour, this.tintOpacity)
+        this.tint("#ffffff", 0.0)
         this._tinted = false
       }
     } else {
       if (this._inRange()) {
-        this.tint("#ffffff", 0.0)
+        this.tint(this.tintColour, this.tintOpacity)
         this._tinted = true
       }
     }
@@ -380,7 +380,7 @@ Crafty.c("Telekinesis", {
 
 Crafty.c("Platformer", {
   "speed": 9,
-  "jump": 20,
+  "jump": 17,
   "acceleration": 3,
   "airAcceleration": 0.4,
   "disableControls": false,
@@ -405,9 +405,9 @@ Crafty.c("Platformer", {
     return this
   },
   "_keyDown": function(e) {
-    if (e.key == Crafty.keys.LEFT_ARROW) this._leftKeyDown = true
-    if (e.key == Crafty.keys.RIGHT_ARROW) this._rightKeyDown = true
-    if (e.key == Crafty.keys.Z) {
+    if ((e.key == Crafty.keys.LEFT_ARROW) || (e.key == Crafty.keys.A)) this._leftKeyDown = true
+    if ((e.key == Crafty.keys.RIGHT_ARROW) || (e.key == Crafty.keys.D)) this._rightKeyDown = true
+    if ((e.key == Crafty.keys.UP_ARROW) || (e.key == Crafty.keys.W)) {
       if (!this._falling) {
         this.yVelocity -= this.jump
         this._falling = true
@@ -416,8 +416,8 @@ Crafty.c("Platformer", {
     }
   },
   "_keyUp": function(e) {
-    if (e.key == Crafty.keys.LEFT_ARROW) this._leftKeyDown = false
-    if (e.key == Crafty.keys.RIGHT_ARROW) this._rightKeyDown = false
+    if ((e.key == Crafty.keys.LEFT_ARROW) || (e.key == Crafty.keys.A)) this._leftKeyDown = false
+    if ((e.key == Crafty.keys.RIGHT_ARROW) || (e.key == Crafty.keys.D)) this._rightKeyDown = false
   },
   "_platformerEnterFrame": function () {
     if (this.disableControls) return
@@ -459,7 +459,7 @@ Crafty.c("Player", {
     this.requires("2D, Canvas, p1_front_r, SpriteAnimation, Platformer")
     //this.twoway(9, 15)
     this.attr({
-      "w": 72, "h": 97
+      "w": 52, "h": 70
     })
     this.platformer()
     this.animate("WalkLeft", 5, 1, 15)
@@ -530,7 +530,7 @@ function followPlayerWithCamera(showCameraPos) {
     .attr({
       "yGravity": 0.0,
       "xGravity": 0.0,
-      "vCoeff": -0.3,
+      "vCoeff": -0.4,
       "sCoeff": -0.02,
       })
   Crafty.map.remove(playerFollower)
