@@ -102,7 +102,7 @@ Crafty.c("MouseFollower", {
   "_paused": false,
   "pausable": false,
   "_absX":0,
-  "_absY": 0,
+  "_absY":0,
   "init": function() {
     var self = this
     
@@ -110,7 +110,7 @@ Crafty.c("MouseFollower", {
     if (self.x === undefined) self.x = 0
     if (self.y === undefined) self.y = 0
     
-    self._onMove = function(e) {
+    self._followerOnMove = function(e) {
       self._absX = e.clientX
       self._absY = e.clientY
       self._updatePos()
@@ -128,6 +128,10 @@ Crafty.c("MouseFollower", {
         self._updatePos()
       }
     }
+    
+    self._followerOnPan = function() {
+      self._updatePos()
+    }
   },
   
   "followMouse": function(pausable) {
@@ -135,19 +139,21 @@ Crafty.c("MouseFollower", {
       this.pausable = pausable
     }
     if (!this._following) {
-      Crafty.addEvent(this, Crafty.stage.elem, "mousemove", this._onMove)
+      Crafty.addEvent(this, Crafty.stage.elem, "mousemove", this._followerOnMove)
       Crafty.addEvent(this, Crafty.stage.elem, "mouseup", this._followerOnMouseUp)
       Crafty.addEvent(this, Crafty.stage.elem, "mousedown", this._followerOnMouseDown)
+      Crafty.bind("ViewportPanned", this._followerOnPan)
       this._following = true
     }
     return this
   },
   "unfollowMouse": function() {
     if (this._following) {
+      this._following = false
+      Crafty.unbind("ViewportPanned", this._followerOnPan)
       Crafty.removeEvent(this, Crafty.stage.elem, "mousedown", this._followerOnMouseDown)
       Crafty.removeEvent(this, Crafty.stage.elem, "mouseup", this._followerOnMouseUp)
-      Crafty.removeEvent(this, Crafty.stage.elem, "mousemove", this._onMove)
-      this._following = false
+      Crafty.removeEvent(this, Crafty.stage.elem, "mousemove", this._followerOnMove)
     }
     return this
   },
@@ -175,6 +181,7 @@ Crafty.c("Camera", {
       Crafty.viewport.scroll('_x', Crafty.viewport.width / 2 - self._target.xPos());
       Crafty.viewport.scroll('_y', Crafty.viewport.height / 2 - self._target.yPos());
       Crafty.viewport._clamp();
+      Crafty.trigger("ViewportPanned")
     }
   },
   "follow": function(target) {
