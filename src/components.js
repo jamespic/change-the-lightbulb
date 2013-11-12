@@ -335,7 +335,7 @@ Crafty.c("Telekinesis", {
   "_held": false,
   "_tinted": false,
   "tintColour": "00D0FF",
-  "tintOpacity": 0.3,
+  "tintOpacity": 0.15,
   "init": function() {
     var self = this
     
@@ -565,8 +565,8 @@ function followPlayerWithCamera(showCameraPos) {
     .attr({
       "yGravity": 0.0,
       "xGravity": 0.0,
-      "vCoeff": -0.4,
-      "sCoeff": -0.02,
+      "vCoeff": -0.2,
+      "sCoeff": -0.01,
       })
   Crafty.map.remove(playerFollower)
   var camera = Crafty.e("Camera").follow(playerFollower)

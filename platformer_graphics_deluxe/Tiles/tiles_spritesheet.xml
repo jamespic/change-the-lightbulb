@@ -99,8 +99,8 @@
 	<SubTexture name="lock_green.png" x="72" y="576" width="70" height="70"/>
 	<SubTexture name="lock_red.png" x="432" y="360" width="70" height="70"/>
 	<SubTexture name="lock_yellow.png" x="432" y="288" width="70" height="70"/>
-	<SubTexture name="rockHillLeft.png" x="432" y="216" width="70" height="70"/>
-	<SubTexture name="rockHillRight.png" x="432" y="144" width="70" height="70"/>
+	<SubTexture name="stoneHillLeft.png" x="432" y="216" width="70" height="70"/>
+	<SubTexture name="stoneHillRight.png" x="432" y="144" width="70" height="70"/>
 	<SubTexture name="ropeAttached.png" x="432" y="72" width="70" height="70"/>
 	<SubTexture name="ropeHorizontal.png" x="432" y="0" width="70" height="70"/>
 	<SubTexture name="ropeVertical.png" x="360" y="864" width="70" height="70"/>

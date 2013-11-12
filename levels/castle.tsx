@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset name="Castle" tilewidth="50" tileheight="50">
- <image source="castle.png" width="1000" height="50"/>
+<tileset name="castle" tilewidth="50" tileheight="50">
+ <image source="../assets/castle.png" width="250" height="200"/>
  <tile id="0">
   <properties>
    <property name="components" value="Obstacle"/>
@@ -8,7 +8,7 @@
  </tile>
  <tile id="1">
   <properties>
-   <property name="components" value="Wall"/>
+   <property name="components" value="Wall, Ceiling"/>
   </properties>
  </tile>
  <tile id="2">
@@ -33,7 +33,7 @@
  </tile>
  <tile id="6">
   <properties>
-   <property name="components" value="Platform"/>
+   <property name="Components" value="Platform"/>
   </properties>
  </tile>
  <tile id="7">

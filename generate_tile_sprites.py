@@ -1,11 +1,12 @@
+#!/usr/bin/python
 from __future__ import division
 import re, math
 from wand.image import Image
 from wand.color import Color
 
 image_re = re.compile(r"(\w+) = (\d+) (\d+) (\d+) (\d+)[^\d]*")
-source_png = "platformer_graphics_deluxe/Player/p1_spritesheet.png"
-source_txt = "platformer_graphics_deluxe/Player/p1_spritesheet.txt"
+source_png = "platformer_graphics_deluxe/Player/p3_spritesheet.png"
+source_txt = "platformer_graphics_deluxe/Player/p3_spritesheet.txt"
 scale_factor = 5/7
 
 with open(source_txt) as f:
@@ -50,4 +51,4 @@ with Image(filename=source_png) as source:
                        top = height + top_padding)
         print '"{}_r": [{}, {}],'.format(filename, i, 1)
 
-    dest.save(filename = "p1_sprites.png")
+    dest.save(filename = "p3_sprites.png")

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="100" height="50" tilewidth="50" tileheight="50">
- <tileset firstgid="1" source="../assets/castle.tsx"/>
- <tileset firstgid="21" source="../assets/box.tsx"/>
- <layer name="Tile Layer 1" width="100" height="50">
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="50" tileheight="50">
+ <tileset firstgid="1" source="castle.tsx"/>
+ <tileset firstgid="21" source="box.tsx"/>
+ <layer name="Tile Layer 1" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt1rEKwkAUBdElnVoK/v+nqpUxbCGizmDmwKsvTGDJMsZY4MsD3YPet6F70Ps2dA9634buQe/b0D3ofRu6B71vQ/eg923oHvS+Dd2D3rehe9D7NnQPet+G7kHv26x7HG53nNzpR/vhe9D7NnQPet/m1R6zt+wT71jf4xndg963oXvQ+zbbHtt36Zv/VrP9vaN70Ps27/S4rI7Y/2f3Hmfw+h5JkiRJkiRJkiRJkiRJkiTZkytbfgPe
+   eJztlLsKgDAQBI9UPjoj+f9P1UZQIWpiwm0xA1sFdlgIF8wsOKUlrfu8vOzQ8rJDy8sOLS87tLzs0PJ+6Rv3TJnMHb2efV7eP33JyVvaNzy8LXviKWtDbw38Ky3vvS/3l46bVXuf3rxqfV7e2r5k13tVert67IgO8foHAAAAAAAAAAAAAKDFBvH1A+8=
   </data>
  </layer>
 </map>
