@@ -99,6 +99,10 @@ Crafty.c("SHMFollower", {
 
 Crafty.c("MouseFollower", {
   "_following": false,
+  "_paused": false,
+  "pausable": false,
+  "_absX":0,
+  "_absY": 0,
   "init": function() {
     var self = this
     
@@ -107,24 +111,41 @@ Crafty.c("MouseFollower", {
     if (self.y === undefined) self.y = 0
     
     self._onMove = function(e) {
-      var pos = Crafty.DOM.translate(e.clientX, e.clientY)
-      self.x = pos.x
-      self.y = pos.y
-      self.trigger("FollowMe")
+      self._absX = e.clientX
+      self._absY = e.clientY
+      self._updatePos()
+    }
+    
+    self._followerOnMouseDown = function(e) {
+      if (self.pausable && (e.mouseButton === Crafty.mouseButtons.RIGHT)) {
+        self._paused = true
+      }
+    }
+    
+    self._followerOnMouseUp = function(e) {
+      if (self.pausable && (e.mouseButton === Crafty.mouseButtons.RIGHT)) {
+        self._paused = false
+        self._updatePos()
+      }
     }
   },
   
-  
-  
-  "followMouse": function() {
+  "followMouse": function(pausable) {
+    if (pausable !== undefined) {
+      this.pausable = pausable
+    }
     if (!this._following) {
       Crafty.addEvent(this, Crafty.stage.elem, "mousemove", this._onMove)
+      Crafty.addEvent(this, Crafty.stage.elem, "mouseup", this._followerOnMouseUp)
+      Crafty.addEvent(this, Crafty.stage.elem, "mousedown", this._followerOnMouseDown)
       this._following = true
     }
     return this
   },
   "unfollowMouse": function() {
     if (this._following) {
+      Crafty.removeEvent(this, Crafty.stage.elem, "mousedown", this._followerOnMouseDown)
+      Crafty.removeEvent(this, Crafty.stage.elem, "mouseup", this._followerOnMouseUp)
       Crafty.removeEvent(this, Crafty.stage.elem, "mousemove", this._onMove)
       this._following = false
     }
@@ -136,6 +157,14 @@ Crafty.c("MouseFollower", {
   "yPos": function() {
     return this.y
   },
+  "_updatePos": function() {
+    if (!this._paused) {
+      var pos = Crafty.DOM.translate(this._absX, this._absY)
+      this.x = pos.x
+      this.y = pos.y
+      this.trigger("FollowMe")
+    }
+  }
 })
 
 Crafty.c("Camera", {
@@ -308,7 +337,7 @@ Crafty.c("Telekinesis", {
     if (Crafty("MouseFollower").length !== 0) {
       self._mouseFollower = Crafty(Crafty("MouseFollower")[0])
     } else {
-      self._mouseFollower = Crafty.e("MouseFollower").followMouse()
+      self._mouseFollower = Crafty.e("MouseFollower").followMouse(true)
     }
     
     self._holdOn = function() {

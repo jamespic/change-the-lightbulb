@@ -59,10 +59,8 @@ Crafty.scene("Untitled", function() {
     var telekinetics = Crafty("Telekinesis")
     telekinetics.each(function(i) {
       var o = Crafty(telekinetics[i])
-      console.log(o)
       if (o.has("Telekinesis")) {
         o.physicsOn().startTelekinesis(player)
-        console.log("Started telekinesis")
       }
     })
     Crafty.e("2D,DOM,FPS,Text")
