@@ -31,7 +31,7 @@ function signum(x) {
 
 Crafty.c("Followable", {
   // Abstract class. Must define xPos() and yPos() methods, and emit
-  // "Moved" events
+  // "FollowMe" events
   "init": function() {
   },
   "distFrom": function(o) {
@@ -45,23 +45,23 @@ Crafty.c("LeadingFollower", {
   "_xFactor": 30.0,
   "_yFactor": 15.0,
   "_target": null,
-  "_movedCallback": null,
+  "_followMeCallback": null,
   "init": function() {
     var self = this
     this.requires("Followable")
-    this._movedCallback = function() {
-      self.trigger("Moved")
+    this._followMeCallback = function() {
+      self.trigger("FollowMe")
     }
   },
   "lead": function(target) {
     this.unlead()
     this._target = target
-    target.bind("Moved", this._movedCallback)
+    target.bind("FollowMe", this._followMeCallback)
     return this
   },
   "unlead": function() {
     if (this._target !== null) {
-      this._target.unbind("Moved", this._movedCallback)
+      this._target.unbind("FollowMe", this._followMeCallback)
       this._target !== null
     }
     return this
@@ -110,7 +110,7 @@ Crafty.c("MouseFollower", {
       var pos = Crafty.DOM.translate(e.clientX, e.clientY)
       self.x = pos.x
       self.y = pos.y
-      self.trigger("Moved")
+      self.trigger("FollowMe")
     }
   },
   
@@ -142,7 +142,7 @@ Crafty.c("Camera", {
   "_target": null,
   "init": function() {
     var self = this
-    self._movedHandler = function() {
+    self._followMeHandler = function() {
       Crafty.viewport.scroll('_x', Crafty.viewport.width / 2 - self._target.xPos());
       Crafty.viewport.scroll('_y', Crafty.viewport.height / 2 - self._target.yPos());
       Crafty.viewport._clamp();
@@ -151,12 +151,12 @@ Crafty.c("Camera", {
   "follow": function(target) {
     this.unfollow()
     this._target = target
-    target.bind("Moved", this._movedHandler)
+    target.bind("FollowMe", this._followMeHandler)
     return this
   },
   "unfollow": function() {
     if (this._target !== null) {
-      this._target.unbind("Moved", this._movedHandler)
+      this._target.unbind("FollowMe", this._followMeHandler)
       this._target = null
     }
     return this
@@ -225,7 +225,7 @@ Crafty.c("BasicPhys", {
       self.trigger("NewDirection",{"x":Math.round(self.xVelocity), "y": Math.round(self.yVelocity)})
     }
     if ((self.prevX !== self.x) || (self.prevY !== self.y)) {
-      self.trigger("Moved")
+      self.trigger("FollowMe")
     }
   },
   
@@ -298,7 +298,7 @@ Crafty.c("Telekinesis", {
   "_player": null,
   "_held": false,
   "_tinted": false,
-  "tintColour": "#4D94FF",
+  "tintColour": "00D0FF",
   "tintOpacity": 0.3,
   "init": function() {
     var self = this
@@ -322,10 +322,9 @@ Crafty.c("Telekinesis", {
       self.unfollowSHM(self._mouseFollower)
       Crafty.removeEvent(self, Crafty.stage.elem, "mouseup", self._telekinesisMouseUp)
       self.bind("MouseDown",self._telekinesisMouseDown)
-      //self._mouseFollower.unbind("Moved", self._mouseMovedHandler)
     }
     
-    self._mouseMovedHandler =  function() {
+    self._mouseFollowMeHandler =  function() {
       if (!self._inRange() && self._held) {
         self._letGo()
       }
@@ -336,7 +335,7 @@ Crafty.c("Telekinesis", {
     this.endTelekinesis()
     this._player = player
     this.bind("MouseDown",this._telekinesisMouseDown)
-    this._mouseFollower.bind("Moved", this._mouseMovedHandler)
+    this._mouseFollower.bind("FollowMe", this._mouseFollowMeHandler)
     this.bind("PhysicsCallbacks", this._telekinesisPhysicsHandler)
     return this
   },
@@ -344,7 +343,7 @@ Crafty.c("Telekinesis", {
   "endTelekinesis": function() {
     this._letGo()
     this.unbind("PhysicsCallbacks", this._telekinesisPhysicsHandler)
-    this._mouseFollower.unbind("Moved", this._mouseMovedHandler)
+    this._mouseFollower.unbind("FollowMe", this._mouseFollowMeHandler)
     this.unbind("MouseDown",this._telekinesisMouseDown)
     this._player = null
     return this
