@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="50" tileheight="50">
  <tileset firstgid="1" source="castle.tsx"/>
- <tileset firstgid="21" source="box.tsx"/>
+ <tileset firstgid="21" name="box" tilewidth="50" tileheight="50">
+  <image source="../assets/box.png" width="200" height="200"/>
+  <tile id="1">
+   <properties>
+    <property name="components" value="Telekinesis, Platform"/>
+   </properties>
+  </tile>
+ </tileset>
  <layer name="Tile Layer 1" width="50" height="50">
   <data encoding="base64" compression="zlib">
    eJztlLsKgDAQBI9UPjoj+f9P1UZQIWpiwm0xA1sFdlgIF8wsOKUlrfu8vOzQ8rJDy8sOLS87tLzs0PJ+6Rv3TJnMHb2efV7eP33JyVvaNzy8LXviKWtDbw38Ky3vvS/3l46bVXuf3rxqfV7e2r5k13tVert67IgO8foHAAAAAAAAAAAAAKDFBvH1A+8=
   </data>
  </layer>
+ <objectgroup name="Object Layer 1" width="50" height="50">
+  <object gid="22" x="580" y="843"/>
+  <object name="Rectangle1" type="Rectangle" x="530" y="472">
+   <properties>
+    <property name="components" value="Player"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

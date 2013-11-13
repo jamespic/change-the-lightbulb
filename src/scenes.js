@@ -22,22 +22,31 @@ Crafty.scene("Load", function() {
   })
 })
 
-function generateTiledScene(sceneName, url) {
+function generateTiledScene(sceneName, url, bg) {
   Crafty.scene(sceneName, function() {
     var map = Crafty.e("TiledLevel")
     map.tiledLevel(url)
     
     map.bind("TiledLevelLoaded", function () {
       // Hook up telekinesis
-      var player = Crafty(Crafty("Player")[0])
+      var player = Crafty("Player")
       Crafty("Telekinesis").each(function(i) {
         if (this.has("Telekinesis")) {
           this.physicsOn().startTelekinesis(player)
         }
       })
       followPlayerWithCamera(false)
+      Crafty.background(bg)
     })
   })
 }
 
-generateTiledScene("Untitled", "/levels/untitled.json")
+var Backgrounds = {
+  "desert":    "#c0e8ec url('assets/bg_desert.png') repeat-x top",
+  "grassland": "#c0e8ec url('assets/bg_grasslands.png') repeat-x top",
+  "shroom":    "#6da41a url('assets/bg_shroom.png') repeat-x top",
+  "castle":    "#869595 url('assets/bg_castle.png')"
+}
+  
+
+generateTiledScene("Untitled", "/levels/untitled.json", Backgrounds.castle)

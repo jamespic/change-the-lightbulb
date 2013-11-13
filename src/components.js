@@ -281,6 +281,12 @@ Crafty.c("BasicPhys", {
     self.yVelocity += self.yAccel + self.yGravity
     self.yAccel = 0
     
+    // Limit velocity to 50 in any direction, to avoid clipping issues
+    if (self.xVelocity < -50.0) self.xVelocity = -50.0
+    if (self.xVelocity > 50.0) self.xVelocity = 50.0
+    if (self.yVelocity < -50.0) self.yVelocity = -50.0
+    if (self.yVelocity > 50.0) self.yVelocity = 50.0
+    
     self.x += Math.round(self.xVelocity)
     self.y += Math.ceil(self.yVelocity)
     
