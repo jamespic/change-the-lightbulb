@@ -4,6 +4,7 @@ Crafty.c("HandlesCollisions", {
     this.bind("PhysicsCollision", this._genericHandleCollision)
   },
   "_genericHandleCollision": function(c) {
+    // WARNING: This assumes the hitbox for the object matches its 2D co-ords
     if (this.obstructFromAbove && (c.prevY + c.h <= this.y)) {
       // On top
       c.yVelocity = 0
@@ -318,6 +319,11 @@ Crafty.c("Phys", {
     
     if (q) q.forEach(function(o) {
       if (o.obj !== self) {
+        /*
+         * Both sides get an event - so far I'm only using PhysicsCollision,
+         * but I can imagine cases where we'd want the behaviour to be on
+         * the part of the moving object - maybe.
+         */
         o.obj.trigger("PhysicsCollision", self)
         self.trigger("CrashedInto", o.obj)
       }

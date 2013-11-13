@@ -10,6 +10,44 @@
          "width":50,
          "x":0,
          "y":0
+        }, 
+        {
+         "height":50,
+         "name":"Object Layer 1",
+         "objects":[
+                {
+                 "gid":22,
+                 "height":0,
+                 "name":"Box1",
+                 "properties":
+                    {
+                     "myProperty":"Hello"
+                    },
+                 "type":"box",
+                 "visible":true,
+                 "width":0,
+                 "x":580,
+                 "y":843
+                }, 
+                {
+                 "height":0,
+                 "name":"Rectangle1",
+                 "properties":
+                    {
+                     "components":"Player"
+                    },
+                 "type":"Rectangle",
+                 "visible":true,
+                 "width":0,
+                 "x":530,
+                 "y":472
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "width":50,
+         "x":0,
+         "y":0
         }],
  "orientation":"orthogonal",
  "properties":
@@ -101,7 +139,7 @@
          "name":"box",
          "properties":
             {
-
+             "bigProperty":"big"
             },
          "spacing":0,
          "tileheight":50,
@@ -109,6 +147,7 @@
             {
              "1":
                 {
+                 "arbitraryProperty":"Yes",
                  "components":"Telekinesis, Platform"
                 }
             },

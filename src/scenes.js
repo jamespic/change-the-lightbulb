@@ -1,79 +1,3 @@
-var box
-var box2
-var player
-var mouseFollower
-Crafty.scene("Game", function() {
-  Crafty.e("2D,DOM,Text")
-    .attr({maxValues:10})
-  Crafty.e("2D, Canvas, Color, Platform")
-    .attr({
-      "x": 0,
-      "y": 630,
-      "h": 70,
-      "w": 1050
-    })
-    .color("blue")
-  Crafty.e("2D, Canvas, Color, Platform")
-    .attr({
-      "x": 630,
-      "y": 420,
-      "h": 70,
-      "w": 140
-    })
-    .color("blue")
-  Crafty.e("2D, Canvas, Color, Obstacle")
-    .attr({
-      "x": 0,
-      "y": 0,
-      "w": 16,
-      "h": 700
-    })
-    .color("black")
-  player = Crafty.e("Player")
-    .attr({"x": 320, "y": 100})
-  box = Crafty.e("2D, Canvas, Color, Telekinesis, Platform")
-    .attr({"x": 70, "y": 0, "w": 70, "h":70})
-    .color("green")
-    .physicsOn()
-    .startTelekinesis(player)
-  box2 = Crafty.e("2D, Canvas, Color, Telekinesis, Platform")
-    .attr({"x": 210, "y": 0, "w": 70, "h":70})
-    .color("green")
-    .physicsOn()
-    .startTelekinesis(player)
-  Crafty.e("2D,DOM,FPS,Text")
-    .attr({maxValues:10, x: 100})
-    .bind("MessureFPS", function(fps){
-      this.text("FPS: "+fps.value); //Display Current FPS
-      //console.log(this.values); // Display last x Values
-    })
-  followPlayerWithCamera(false)
-})
-
-Crafty.scene("Untitled", function() {
-  var map = Crafty.e("TiledLevel")
-  map.tiledLevel("/levels/untitled.json")
-  map.bind("TiledLevelLoaded", function () {
-    player = Crafty.e("Player")
-      .attr({"x": 300, "y": 100})
-    var telekinetics = Crafty("Telekinesis")
-    telekinetics.each(function(i) {
-      var o = Crafty(telekinetics[i])
-      if (o.has("Telekinesis")) {
-        o.physicsOn().startTelekinesis(player)
-      }
-    })
-    Crafty.e("2D,DOM,FPS,Text")
-      .attr({maxValues:10, x: 100})
-      .bind("MessureFPS", function(fps){
-        this.text("FPS: "+fps.value); //Display Current FPS
-        //console.log(this.values); // Display last x Values
-      })
-    followPlayerWithCamera(false)
-  })
-  
-})
-
 Crafty.scene("Load", function() {
   Crafty.load(["assets/p1_sprites.png"], function() {
     Crafty.sprite(52, 70, "assets/p1_sprites.png", {
@@ -97,3 +21,23 @@ Crafty.scene("Load", function() {
     Crafty.scene("Untitled")
   })
 })
+
+function generateTiledScene(sceneName, url) {
+  Crafty.scene(sceneName, function() {
+    var map = Crafty.e("TiledLevel")
+    map.tiledLevel(url)
+    
+    map.bind("TiledLevelLoaded", function () {
+      // Hook up telekinesis
+      var player = Crafty(Crafty("Player")[0])
+      Crafty("Telekinesis").each(function(i) {
+        if (this.has("Telekinesis")) {
+          this.physicsOn().startTelekinesis(player)
+        }
+      })
+      followPlayerWithCamera(false)
+    })
+  })
+}
+
+generateTiledScene("Untitled", "/levels/untitled.json")
