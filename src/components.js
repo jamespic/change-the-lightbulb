@@ -558,3 +558,98 @@ function followPlayerWithCamera(showCameraPos) {
   Crafty.map.remove(playerFollower)
   var camera = Crafty.e("Camera").follow(playerFollower)
 }
+
+Crafty.c("LockedDoor", {
+  "obstructFromAbove": true,
+  "obstructFromBelow": true,
+  "obstructFromSides": true,
+  "_disappearing": false,
+  "init": function() {
+    this.requires("2D, HandlesCollisions, Tween")
+    this.bind("PhysicsCollision", this._doorCollisionHandler)
+  },
+  "doorColour": function(colour) {
+    this.colour = colour
+    return this
+  },
+  "_doorCollisionHandler": function(obj) {
+    if (obj.has("DoorKey") && (obj.colour === this.colour)) {
+      this._disappear()
+    }
+  },
+  "_disappear": function() {
+    if (!this._disappearing) {
+      this._disappearing = true
+      this.obstructFromAbove = false
+      this.obstructFromBelow = false
+      this.obstructFromSides = false
+      this.tween({"alpha": 0.0}, 50)
+      this.bind("TweenEnd", function(props) {
+        console.log(props)
+        this.destroy()
+      })
+    }
+  }
+})
+
+Crafty.c("DoorKey", {
+  "init": function() {
+    this.requires("Telekinesis")
+  },
+  "keyColour": function(colour) {
+    this.colour = colour
+    return true
+  }
+})
+
+var buttonPressedSprites = {
+  "Red": [0, 1],
+  "Green": [6, 0],
+  "Blue": [4, 0],
+  "Yellow": [2, 1]
+}
+
+Crafty.c("Button", {
+  "_pressed": false,
+  "init": function() {
+    this.requires("HandlesCollisions")
+    this.bind("PhysicsCollision", this._buttonPress)
+  },
+  "buttonColour": function(colour) {
+    this.colour = colour
+  },
+  "_buttonPress": function() {
+    if (!this._pressed) {
+      Crafty(this.colour + "Door").each(function () {
+        this._disappear()
+      })
+      var spr = buttonPressedSprites[this.colour]
+      this.sprite(spr[0], spr[1], 1, 1)
+      this._pressed = true
+    }
+  }
+})
+
+var colours = ["Red", "Green", "Blue", "Yellow"]
+colours.forEach(function(colour) {
+  Crafty.c(colour + "Door", {
+    "init": function() {
+      this.requires("LockedDoor")
+      this.doorColour(colour)
+    }
+  })
+  
+  Crafty.c(colour + "Key", {
+    "init": function() {
+      this.requires("DoorKey")
+      this.keyColour(colour)
+    }
+  })
+  
+  Crafty.c(colour + "Button", {
+    "init": function() {
+      this.requires("Button")
+      this.buttonColour(colour)
+    }
+  })
+})

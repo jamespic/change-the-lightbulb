@@ -7,13 +7,15 @@ from wand.color import Color
 
 image_re = re.compile(
     r'name="(\w+)\.png"\s*x="(\d+)"\s*y="(\d+)"\s*width="(\d+)"\s*height="(\d+)"')
-source_png = "platformer_graphics_deluxe/Tiles/tiles_spritesheet.png"
+#source_png = "platformer_graphics_deluxe/Tiles/tiles_spritesheet.png"
 #source_png = "platformerGraphics_mushroomLand/PNG/spritesheet.png"
-source_txt = "platformer_graphics_deluxe/Tiles/tiles_spritesheet.xml"
+source_png = "platformer_graphics_deluxe/Items/items_spritesheet.png"
+#source_txt = "platformer_graphics_deluxe/Tiles/tiles_spritesheet.xml"
 #source_txt = "platformerGraphics_mushroomLand/PNG/spritesheet.xml"
+source_txt = "platformer_graphics_deluxe/Items/items_spritesheet.xml"
 scale_factor = 5/7
-tilesets = ["dirt", "grass", "box", "castle", "liquid", "sand", "snow", "stone"]
-#tilesets = []
+#tilesets = ["dirt", "grass", "box", "castle", "liquid", "sand", "snow", "stone"]
+tilesets = []
 
 with open(source_txt) as f:
     files = []

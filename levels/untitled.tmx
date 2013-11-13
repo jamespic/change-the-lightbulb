@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="50" tileheight="50">
  <tileset firstgid="1" source="castle.tsx"/>
- <tileset firstgid="21" name="box" tilewidth="50" tileheight="50">
-  <image source="../assets/box.png" width="200" height="200"/>
-  <tile id="1">
-   <properties>
-    <property name="components" value="Telekinesis, Platform"/>
-   </properties>
-  </tile>
- </tileset>
+ <tileset firstgid="21" source="box.tsx"/>
+ <tileset firstgid="37" source="misc.tsx"/>
+ <tileset firstgid="67" source="items.tsx"/>
  <layer name="Tile Layer 1" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztlLsKgDAQBI9UPjoj+f9P1UZQIWpiwm0xA1sFdlgIF8wsOKUlrfu8vOzQ8rJDy8sOLS87tLzs0PJ+6Rv3TJnMHb2efV7eP33JyVvaNzy8LXviKWtDbw38Ky3vvS/3l46bVXuf3rxqfV7e2r5k13tVert67IgO8foHAAAAAAAAAAAAAKDFBvH1A+8=
+   eJztlN0KQEAQRjdXfu6Q5xBv4TmU938De0G5MWoNM3FOfWXDd5qaNgshZEbRRLvPysscvrzM4cvLHL68zOHL+/c5ZiPvnb4ipjxJ9aDXss/KK/UNF/92Mcv23Ct6U5D6cuFdHdMc0ip6U/jqXk3Ct+ODXu2+s13a76zU++nK663Pypva1205nt/wSn2NQaz2AAAAAAAAAAAAAAB8sQI3YgWZ
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="50" height="50">
