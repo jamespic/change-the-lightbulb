@@ -4,16 +4,22 @@
  <tileset firstgid="21" source="box.tsx"/>
  <tileset firstgid="37" source="misc.tsx"/>
  <tileset firstgid="67" source="items.tsx"/>
- <layer name="Tile Layer 1" width="50" height="50">
+ <tileset firstgid="123" source="liquids.tsx"/>
+ <layer name="Background" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztlN0KQEAQRjdXfu6Q5xBv4TmU938De0G5MWoNM3FOfWXDd5qaNgshZEbRRLvPysscvrzM4cvLHL68zOHL+/c5ZiPvnb4ipjxJ9aDXss/KK/UNF/92Mcv23Ct6U5D6cuFdHdMc0ip6U/jqXk3Ct+ODXu2+s13a76zU++nK663Pypva1205nt/wSn2NQaz2AAAAAAAAAAAAAAB8sQI3YgWZ
+   eJztlFEKgzAQRINfrf1rPEipt+g5Ch5CFI9eAxUWqanYDRvrezCERTPDwJLCOVcYSRNtP6tceuSVS4+8cumRVy498so9eo+nUe4vfudR5YIuCXMt/axyY373Ffeb93lTzN1CzO8U+XYd5YUqxdwt/OtePSL/1glztf2Wdml6s9a+T/7LvJe9Cr6DUJg7oT316IXC3Aql6OETaO77aQYAAAAAAAAAAAAAeAEbJwsv
+  </data>
+ </layer>
+ <layer name="Foreground" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt06ENAEAIA0CmYP9RsYQEzSd/pyor2ggAAGDK6wLQXOzRB96WSwYAAAAAgN8V3WYAbw==
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="50" height="50">
-  <object gid="22" x="580" y="843"/>
+  <object gid="22" x="582" y="793"/>
   <object name="Rectangle1" type="Rectangle" x="530" y="472">
    <properties>
-    <property name="components" value="Player"/>
+    <property name="components" value="PlayerSpawn"/>
    </properties>
   </object>
  </objectgroup>

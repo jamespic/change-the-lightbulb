@@ -23,12 +23,13 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=4
+current_page=5
 FILE_NAME_0=60;HTML;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Findex.html;0;2
 FILE_NAME_1=264;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fgame.js;0;2
-FILE_NAME_2=7475;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fcomponents.js;0;2
-FILE_NAME_3=1308;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fscenes.js;0;2
+FILE_NAME_2=14740;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fcomponents.js;0;2
+FILE_NAME_3=856;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fscenes.js;0;2
 FILE_NAME_4=762;Python;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fgenerate_world_tile_sprites.py;0;2
+FILE_NAME_5=1494;XML;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Flevels%2Fstone.tsx;0;2
 
 [VTE]
 last_dir=/home/james

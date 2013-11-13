@@ -28,8 +28,8 @@ function generateTiledScene(sceneName, url, bg) {
     map.tiledLevel(url)
     
     map.bind("TiledLevelLoaded", function () {
+      var player = Crafty.e("Player").respawn()
       // Hook up telekinesis
-      var player = Crafty("Player")
       Crafty("Telekinesis").each(function(i) {
         if (this.has("Telekinesis")) {
           this.physicsOn().startTelekinesis(player)

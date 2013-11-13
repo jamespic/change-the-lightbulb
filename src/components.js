@@ -530,34 +530,24 @@ Crafty.c("Player", {
         this.flip("X")
       }
     })
+  }, 
+  "respawn": function() {
+    var spawnPoint = Crafty("PlayerSpawn")
+    this.attr(
+      {
+      "x": spawnPoint.x,
+      "y": spawnPoint.y,
+      "xVelocity": 0.0,
+      "yVelocity": 0.0
+      }
+    )
+    return this
+  },
+  "die": function() {
+    // Will improve later
+    this.respawn()
   }
 })
-
-function followPlayerWithCamera(showCameraPos) {
-  var playerId = Crafty("Player")[0]
-  var player = Crafty(playerId)
-  var playerLeader = Crafty.e("LeadingFollower")
-    .lead(player)
-  var playerFollower
-  if (showCameraPos) {
-    playerFollower = Crafty.e("SHMFollower, 2D, Canvas, Color")
-      .color("pink")
-      .attr({"w":16,"h":16})
-  } else {
-    playerFollower = Crafty.e("SHMFollower")
-  }
-  playerFollower
-    .followSHM(playerLeader)
-    .physicsOn()
-    .attr({
-      "yGravity": 0.0,
-      "xGravity": 0.0,
-      "vCoeff": -0.2,
-      "sCoeff": -0.01,
-      })
-  Crafty.map.remove(playerFollower)
-  var camera = Crafty.e("Camera").follow(playerFollower)
-}
 
 Crafty.c("LockedDoor", {
   "obstructFromAbove": true,
@@ -630,6 +620,30 @@ Crafty.c("Button", {
   }
 })
 
+Crafty.c("Deadly", {
+  "init": function() {
+    this.requires("HandlesCollisions")
+    this.bind("PhysicsCollision", this._deadlyCollision)
+  },
+  "_deadlyCollision": function(obj) {
+    if (obj.has("Player")) {
+      obj.die()
+    }
+  }
+})
+
+Crafty.c("Water", {
+  "init": function() {
+    this.requires("Deadly")
+  }
+})
+
+Crafty.c("Lava", {
+  "init": function() {
+    this.requires("Deadly")
+  }
+})
+
 var colours = ["Red", "Green", "Blue", "Yellow"]
 colours.forEach(function(colour) {
   Crafty.c(colour + "Door", {
@@ -653,3 +667,29 @@ colours.forEach(function(colour) {
     }
   })
 })
+
+function followPlayerWithCamera(showCameraPos) {
+  var playerId = Crafty("Player")[0]
+  var player = Crafty(playerId)
+  var playerLeader = Crafty.e("LeadingFollower")
+    .lead(player)
+  var playerFollower
+  if (showCameraPos) {
+    playerFollower = Crafty.e("SHMFollower, 2D, Canvas, Color")
+      .color("pink")
+      .attr({"w":16,"h":16})
+  } else {
+    playerFollower = Crafty.e("SHMFollower")
+  }
+  playerFollower
+    .followSHM(playerLeader)
+    .physicsOn()
+    .attr({
+      "yGravity": 0.0,
+      "xGravity": 0.0,
+      "vCoeff": -0.2,
+      "sCoeff": -0.01,
+      })
+  Crafty.map.remove(playerFollower)
+  var camera = Crafty.e("Camera").follow(playerFollower)
+}

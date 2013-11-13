@@ -63,7 +63,7 @@
  </tile>
  <tile id="18">
   <properties>
-   <property name="components" value="Ceiling, Platform"/>
+   <property name="components" value="Obstacle"/>
   </properties>
  </tile>
  <tile id="19">
