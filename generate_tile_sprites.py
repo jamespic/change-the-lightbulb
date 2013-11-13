@@ -27,7 +27,7 @@ print width, height
 
 with Image(filename=source_png) as source:
     dest = Image(width = width * len(files),
-                 height = height * 2,
+                 height = height,
                  format = "RGBA",
                  background = Color("RGBA(0,0,0,0)"))
 
@@ -44,11 +44,11 @@ with Image(filename=source_png) as source:
         dest.composite(src_img,
                        left = i * width + left_padding,
                        top = top_padding)
-        print '"{}_l": [{}, {}],'.format(filename, i, 0)
-        src_img.flop()
-        dest.composite(src_img,
-                       left = i * width + left_padding,
-                       top = height + top_padding)
-        print '"{}_r": [{}, {}],'.format(filename, i, 1)
+        print '"{}_r": [{}, {}],'.format(filename, i, 0)
+#        src_img.flop()
+#        dest.composite(src_img,
+#                       left = i * width + left_padding,
+#                       top = height + top_padding)
+#        print '"{}_r": [{}, {}],'.format(filename, i, 1)
 
     dest.save(filename = "p3_sprites.png")

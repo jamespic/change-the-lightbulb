@@ -497,50 +497,25 @@ Crafty.c("Player", {
       "w": 52, "h": 70
     })
     this.platformer()
-    this.animate("WalkLeft", 5, 1, 15)
-    this.animate("JumpLeft", 3, 1, 3)
-    this.animate("StillLeft", 4, 1, 4)
     this.animate("WalkRight", 5, 0, 15)
     this.animate("JumpRight", 3, 0, 3)
     this.animate("StillRight", 4, 0, 4)
     animation_speed = 10
     this.bind('NewDirection', function(data) {
+      this.stop()
+      if (this._falling) {
+        this.animate("JumpRight", 1000, -1);
+      } else if (Math.round(data.x) !== 0) {
+        this.animate('WalkRight', animation_speed, -1);
+      } else {
+        this.animate("StillRight", animation_speed, -1)
+      }
       if (data.x > 0) {
         this._direction = "r"
-        if (this._falling) {
-          this.stop()
-          this.animate("JumpRight", 1000, -1);
-        } else {
-          this.stop()
-          this.animate('WalkRight', animation_speed, -1);
-        }
+        this.unflip("X")
       } else if (data.x < 0) {
         this._direction = "l"
-        if (this._falling) {
-          this.stop()
-          this.animate("JumpLeft", 0, 0);
-        } else {
-          this.stop()
-          this.animate('WalkLeft', animation_speed, -1);
-        }
-      } else {
-        if (this._direction == "l") {
-          if (this._falling) {
-            this.stop()
-            this.animate("JumpLeft", 0, 0);
-          } else {
-            this.stop()
-            this.animate("StillLeft", animation_speed, -1)
-          }
-        } else {
-          if (this._falling) {
-            this.stop()
-            this.animate("JumpRight", 0, 0);
-          } else {
-            this.stop()
-            this.animate("StillRight", animation_speed, -1)
-          }
-        }
+        this.flip("X")
       }
     })
   }
