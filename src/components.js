@@ -1,24 +1,55 @@
-Crafty.c("Platform", {
+Crafty.c("HandlesCollisions", {
   "init": function() {
-    this.requires("2D")
+    this.requires("Collision")
+    this.bind("PhysicsCollision", this._genericHandleCollision)
+  },
+  "_genericHandleCollision": function(c) {
+    if (this.obstructFromAbove && (c.prevY + c.h <= this.y)) {
+      // On top
+      c.yVelocity = 0
+      c.y = this.y - c.h
+      c._falling = false
+    } else if (this.obstructFromSides && (c.prevX + c.w <= this.x)) {
+      //On left
+      c.xVelocity = 0
+      c.x = this.x - c.w
+    } else if (this.obstructFromSides && (c.prevX >= this.x + this.w)) {
+      // On right
+      c.xVelocity = 0
+      c.x = this.x + this.w
+    } else if (this.obstructFromBelow && (c.prevY >= this.y + this.h)) {
+      // below
+      c.yVelocity = 0
+      c.y = this.y + this.h
+    }
+  }
+})
+
+Crafty.c("Platform", {
+  "obstructFromAbove": true,
+  "init": function() {
+    this.requires("2D, HandlesCollisions")
   }
 })
 
 Crafty.c("Wall", {
+  "obstructFromSides": true,
   "init": function() {
-    this.requires("2D")
+    this.requires("2D, HandlesCollisions")
   }
 })
 
 Crafty.c("Ceiling", {
+  "obstructFromBelow": true,
   "init": function() {
-    this.requires("2D")
+    this.requires("2D, HandlesCollisions")
+    this.obstructFromBelow = true
   }
 })
 
 Crafty.c("Obstacle", {
   "init": function() {
-    this.requires("Platform, Wall, Ceiling")
+    this.requires("Wall, Ceiling, Platform")
   }
 })
 
@@ -274,57 +305,26 @@ Crafty.c("Phys", {
   "_falling": true,
   
   "init": function() {
-    this.requires("2D, BasicPhys")
+    this.requires("2D, BasicPhys, Collision")
     this.bind("PhysicsCallbacks", this._handleCollisions)
   },
   
   "_handleCollisions": function() {
     var self = this
     // Resolve collisions
-    var pos = self.pos()
     
-    pos.x = pos._x
-    pos.y = pos._y
-    pos.h = pos._h
-    pos.w = pos._w
-    
-    var q = Crafty.map.search(pos);
+    var q = self.hit("HandlesCollisions");
     self._falling = true // Falling, unless proven otherwise
     
-    var hit = false
-    
-    q.forEach(function(obj) {
-        //check for an intersection directly below the player
-        if ((obj !== self) && obj.intersect(pos)) {
-            // Stop the player, and position them at the most sensible edge
-
-            if ((self.prevY + self.h <= obj.y) && obj.has("Platform")) {
-              // On top
-              self.yVelocity = 0
-              self.y = obj.y - self.h
-              self._falling = false
-            } else if ((self.prevX + self.w <= obj.x) && obj.has("Wall")) {
-              //On left
-              self.xVelocity = 0
-              self.x = obj.x - self.w
-            } else if ((self.prevX >= obj.x + obj.w) && obj.has("Wall")) {
-              // On right
-              self.xVelocity = 0
-              self.x = obj.x + obj.w
-            } else if ((self.prevY >= obj.y + obj.h) && obj.has("Ceiling")) {
-              // below
-              self.yVelocity = 0
-              self.y = obj.y + obj.h
-            }
-        }
+    if (q) q.forEach(function(o) {
+      if (o.obj !== self) {
+        o.obj.trigger("PhysicsCollision", self)
+        self.trigger("CrashedInto", o.obj)
+      }
     })
     
     if (!self._falling) {
       self.xAccel -= self.xVelocity * self.groundFriction
-    }
-    
-    if (hit) {
-      self.trigger("hit")
     }
   }
 })
@@ -492,10 +492,10 @@ Crafty.c("Platformer", {
 Crafty.c("Player", {
   "init": function() {
     this.requires("2D, Canvas, p1_front_r, SpriteAnimation, Platformer")
-    //this.twoway(9, 15)
     this.attr({
       "w": 52, "h": 70
     })
+    // Hitbox slightly smaller than character
     this.platformer()
     this.animate("WalkRight", 5, 0, 15)
     this.animate("JumpRight", 3, 0, 3)
