@@ -7,7 +7,7 @@
  <tileset firstgid="123" source="liquids.tsx"/>
  <layer name="Background" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztlFEKgzAQRINfrf1rPEipt+g5Ch5CFI9eAxUWqanYDRvrezCERTPDwJLCOVcYSRNtP6tceuSVS4+8cumRVy498so9eo+nUe4vfudR5YIuCXMt/axyY373Ffeb93lTzN1CzO8U+XYd5YUqxdwt/OtePSL/1glztf2Wdml6s9a+T/7LvJe9Cr6DUJg7oT316IXC3Aql6OETaO77aQYAAAAAAAAAAAAAeAEbJwsv
+   eJztlFEKwjAQREO/rP7ZHkT0Fp5D8BBi6dFtwMAiJkrcsKu+B0NZks4wkKQLIXRG0kTbzyqXHr5y6eErlx6+cunhK/ffe5yMcj/x6xetM9o0zLX0s8ot+e3f+P98/+4Uc2so+a0Ka9tFg9ComFvDr56rY2HvoWGutl/uLKU3q/Z9epXrzS8R78wsFOer0Lf0iL6TUJwvQi16DA306PtsBgAAAAAAAAAAAAC4AZ4ICys=
   </data>
  </layer>
  <layer name="Foreground" width="50" height="50">
@@ -17,9 +17,14 @@
  </layer>
  <objectgroup name="Object Layer 1" width="50" height="50">
   <object gid="22" x="582" y="793"/>
-  <object name="Rectangle1" type="Rectangle" x="530" y="472">
+  <object name="Rectangle1" type="Rectangle" x="530" y="472" width="81" height="85">
    <properties>
     <property name="components" value="PlayerSpawn"/>
+   </properties>
+  </object>
+  <object x="964" y="777" width="129" height="267">
+   <properties>
+    <property name="components" value="Checkpoint"/>
    </properties>
   </object>
  </objectgroup>

@@ -1,6 +1,5 @@
 Crafty.c("HandlesCollisions", {
   "init": function() {
-    this.requires("Collision")
     this.bind("PhysicsCollision", this._genericHandleCollision)
   },
   "_genericHandleCollision": function(c) {
@@ -312,7 +311,7 @@ Crafty.c("Phys", {
   "_falling": true,
   
   "init": function() {
-    this.requires("2D, BasicPhys, Collision")
+    this.requires("2D, BasicPhys")
     this.bind("PhysicsCallbacks", this._handleCollisions)
   },
   
@@ -320,17 +319,17 @@ Crafty.c("Phys", {
     var self = this
     // Resolve collisions
     
-    var q = self.hit("HandlesCollisions");
+    var q = Crafty.map.search(self);
     self._falling = true // Falling, unless proven otherwise
     
     if (q) q.forEach(function(o) {
-      if (o.obj !== self) {
+      if ((o !== self) && (o.has("HandlesCollisions"))) {
         /*
          * Both sides get an event - so far I'm only using PhysicsCollision,
          * but I can imagine cases where we'd want the behaviour to be on
          * the part of the moving object - maybe.
          */
-        o.obj.trigger("PhysicsCollision", self)
+        o.trigger("PhysicsCollision", self)
         self.trigger("CrashedInto", o.obj)
       }
     })
@@ -501,13 +500,25 @@ Crafty.c("Platformer", {
     
 })
 
+Crafty.c("Checkpoint", {
+  "init": function() {
+    this.requires("2D, HandlesCollisions")
+    this.bind("PhysicsCollision", this._checkpointCollision)
+  },
+  "_checkpointCollision": function(o) {
+    if (o.has("Player")) {
+      o.lastCheckpoint = this
+    }
+  }
+})
+
 Crafty.c("Player", {
+  "lastCheckpoint": null,
   "init": function() {
     this.requires("2D, Canvas, p1_front_r, SpriteAnimation, Platformer")
     this.attr({
       "w": 52, "h": 70
     })
-    // Hitbox slightly smaller than character
     this.platformer()
     this.animate("WalkRight", 5, 0, 15)
     this.animate("JumpRight", 3, 0, 3)
@@ -532,11 +543,11 @@ Crafty.c("Player", {
     })
   }, 
   "respawn": function() {
-    var spawnPoint = Crafty("PlayerSpawn")
+    var spawnPoint = this.lastCheckpoint || Crafty("PlayerSpawn")
     this.attr(
       {
-      "x": spawnPoint.x,
-      "y": spawnPoint.y,
+      "x": spawnPoint.x + spawnPoint.w / 2,
+      "y": spawnPoint.y + spawnPoint.h / 2,
       "xVelocity": 0.0,
       "yVelocity": 0.0
       }
@@ -575,7 +586,6 @@ Crafty.c("LockedDoor", {
       this.obstructFromSides = false
       this.tween({"alpha": 0.0}, 50)
       this.bind("TweenEnd", function(props) {
-        console.log(props)
         this.destroy()
       })
     }
@@ -626,7 +636,8 @@ Crafty.c("Deadly", {
     this.bind("PhysicsCollision", this._deadlyCollision)
   },
   "_deadlyCollision": function(obj) {
-    if (obj.has("Player")) {
+    if (obj.has("Player")
+        && (obj.prevY + obj.h > this.y)) { // Only die on the second frame - allows you to stand on the water's edge
       obj.die()
     }
   }
