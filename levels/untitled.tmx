@@ -24,7 +24,8 @@
   </object>
   <object x="964" y="777" width="129" height="267">
    <properties>
-    <property name="components" value="Checkpoint"/>
+    <property name="callback" value="debugCallback"/>
+    <property name="components" value="Checkpoint, Scriptable"/>
    </properties>
   </object>
  </objectgroup>

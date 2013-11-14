@@ -58,7 +58,8 @@
                  "name":"",
                  "properties":
                     {
-                     "components":"Checkpoint"
+                     "callback":"debugCallback",
+                     "components":"Checkpoint, Scriptable"
                     },
                  "type":"",
                  "visible":true,

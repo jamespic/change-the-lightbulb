@@ -225,10 +225,17 @@ Crafty.c("Camera", {
       var newYPos = Math.floor(Crafty.viewport.height / 2 - self._target.yPos())
       if (newYPos < -bottomBound) newYPos = -bottomBound
       if (newYPos > -topBound) newYPos = -topBound
-      
-      Crafty.viewport.scroll('_x', newXPos);
-      Crafty.viewport.scroll('_y', newYPos);
-      Crafty.trigger("ViewportPanned");
+
+      var panned = false
+      if (newXPos !== Crafty.viewport._x) {
+        Crafty.viewport.scroll('_x', newXPos);
+        panned = true
+      }
+      if (newYPos !== Crafty.viewport._y) {
+        Crafty.viewport.scroll('_y', newYPos);
+        panned = true
+      }
+      if (panned) Crafty.trigger("ViewportPanned");
     }
   },
   "follow": function(target) {
@@ -518,12 +525,27 @@ Crafty.c("Platformer", {
 
 Crafty.c("Checkpoint", {
   "init": function() {
-    this.requires("2D, HandlesCollisions")
+    this.requires("HandlesCollisions")
     this.bind("PhysicsCollision", this._checkpointCollision)
   },
   "_checkpointCollision": function(o) {
     if (o.has("Player")) {
       o.lastCheckpoint = this
+    }
+  }
+})
+
+Crafty.c("Scriptable", {
+  "_scriptTriggered": false,
+  "init": function() {
+    this.requires("HandlesCollisions")
+    this.bind("PhysicsCollision", this._scriptableCollision)
+  },
+  "_scriptableCollision": function(o) {
+    if (o.has("Player") && !this._scriptTriggered) {
+      this._scriptTriggered = true
+      var callback = Callbacks[this.callback]
+      callback.call(this, o)
     }
   }
 })
@@ -694,29 +716,3 @@ colours.forEach(function(colour) {
     }
   })
 })
-
-function followPlayerWithCamera(showCameraPos) {
-  var playerId = Crafty("Player")[0]
-  var player = Crafty(playerId)
-  var playerLeader = Crafty.e("LeadingFollower")
-    .lead(player)
-  var playerFollower
-  if (showCameraPos) {
-    playerFollower = Crafty.e("SHMFollower, 2D, Canvas, Color")
-      .color("pink")
-      .attr({"w":16,"h":16})
-  } else {
-    playerFollower = Crafty.e("SHMFollower")
-  }
-  playerFollower
-    .followSHM(playerLeader)
-    .physicsOn()
-    .attr({
-      "yGravity": 0.0,
-      "xGravity": 0.0,
-      "vCoeff": -0.2,
-      "sCoeff": -0.01,
-      })
-  Crafty.map.remove(playerFollower)
-  var camera = Crafty.e("Camera").follow(playerFollower)
-}

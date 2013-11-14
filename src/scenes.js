@@ -22,6 +22,31 @@ Crafty.scene("Load", function() {
   })
 })
 
+function followPlayerWithCamera(showCameraPos) {
+  var player = Crafty("Player")
+  var playerLeader = Crafty.e("LeadingFollower")
+    .lead(player)
+  var playerFollower
+  if (showCameraPos) {
+    playerFollower = Crafty.e("SHMFollower, 2D, Canvas, Color")
+      .color("pink")
+      .attr({"w":16,"h":16})
+  } else {
+    playerFollower = Crafty.e("SHMFollower")
+  }
+  playerFollower
+    .followSHM(playerLeader)
+    .physicsOn()
+    .attr({
+      "yGravity": 0.0,
+      "xGravity": 0.0,
+      "vCoeff": -0.2,
+      "sCoeff": -0.01,
+      })
+  Crafty.map.remove(playerFollower)
+  var camera = Crafty.e("Camera").follow(playerFollower)
+}
+
 function generateTiledScene(sceneName, url, bg) {
   Crafty.scene(sceneName, function() {
     //Crafty.e("FPS").attr({maxValues:1}).bind("MessureFPS", function(fps){console.log("FPS: " + fps.value);})
