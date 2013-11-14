@@ -209,10 +209,26 @@ Crafty.c("Camera", {
   "init": function() {
     var self = this
     self._followMeHandler = function() {
-      Crafty.viewport.scroll('_x', Crafty.viewport.width / 2 - self._target.xPos());
-      Crafty.viewport.scroll('_y', Crafty.viewport.height / 2 - self._target.yPos());
-      Crafty.viewport._clamp();
-      Crafty.trigger("ViewportPanned")
+      // Get bounds
+      var bound = Crafty.map.boundaries()
+      
+      var leftBound = bound.min.x
+      var rightBound = bound.max.x - Crafty.viewport.width
+      var topBound = bound.min.y
+      var bottomBound = bound.max.y - Crafty.viewport.height
+      
+      //Clamp
+      var newXPos = Math.floor(Crafty.viewport.width / 2 - self._target.xPos())
+      if (newXPos < -rightBound) newXPos = -rightBound
+      if (newXPos > -leftBound) newXPos = -leftBound
+      
+      var newYPos = Math.floor(Crafty.viewport.height / 2 - self._target.yPos())
+      if (newYPos < -bottomBound) newYPos = -bottomBound
+      if (newYPos > -topBound) newYPos = -topBound
+      
+      Crafty.viewport.scroll('_x', newXPos);
+      Crafty.viewport.scroll('_y', newYPos);
+      Crafty.trigger("ViewportPanned");
     }
   },
   "follow": function(target) {

@@ -24,7 +24,7 @@ Crafty.scene("Load", function() {
 
 function generateTiledScene(sceneName, url, bg) {
   Crafty.scene(sceneName, function() {
-    Crafty.e("FPS").attr({maxValues:1}).bind("MessureFPS", function(fps){console.log("FPS: " + fps.value);})
+    //Crafty.e("FPS").attr({maxValues:1}).bind("MessureFPS", function(fps){console.log("FPS: " + fps.value);})
     var map = Crafty.e("TiledLevel")
     map.tiledLevel(url)
     
