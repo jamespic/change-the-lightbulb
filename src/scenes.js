@@ -1,5 +1,40 @@
 Crafty.scene("Load", function() {
-  Crafty.load(["assets/p1_sprites.png"], function() {
+  Crafty.load(
+    [
+      "assets/p1_sprites.png",
+      "assets/round_end.ogg",
+      "assets/round_end.mp3",
+      "assets/round_end.wav",
+      "assets/death.ogg",
+      "assets/death.mp3",
+      "assets/death.wav",
+      "assets/jump_02.ogg",
+      "assets/jump_02.mp3",
+      "assets/jump_02.wav",
+      "assets/coin10.ogg",
+      "assets/coin10.mp3",
+      "assets/coin10.wav",
+    ], function() {
+    Crafty.audio.add("death", [
+      "assets/death.ogg",
+      "assets/death.mp3",
+      "assets/death.wav"
+    ])
+    Crafty.audio.add("win", [
+      "assets/round_end.ogg",
+      "assets/round_end.mp3",
+      "assets/round_end.wav"
+    ])
+    Crafty.audio.add("jump", [
+      "assets/jump_02.ogg",
+      "assets/jump_02.mp3",
+      "assets/jump_02.wav"
+    ])
+    Crafty.audio.add("unlock", [
+      "assets/coin10.ogg",
+      "assets/coin10.mp3",
+      "assets/coin10.wav"
+    ])
     Crafty.sprite(52, 70, "assets/p1_sprites.png", {
       "p1_duck_r": [0, 0],
       "p1_front_r": [1, 0],
@@ -18,8 +53,18 @@ Crafty.scene("Load", function() {
       "p1_walk10_r": [14, 0],
       "p1_walk11_r": [15, 0],
     })
-    Crafty.scene("Untitled")
+    Crafty.scene("Loop")
   })
+})
+
+Crafty.scene("MainMenu", function() {
+  Crafty.viewport.scroll("_x", 0)
+  Crafty.viewport.scroll("_y", 0)
+  var e = Crafty
+    .e("Text, DOM, 2D")
+    .text("Coming Soon: Main Menu")
+    .textFont({"size": "50px", "family": "Comic Sans MS"})
+    .attr({"x": 200, "y": 200, "w": 600, "h": 400})
 })
 
 function followPlayerWithCamera(showCameraPos) {
@@ -47,8 +92,14 @@ function followPlayerWithCamera(showCameraPos) {
   var camera = Crafty.e("Camera").follow(playerFollower)
 }
 
+function win() {
+  localStorage["completed_" + window.currentLevel] = true
+  Crafty.scene("MainMenu")
+}
+
 function generateTiledScene(sceneName, url, bg) {
   Crafty.scene(sceneName, function() {
+    window.currentLevel = sceneName
     //Crafty.e("FPS").attr({maxValues:1}).bind("MessureFPS", function(fps){console.log("FPS: " + fps.value);})
     var map = Crafty.e("TiledLevel")
     map.tiledLevel(url)
@@ -76,3 +127,4 @@ var Backgrounds = {
   
 
 generateTiledScene("Untitled", "/levels/untitled.json", Backgrounds.castle)
+generateTiledScene("Loop", "/levels/loop.json", Backgrounds.grassland)

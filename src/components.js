@@ -447,6 +447,24 @@ Crafty.c("Telekinesis", {
   }
 })
 
+Crafty.c("TelekinesisBlocker", {
+  "init": function() {
+    this.requires("HandlesCollisions")
+    this.obstructFromAbove = true
+    this.obstructFromSides = true
+    this.obstructFromBelow = true
+    this.unbind("PhysicsCollision", this._genericHandleCollision)
+    this.bind("PhysicsCollision", this._restrictedHandleCollision)
+  },
+  "_restrictedHandleCollision": function(o) {
+    if (o.has("Telekinesis")) {
+      this._genericHandleCollision(o)
+    }
+  }
+})
+
+
+
 Crafty.c("Platformer", {
   "speed": 9,
   "jump": 17,
@@ -477,11 +495,15 @@ Crafty.c("Platformer", {
     if ((e.key == Crafty.keys.LEFT_ARROW) || (e.key == Crafty.keys.A)) this._leftKeyDown = true
     if ((e.key == Crafty.keys.RIGHT_ARROW) || (e.key == Crafty.keys.D)) this._rightKeyDown = true
     if ((e.key == Crafty.keys.UP_ARROW) || (e.key == Crafty.keys.W)) {
-      if (!this._falling) {
-        this.yVelocity -= this.jump
-        this._falling = true
-        this.trigger("NewDirection",{"x":Math.round(self.xVelocity), "y": Math.round(self.yVelocity)})
-      }
+      this._tryJump()
+    }
+  },
+  "_tryJump": function() {
+    if (!this._falling) {
+      this.yVelocity -= this.jump
+      this._falling = true
+      this.trigger("NewDirection",{"x":Math.round(self.xVelocity), "y": Math.round(self.yVelocity)})
+      this.trigger("Jump")
     }
   },
   "_keyUp": function(e) {
@@ -550,6 +572,42 @@ Crafty.c("Scriptable", {
   }
 })
 
+Crafty.c("Talker", {
+  "message": "This character currently has no message...",
+  "_msgEntity": null,
+  "msgWidth": "100",
+  "msgHeight": "100",
+  "msgBg": "#FFE0EE",
+  "msgFont": "Comic Sans MS",
+  "init": function() {
+    this.requires("2D")
+    this.bind("EnterFrame", this._talkerEnterFrame)
+  },
+  "_talkerEnterFrame": function() {
+    if (Crafty("Player").intersect(this)) {
+      if (this._msgEntity === null) {
+        var e = Crafty.e("HTML")
+        this._msgEntity = e
+        var msgWidth = parseInt(this.msgWidth)
+        var msgHeight = parseInt(this.msgHeight)
+        e.x = Math.round(this.x + this.w / 2) - msgWidth / 2 - 25
+        e.y = this.y - msgHeight - 100
+        e.w = msgWidth
+        e.h = msgHeight
+        e.replace(
+          '<div style="text-align: center; background: ' + this.msgBg +
+            '; font-family: ' + this.msgFont + '; width: 100%; height: 100%;' +
+            'border-radius: 15px; padding: 25px">' + this.message + '</div>')
+      }
+    } else {
+      if (this._msgEntity !== null) {
+        this._msgEntity.destroy()
+        this._msgEntity = null
+      }
+    }
+  }
+})
+
 Crafty.c("Player", {
   "lastCheckpoint": null,
   "init": function() {
@@ -579,6 +637,8 @@ Crafty.c("Player", {
         this.flip("X")
       }
     })
+    
+    this.bind("Jump", function() {Crafty.audio.play("jump", 1, 0.6)})
   }, 
   "respawn": function() {
     var spawnPoint = this.lastCheckpoint || Crafty("PlayerSpawn")
@@ -593,8 +653,32 @@ Crafty.c("Player", {
     return this
   },
   "die": function() {
+    Crafty.audio.play("death", 1, 0.5)
     // Will improve later
     this.respawn()
+  }
+})
+
+Crafty.c("Lightbulb", {
+  "_winning": false,
+  "init": function() {
+    this.requires("2D, HandlesCollisions, Sprite, Tween")
+    this.bind("PhysicsCollision", this._lightbulbCollision)
+  },
+  "_lightbulbCollision": function(o) {
+    if (!this._winning && o.has("Player")) {
+      this._winning = true
+      this.sprite(1, 0, 1, 1)
+      Crafty.audio.play("win", 1, 0.3)
+      this.tween({
+        "x": this.x - 100,
+        "w": 250,
+        "h": 250,
+        "alpha":0}, 100)
+      this.bind("TweenEnd", function() {
+        win()
+      })
+    }
   }
 })
 
@@ -618,6 +702,7 @@ Crafty.c("LockedDoor", {
   },
   "_disappear": function() {
     if (!this._disappearing) {
+      Crafty.audio.play("unlock", 1)
       this._disappearing = true
       this.obstructFromAbove = false
       this.obstructFromBelow = false

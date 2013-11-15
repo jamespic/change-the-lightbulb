@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="50" tileheight="50">
+ <tileset firstgid="1" source="grass.tsx"/>
+ <tileset firstgid="21" source="lightbulb.tsx"/>
+ <tileset firstgid="23" source="misc.tsx"/>
+ <tileset firstgid="53" name="box" tilewidth="50" tileheight="50">
+  <image source="../assets/box.png" width="200" height="200"/>
+  <tile id="0">
+   <properties>
+    <property name="components" value="Telekinesis, Platform"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="components" value="Telekinesis, Platform"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="components" value="Telekinesis, Platform"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="69" source="../../../items.tsx"/>
+ <tileset firstgid="125" name="cloud" tilewidth="92" tileheight="51">
+  <image source="../assets/92x51.png" width="92" height="51"/>
+ </tileset>
+ <layer name="Background" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztlksKAjEMQMvs1KWudCd4hOnGC3iVAfH+S90IJbbaxLRWeA8CnWnIpwlppxDCNKho0Or3gjzGgjzq2DrJWsimcx4e9auxYYkrd147J/uSWGnj2/M9Guxre2rUPFrMil/0Ve7fooyjxmZr/dJZfJpXckZ5x5XjZrRv9emZxyq8zvl/zKOkb737ND4tcb27VyUnpf3UT26dkta/dT1kHudkHSv9tOyrQ6W+tad65bHP7F0fMiffzzfFRemj5HPO7EWho7Hp9YbV1Mbj7QIAAAAAAAAAAAAAAL7cAflBDh8=
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="50" height="50">
+  <object x="88" y="797" width="115" height="147">
+   <properties>
+    <property name="components" value="PlayerSpawn"/>
+   </properties>
+  </object>
+  <object x="636" y="54" width="119" height="192">
+   <properties>
+    <property name="components" value="Checkpoint"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="Foreground" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztziEBAAAIA7CXoH9VzBNgMFuCJQBwN98BAAAAAAAAAIBa15YAFg==
+  </data>
+ </layer>
+</map>

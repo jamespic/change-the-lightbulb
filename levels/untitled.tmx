@@ -5,6 +5,8 @@
  <tileset firstgid="37" source="misc.tsx"/>
  <tileset firstgid="67" source="items.tsx"/>
  <tileset firstgid="123" source="liquids.tsx"/>
+ <tileset firstgid="129" source="talker.tsx"/>
+ <tileset firstgid="145" source="lightbulb.tsx"/>
  <layer name="Background" width="50" height="50">
   <data encoding="base64" compression="zlib">
    eJztlFEKwjAQREO/rP7ZHkT0Fp5D8BBi6dFtwMAiJkrcsKu+B0NZks4wkKQLIXRG0kTbzyqXHr5y6eErlx6+cunhK/ffe5yMcj/x6xetM9o0zLX0s8ot+e3f+P98/+4Uc2so+a0Ka9tFg9ComFvDr56rY2HvoWGutl/uLKU3q/Z9epXrzS8R78wsFOer0Lf0iL6TUJwvQi16DA306PtsBgAAAAAAAAAAAAC4AZ4ICys=
@@ -12,7 +14,7 @@
  </layer>
  <layer name="Foreground" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJzt06ENAEAIA0CmYP9RsYQEzSd/pyor2ggAAGDK6wLQXOzRB96WSwYAAAAAgN8V3WYAbw==
+   eJzt07ENACAQAsCf4vd2Y3sTLcXEu4qSAqoAAIBVpwtwNNIFLkvs0Qfe1psMAAAAAAC/m8EPAQA=
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="50" height="50">
@@ -24,8 +26,12 @@
   </object>
   <object x="964" y="777" width="129" height="267">
    <properties>
-    <property name="callback" value="debugCallback"/>
-    <property name="components" value="Checkpoint, Scriptable"/>
+    <property name="components" value="Checkpoint"/>
+   </properties>
+  </object>
+  <object gid="130" x="1099" y="949">
+   <properties>
+    <property name="message" value="I can talk!"/>
    </properties>
   </object>
  </objectgroup>
