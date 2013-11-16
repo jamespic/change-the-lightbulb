@@ -22,12 +22,18 @@
   </tile>
  </tileset>
  <tileset firstgid="69" source="../../../items.tsx"/>
- <tileset firstgid="125" name="cloud" tilewidth="92" tileheight="51">
-  <image source="../assets/92x51.png" width="92" height="51"/>
+ <tileset firstgid="125" name="cloud" tilewidth="93" tileheight="51">
+  <image source="../assets/93x51.png" width="279" height="51"/>
  </tileset>
+ <objectgroup name="Clouds" width="50" height="50">
+  <object gid="125" x="102" y="199"/>
+  <object gid="125" x="874" y="129"/>
+  <object gid="126" x="1474" y="187"/>
+  <object gid="127" x="1739" y="516"/>
+ </objectgroup>
  <layer name="Background" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztlk0KAjEMhcvs/F/oSneCR5huvIBXEcT7L3VgBkpMNcmktYv3QaFMH0lfGzLtQghdo0ODVl8L+GgL+JCxdxpLMlaVfXjcnySGZV/ceR2c4lOiMMbc8z0b4mtrqlUfJXrFP+qK+3ZX7kMSs7Q+dxa/+hXtUd774ngm+q0yhyWnp49F+Ozzg34X5nmp7SOnn7xoa0mT07Kvb/9VykUZP83DzVPS+y99H9THNZlHYZ6SdXUSaNfB/p6q5ePIrD3eox/ng4fNqL8pc+Ry9sxaJBpNTMl5Th4s/wrubjzeLgAAAAAAAAAAAAAAAAAA8OUFLZMN/A==
+   eJztltsKwjAMhsPuPCsKA4UJgo+w3fgCvooHfP9LLbRQaqJp7eou/g9KS5cl/dssXUVE1UBbDLH2pYCOYfEPHXdh/mH75tX2tm+UPvvWsc7UxkGbFNaR4/w0PlLWxe3XJpN/w9Ubd0ofv+7vQWlf235J8Tk1FB01M5ebknlVM3OOi+2lWqZZV0n7muS9+FavwhqVc10S7i4w9vPIGCkxc+oY0XudN/YLkrVo8qi0DsneaYnNpVVEzJR1fbpXQ46R/v043NjHP/++zyPUcfLGHWN/Y+L0mVc7he2U0v+nSunYMs/MN9vasdEws/ZnwddVmJditsw7XWCjRVv7nYaUu4I7mxz/LgAAAAAAAAAAAAAAAAAAyMsTp5sSTQ==
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="50" height="50">

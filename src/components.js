@@ -18,6 +18,14 @@ Crafty.c("AABB", {
     this._b = aabb._b || aabb.b
     this._aabbInitialised = true
   },
+  "intersects": function(o) {
+    return (
+      (this._x + this._l < o._x + o._r)
+      && (o._x + o._l < this._x + this._r)
+      && (this._y + this._t < o._y + o._b)
+      && (o._y + o._t < this._y + this._b)
+    )
+  },
   "_aabbMove": function (old) {
     if (!this._aabbInitialised) {
       this._r = this._w
@@ -417,18 +425,17 @@ Crafty.c("Phys", {
     var self = this
     // Resolve collisions
     
-    var q = Crafty.map.search(self);
+    var q = Crafty.map.search(self, false);
     self._falling = true // Falling, unless proven otherwise
     
     if (q) q.forEach(function(o) {
-      if ((o !== self) && (o.has("HandlesCollisions"))) {
+      if ((o !== self) && o.has("HandlesCollisions") && o.intersects(self)) {
         /*
          * Both sides get an event - so far I'm only using PhysicsCollision,
          * but I can imagine cases where we'd want the behaviour to be on
          * the part of the moving object - maybe.
          */
         o.trigger("PhysicsCollision", self)
-        self.trigger("CrashedInto", o.obj)
       }
     })
     
@@ -575,7 +582,7 @@ Crafty.c("Platformer", {
   },
   "_tryJump": function() {
     if (!this._falling) {
-      this.yVelocity -= this.jump
+      this.yVelocity = -(this.jump)
       this._falling = true
       this.trigger("NewDirection",{"x":Math.round(self.xVelocity), "y": Math.round(self.yVelocity)})
       this.trigger("Jump")
