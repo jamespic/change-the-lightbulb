@@ -116,23 +116,16 @@ Crafty.c("Platform", {
 })
 
 Crafty.c("Wall", {
+  "obstructFromBelow": true,
   "obstructFromSides": true,
   "init": function() {
     this.requires("HandlesCollisions")
   }
 })
 
-Crafty.c("Ceiling", {
-  "obstructFromBelow": true,
-  "init": function() {
-    this.requires("HandlesCollisions")
-    this.obstructFromBelow = true
-  }
-})
-
 Crafty.c("Obstacle", {
   "init": function() {
-    this.requires("Wall, Ceiling, Platform")
+    this.requires("Wall, Platform")
   }
 })
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset name="grass" tilewidth="50" tileheight="50">
+<tileset name="dirt" tilewidth="50" tileheight="50">
  <image source="../assets/dirt.png" width="250" height="200"/>
  <tile id="0">
   <properties>
@@ -8,7 +8,7 @@
  </tile>
  <tile id="1">
   <properties>
-   <property name="components" value="Wall, Ceiling"/>
+   <property name="components" value="Wall"/>
   </properties>
  </tile>
  <tile id="2">
@@ -63,7 +63,7 @@
  </tile>
  <tile id="12">
   <properties>
-   <property name="components" value="Platform"/>
+   <property name="components" value="Obstacle"/>
   </properties>
  </tile>
  <tile id="13">
@@ -73,7 +73,7 @@
  </tile>
  <tile id="14">
   <properties>
-   <property name="components" value="Platform"/>
+   <property name="components" value="Obstacle"/>
   </properties>
  </tile>
  <tile id="17">

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="50" tileheight="50">
+ <tileset firstgid="1" source="sand.tsx"/>
+ <tileset firstgid="21" source="stone.tsx"/>
+ <tileset firstgid="46" name="items" tilewidth="50" tileheight="50">
+  <image source="../assets/items.png" width="400" height="350"/>
+  <tile id="3">
+   <properties>
+    <property name="components" value="BlueButton"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="components" value="GreenButton"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="components" value="RedButton"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="components" value="YellowButton"/>
+   </properties>
+  </tile>
+  <tile id="33">
+   <properties>
+    <property name="components" value="BlueKey"/>
+   </properties>
+  </tile>
+  <tile id="34">
+   <properties>
+    <property name="components" value="GreenKey"/>
+   </properties>
+  </tile>
+  <tile id="35">
+   <properties>
+    <property name="components" value="RedKey"/>
+   </properties>
+  </tile>
+  <tile id="36">
+   <properties>
+    <property name="components" value="YellowKey"/>
+   </properties>
+  </tile>
+  <tile id="43">
+   <properties>
+    <property name="components" value="Deadly"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="102" source="misc.tsx"/>
+ <tileset firstgid="132" source="box.tsx"/>
+ <tileset firstgid="148" source="lightbulb.tsx"/>
+ <tileset firstgid="150" source="talker.tsx"/>
+ <layer name="Tile Layer 1" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztlksKwjAYhENBwReIVXGti57BUwguFI+goCC4dGlv4IFNaAqhNLTU/hO088HQNE3n7zTpI1JKRSBJIu1v2AHqIHIMAHUQORB1upLj4LTHWrHWqYFC5uip7LpzTez4uIFCz8ev1DH+w4JGQnUk+af5QBAqh/l2tbneOB/N/I+gOhL+Ze/7vkAdSXL/t9N3/9JzqrJ74T5bIZ6PshxXp33zeG09vntPnTap+s+Yay20Eq3UyrSXWrOKc5H/JasaWtvtw8q0NzXPdSWdAwEqx8Vun4XjxX1fv2+cIVW4HGchf5PhpTA5EoBQ65cQQgghhBBCCCGEEEK6wge9DBp8
+  </data>
+ </layer>
+ <objectgroup name="Foreground Objects" width="50" height="50">
+  <object gid="151" x="344" y="1099">
+   <properties>
+    <property name="message" value="We take security very seriously. That's why nobody has the key to this bunker"/>
+    <property name="msgWidth" value="200"/>
+   </properties>
+  </object>
+  <object x="346" y="59" width="147" height="230">
+   <properties>
+    <property name="components" value="Checkpoint"/>
+   </properties>
+  </object>
+  <object x="79" y="954" width="73" height="144">
+   <properties>
+    <property name="components" value="PlayerSpawn"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

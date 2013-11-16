@@ -3,33 +3,19 @@
  <tileset firstgid="1" source="grass.tsx"/>
  <tileset firstgid="21" source="lightbulb.tsx"/>
  <tileset firstgid="23" source="misc.tsx"/>
- <tileset firstgid="53" name="box" tilewidth="50" tileheight="50">
-  <image source="../assets/box.png" width="200" height="200"/>
-  <tile id="0">
-   <properties>
-    <property name="components" value="Telekinesis, Platform"/>
-   </properties>
-  </tile>
-  <tile id="1">
-   <properties>
-    <property name="components" value="Telekinesis, Platform"/>
-   </properties>
-  </tile>
-  <tile id="6">
-   <properties>
-    <property name="components" value="Telekinesis, Platform"/>
-   </properties>
-  </tile>
- </tileset>
- <tileset firstgid="69" source="../../../items.tsx"/>
+ <tileset firstgid="53" source="box.tsx"/>
+ <tileset firstgid="69" source="items.tsx"/>
  <tileset firstgid="125" name="cloud" tilewidth="93" tileheight="51">
   <image source="../assets/93x51.png" width="279" height="51"/>
  </tileset>
+ <tileset firstgid="128" source="poker.tsx"/>
  <objectgroup name="Clouds" width="50" height="50">
   <object gid="125" x="102" y="199"/>
   <object gid="125" x="874" y="129"/>
   <object gid="126" x="1474" y="187"/>
   <object gid="127" x="1739" y="516"/>
+  <object gid="128" x="978" y="250"/>
+  <object gid="131" x="1013" y="250"/>
  </objectgroup>
  <layer name="Background" width="50" height="50">
   <data encoding="base64" compression="zlib">

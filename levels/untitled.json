@@ -116,7 +116,7 @@
                 },
              "1":
                 {
-                 "components":"Wall, Ceiling"
+                 "components":"Wall"
                 },
              "10":
                 {
@@ -128,7 +128,7 @@
                 },
              "12":
                 {
-                 "components":"Platform"
+                 "components":"Obstacle"
                 },
              "13":
                 {
@@ -136,7 +136,7 @@
                 },
              "14":
                 {
-                 "components":"Platform"
+                 "components":"Obstacle"
                 },
              "17":
                 {
@@ -200,7 +200,15 @@
          "tileheight":50,
          "tileproperties":
             {
+             "0":
+                {
+                 "components":"Telekinesis, Platform"
+                },
              "1":
+                {
+                 "components":"Telekinesis, Platform"
+                },
+             "6":
                 {
                  "components":"Telekinesis, Platform"
                 }
@@ -279,6 +287,10 @@
              "36":
                 {
                  "components":"YellowKey"
+                },
+             "43":
+                {
+                 "components":"Deadly"
                 },
              "5":
                 {

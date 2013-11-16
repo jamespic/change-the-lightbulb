@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="50" tileheight="50">
+ <tileset firstgid="1" source="dirt.tsx"/>
+ <tileset firstgid="21" source="misc.tsx"/>
+ <tileset firstgid="51" source="talker.tsx"/>
+ <tileset firstgid="67" source="lightbulb.tsx"/>
+ <tileset firstgid="69" source="box.tsx"/>
+ <layer name="Tile Layer 1" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt1UEKgzAQheGHuLHqRruoZ+gxit7/SGYjljQtgpOpyv/BgILmZTQwhaTCoXLLlfFyyHhHBhlnyHgmrv/RR2ofv2x55mz/ownVJ8q7jyrULar6y3ulPvfb6nrzgwy7jE7rWblnyrBGxvEy4hkQ3+89Z97fajBeewo1yr+Ph+G6Sw+T/PpIzWDL8ugDAAAAAAAAAADgamaa/Qbk
+  </data>
+ </layer>
+ <objectgroup name="Foreground Objects" width="50" height="50">
+  <object gid="52" x="316" y="849">
+   <properties>
+    <property name="message" value="I'm not allowed to jump. I haven't done the training"/>
+    <property name="msgHeight" value="75"/>
+    <property name="msgWidth" value="150"/>
+   </properties>
+  </object>
+  <object x="136" y="666" width="82" height="180">
+   <properties>
+    <property name="components" value="PlayerSpawn"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

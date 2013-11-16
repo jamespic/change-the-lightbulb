@@ -41,4 +41,9 @@
    <property name="components" value="YellowKey"/>
   </properties>
  </tile>
+ <tile id="43">
+  <properties>
+   <property name="components" value="Deadly"/>
+  </properties>
+ </tile>
 </tileset>

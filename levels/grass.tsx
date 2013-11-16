@@ -8,7 +8,7 @@
  </tile>
  <tile id="1">
   <properties>
-   <property name="components" value="Wall, Ceiling"/>
+   <property name="components" value="Wall"/>
   </properties>
  </tile>
  <tile id="2">
@@ -63,7 +63,7 @@
  </tile>
  <tile id="12">
   <properties>
-   <property name="components" value="Platform"/>
+   <property name="components" value="Obstacle"/>
   </properties>
  </tile>
  <tile id="13">
@@ -73,7 +73,7 @@
  </tile>
  <tile id="14">
   <properties>
-   <property name="components" value="Platform"/>
+   <property name="components" value="Obstacle"/>
   </properties>
  </tile>
  <tile id="17">
