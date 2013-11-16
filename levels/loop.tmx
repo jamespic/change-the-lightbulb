@@ -9,6 +9,7 @@
   <image source="../assets/93x51.png" width="279" height="51"/>
  </tileset>
  <tileset firstgid="128" source="poker.tsx"/>
+ <tileset firstgid="132" source="talker.tsx"/>
  <objectgroup name="Clouds" width="50" height="50">
   <object gid="125" x="102" y="199"/>
   <object gid="125" x="874" y="129"/>
@@ -31,6 +32,12 @@
   <object x="636" y="54" width="119" height="192">
    <properties>
     <property name="components" value="Checkpoint"/>
+   </properties>
+  </object>
+  <object gid="133" x="277" y="949">
+   <properties>
+    <property name="message" value="I don't know why a bank needs a roof garden, but my boss wanted it, and I didn't get here by saying no."/>
+    <property name="msgWidth" value="200"/>
    </properties>
   </object>
  </objectgroup>

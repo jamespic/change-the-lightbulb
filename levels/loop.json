@@ -135,6 +135,21 @@
                  "width":119,
                  "x":636,
                  "y":54
+                }, 
+                {
+                 "gid":133,
+                 "height":0,
+                 "name":"",
+                 "properties":
+                    {
+                     "message":"I don't know why a bank needs a roof garden, but my boss wanted it, and I didn't get here by saying no.",
+                     "msgWidth":"200"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":277,
+                 "y":949
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -424,6 +439,28 @@
          "spacing":0,
          "tileheight":105,
          "tilewidth":35
+        }, 
+        {
+         "firstgid":132,
+         "image":"..\/assets\/p3_sprites.png",
+         "imageheight":70,
+         "imagewidth":832,
+         "margin":0,
+         "name":"player3",
+         "properties":
+            {
+
+            },
+         "spacing":0,
+         "tileheight":70,
+         "tileproperties":
+            {
+             "1":
+                {
+                 "components":"Talker"
+                }
+            },
+         "tilewidth":52
         }],
  "tilewidth":50,
  "version":1,

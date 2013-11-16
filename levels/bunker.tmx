@@ -56,7 +56,7 @@
  <tileset firstgid="150" source="talker.tsx"/>
  <layer name="Tile Layer 1" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztlksKwjAYhENBwReIVXGti57BUwguFI+goCC4dGlv4IFNaAqhNLTU/hO088HQNE3n7zTpI1JKRSBJIu1v2AHqIHIMAHUQORB1upLj4LTHWrHWqYFC5uip7LpzTez4uIFCz8ev1DH+w4JGQnUk+af5QBAqh/l2tbneOB/N/I+gOhL+Ze/7vkAdSXL/t9N3/9JzqrJ74T5bIZ6PshxXp33zeG09vntPnTap+s+Yay20Eq3UyrSXWrOKc5H/JasaWtvtw8q0NzXPdSWdAwEqx8Vun4XjxX1fv2+cIVW4HGchf5PhpTA5EoBQ65cQQgghhBBCCCGEEEK6wge9DBp8
+   eJztlksKwjAYhENBwRcI3XiDnsFTCC4Uj6CgILh0aTee2oYmEIJRE5w/1c4HQxOa/NNp+kihlCqEhARdX7MS8JHIMRLwkcgh4dOXHBunPW1UNtolKGeOgWqv22pmxpcJyr0ev+Kj6489TUA+SP5pPSTIlUP/u775vHE90upvhXwQ9Z9974cAHySI+nPV3gv33epKjqPTPgXGLAN11xE+qXyyz6iMaiPb79K+ZBGhi1HMHFfoHBJ1pXIczPHqnff7lvrNuHPAB4Wtv4+YozPcG91ejMmRoxIQOgchhBBCCCGEEEIIIYT0jQcShhoc
   </data>
  </layer>
  <objectgroup name="Foreground Objects" width="50" height="50">
@@ -77,4 +77,9 @@
    </properties>
   </object>
  </objectgroup>
+ <layer name="Foreground Tiles" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztzjENAAAIA7D5vxGMg4WPp1XQBAAAAGjmOwAAAAAAAJws7mMAlQ==
+  </data>
+ </layer>
 </map>

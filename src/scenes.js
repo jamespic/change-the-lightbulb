@@ -53,18 +53,91 @@ Crafty.scene("Load", function() {
       "p1_walk10_r": [14, 0],
       "p1_walk11_r": [15, 0],
     })
-    Crafty.scene("Untitled")
+    Crafty.scene("MainMenu")
   })
 })
+
+function displayMsgWindow(msgs) {
+  Crafty.background("#A3D1FF")
+  var e = Crafty
+    .e("Text, DOM, 2D")
+    .text("Email: Speedy Electrical Contractors")
+    .textFont({"size": "50px", "family": "Comic Sans MS"})
+    .attr({"x": 50, "y": 50, "w": 950, "h": 400})
+  var selectedLevel = null
+  function playLevel() {
+    if (selectedLevel) {
+      Crafty.scene(selectedLevel)
+    }
+  }
+
+  var msgBox = Crafty.e("2D, Canvas, Mouse, Color")
+    .attr({"x": 500, "y": 150, "w": 550, "h": 450})
+    .color("white")
+    .bind("Click", playLevel)
+    
+  var msgPane = Crafty.e("HTML")
+    .attr({"x": 500, "y": 150, "w": 550, "h": 450})
+    
+  var clickToStartHint = Crafty
+    .e("Text, DOM, 2D")
+    .textFont({"size": "12pt", "family": "Comic Sans MS"})
+    .attr({"x": 500, "y": 125, "w": 550, "h": 25})
+  
+  var msgListBg = Crafty.e("2D, DOM, Color")
+    .attr({"x": 50, "y": 150, "w": 400, "h": 450})
+    .color("white")
+  
+  var i = 0
+  msgs.forEach(function (item) {
+    var text = item.title
+    if (item.highlighted) text = '<b>' + text + '</b>'
+    
+    var listBox = Crafty.e("HTML")
+      .attr({"x": 50, "y": 150 + i * 25, "w": 400, "h": 25})
+      .replace('<div class="email-item">' + text + '</div>')
+    
+    var clickBox = Crafty.e("2D, Mouse")
+      .attr({"x": 50, "y": 150 + i * 25, "w": 400, "h": 25})
+      .bind("Click", function() {
+        selectedLevel = item.level
+        if (selectedLevel) {
+          clickToStartHint.text("Click on the message to start the assignment")
+        } else {
+          clickToStartHint.text("")
+        }
+        msgPane.replace(item.body)
+      })
+      
+    i++
+  })
+}
+
+function generateMessageList() {
+  var messages = []
+  Levels.forEach(function(level) {
+    var show = true
+    level.depends.forEach(function(dependency) {
+      if (!localStorage["completed_" + dependency])
+      show = false
+    })
+    if (show) {
+      var newMsg = {}
+      newMsg.title       = level.title
+      newMsg.level       = level.level
+      newMsg.body        = level.body
+      newMsg.highlighted = !localStorage["completed_" + level.level]
+      messages.push(newMsg)
+    }
+  })
+  return messages
+}
 
 Crafty.scene("MainMenu", function() {
   Crafty.viewport.scroll("_x", 0)
   Crafty.viewport.scroll("_y", 0)
-  var e = Crafty
-    .e("Text, DOM, 2D")
-    .text("Coming Soon: Main Menu")
-    .textFont({"size": "50px", "family": "Comic Sans MS"})
-    .attr({"x": 200, "y": 200, "w": 600, "h": 400})
+  
+  displayMsgWindow(generateMessageList())
 })
 
 function followPlayerWithCamera(showCameraPos) {
@@ -130,3 +203,43 @@ generateTiledScene("Untitled", "/levels/untitled.json", Backgrounds.castle)
 generateTiledScene("Warehouse", "/levels/warehouse.json", Backgrounds.castle)
 generateTiledScene("Loop", "/levels/loop.json", Backgrounds.grassland)
 generateTiledScene("Bunker", "/levels/bunker.json", Backgrounds.desert)
+
+Levels = [
+  {
+    "title": "Government Bunker",
+    "level": "Bunker",
+    "body":  "<p>We need you to change a lightbulb at a top-secret government" +
+             " bunker. Needless to say, it's all very secretive, and you're" + 
+             " not allowed to know what you're doing, where you're going," +
+             " or why.</p>" +
+             "<p>Anyway, good luck, The Boss</p>",
+    "depends": ["Warehouse"]
+  },
+  {
+    "title": "National Bank of The North",
+    "level": "Loop",
+    "body":  "<p>We've won a contract to change the lightbulb in" +
+             " the NBN roof garden.</p>" + 
+             "<p>The bank have outsourced the job to oompa-loompas," +
+              " but they're too short to reach the lightbulbs, so the" +
+              " oompa-loompas have subcontracted it to us</p>" + 
+              "<p>We're hoping to demonstrate to the bank that they need" +
+              " tall people to change lightbulbs, but the CEO is a big" +
+              " believer in oompa-loompas. He used them extensively" +
+              " in his previous role at a major confectionery brand.</p>" +
+              "<p>Make us proud, The Boss</p>",
+    "depends": ["Warehouse"]
+  },
+  {
+    "title": "Welcome abord!",
+    "level": "Warehouse",
+    "body":  "<p>Hi, welcome to Speedy Electrical Contractors. We work with" +
+             " large corporations and governments, who are unwilling or" +
+             " unable to change their own lightbulbs.</p>" +
+             "<p>Since it's your first day, we'll start you off with" +
+             " something easy. The lightbulb's gone in our warehouse. Go" +
+             " take a look</p>" +
+             "<p>Cheer, The Boss</p>",
+    "depends": []
+  }
+]
