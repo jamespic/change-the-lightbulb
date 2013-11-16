@@ -9,7 +9,7 @@
  <tileset firstgid="145" source="lightbulb.tsx"/>
  <layer name="Background" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztlFEKwjAQREO/rP7ZHkT0Fp5D8BBi6dFtwMAiJkrcsKu+B0NZks4wkKQLIXRG0kTbzyqXHr5y6eErlx6+cunhK/ffe5yMcj/x6xetM9o0zLX0s8ot+e3f+P98/+4Uc2so+a0Ka9tFg9ComFvDr56rY2HvoWGutl/uLKU3q/Z9epXrzS8R78wsFOer0Lf0iL6TUJwvQi16DA306PtsBgAAAAAAAAAAAAC4AZ4ICys=
+   eJztlF0KwjAQhJc++V+wHkTsLTxHoYcQxaPbYAv7YKPEDRv0+2Ao27QzDCSpRKRykiXWfl659Cgrlx5l5dKjrFx6lJX77z06p9xv/JaDVjNaZ8z19PPKjfmdPvi/H59Hw9wUYn6LyNp+UKN0MMxN4Vf31TnybZsx19pvbi9Nd1bq/fQu18JvZ+y5keeZuSuF+aqUo8dW7LqEDvXoe1MK80UpR4+pS2OgWnnq969mAAAAAAAAAAAAAIAHGoQLTw==
   </data>
  </layer>
  <layer name="Foreground" width="50" height="50">
@@ -32,6 +32,7 @@
   <object gid="130" x="1099" y="949">
    <properties>
     <property name="message" value="I can talk!"/>
+    <property name="numProperty" value="1"/>
    </properties>
   </object>
  </objectgroup>

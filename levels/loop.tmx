@@ -27,7 +27,7 @@
  </tileset>
  <layer name="Background" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztlksKAjEMQMvs1KWudCd4hOnGC3iVAfH+S90IJbbaxLRWeA8CnWnIpwlppxDCNKho0Or3gjzGgjzq2DrJWsimcx4e9auxYYkrd147J/uSWGnj2/M9Guxre2rUPFrMil/0Ve7fooyjxmZr/dJZfJpXckZ5x5XjZrRv9emZxyq8zvl/zKOkb737ND4tcb27VyUnpf3UT26dkta/dT1kHudkHSv9tOyrQ6W+tad65bHP7F0fMiffzzfFRemj5HPO7EWho7Hp9YbV1Mbj7QIAAAAAAAAAAAAAAL7cAflBDh8=
+   eJztlk0KAjEMhcvs/F/oSneCR5huvIBXEcT7L3VgBkpMNcmktYv3QaFMH0lfGzLtQghdo0ODVl8L+GgL+JCxdxpLMlaVfXjcnySGZV/ceR2c4lOiMMbc8z0b4mtrqlUfJXrFP+qK+3ZX7kMSs7Q+dxa/+hXtUd774ngm+q0yhyWnp49F+Ozzg34X5nmp7SOnn7xoa0mT07Kvb/9VykUZP83DzVPS+y99H9THNZlHYZ6SdXUSaNfB/p6q5ePIrD3eox/ng4fNqL8pc+Ry9sxaJBpNTMl5Th4s/wrubjzeLgAAAAAAAAAAAAAAAAAA8OUFLZMN/A==
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="50" height="50">
@@ -44,7 +44,7 @@
  </objectgroup>
  <layer name="Foreground" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztziEBAAAIA7CXoH9VzBNgMFuCJQBwN98BAAAAAAAAAIBa15YAFg==
+   eJztzjEJAAAIADAj+Ni/qo9gBBG2BIsAWHkd4J26DgAAAAAAAAAAjAYHgwAm
   </data>
  </layer>
 </map>

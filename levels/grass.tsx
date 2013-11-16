@@ -56,6 +56,26 @@
    <property name="components" value="Platform"/>
   </properties>
  </tile>
+ <tile id="11">
+  <properties>
+   <property name="components" value="ForwardSlope"/>
+  </properties>
+ </tile>
+ <tile id="12">
+  <properties>
+   <property name="components" value="Platform"/>
+  </properties>
+ </tile>
+ <tile id="13">
+  <properties>
+   <property name="components" value="BackwardSlope"/>
+  </properties>
+ </tile>
+ <tile id="14">
+  <properties>
+   <property name="components" value="Platform"/>
+  </properties>
+ </tile>
  <tile id="17">
   <properties>
    <property name="components" value="Obstacle"/>

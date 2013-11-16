@@ -3,32 +3,32 @@
  <image source="../assets/liquid.png" width="150" height="100"/>
  <tile id="0">
   <properties>
-   <property name="components" value="Lava"/>
+   <property name="components" value="Liquid"/>
   </properties>
  </tile>
  <tile id="1">
   <properties>
-   <property name="components" value="Lava"/>
+   <property name="components" value="Liquid"/>
   </properties>
  </tile>
  <tile id="2">
   <properties>
-   <property name="components" value="Lava"/>
+   <property name="components" value="Liquid"/>
   </properties>
  </tile>
  <tile id="3">
   <properties>
-   <property name="components" value="Water"/>
+   <property name="components" value="Liquid"/>
   </properties>
  </tile>
  <tile id="4">
   <properties>
-   <property name="components" value="Water"/>
+   <property name="components" value="Liquid"/>
   </properties>
  </tile>
  <tile id="5">
   <properties>
-   <property name="components" value="Water"/>
+   <property name="components" value="Liquid"/>
   </properties>
  </tile>
 </tileset>

@@ -1,48 +1,123 @@
+/**
+ * Class to allow objects to have non-standard bounding boxes
+ */
+Crafty.c("AABB", {
+  "_aabbInitialised": false,
+  "init": function() {
+    this.requires("2D")
+    this._l || (this._l = 0)
+    this._r || (this._r = this._w)
+    this._t || (this._t = 0)
+    this._b || (this._b = this._h)
+    this.bind("Move", this._aabbMove)
+  },
+  "aabb": function(aabb) {
+    this._l = aabb._l || aabb.l
+    this._r = aabb._r || aabb.r
+    this._t = aabb._t || aabb.t
+    this._b = aabb._b || aabb.b
+    this._aabbInitialised = true
+  },
+  "_aabbMove": function (old) {
+    if (!this._aabbInitialised) {
+      this._r = this._w
+      this._b = this._h
+    }
+  }
+})
+
 Crafty.c("HandlesCollisions", {
   "init": function() {
+    this.requires("AABB")
     this.bind("PhysicsCollision", this._genericHandleCollision)
   },
   "_genericHandleCollision": function(c) {
     // WARNING: This assumes the hitbox for the object matches its 2D co-ords
-    if (this.obstructFromAbove && (c.prevY + c.h <= this.y)) {
+    if (this.obstructFromAbove && (c.prevY + c._b <= this._y + this._t)) {
       // On top
-      c.yVelocity = 0
-      c.y = this.y - c.h
+      c.y = this._y + this._t - c._b
+      if (c.yVelocity > 0) c.yVelocity = 0
       c._falling = false
-    } else if (this.obstructFromSides && (c.prevX + c.w <= this.x)) {
+    } else if (this.obstructFromSides && (c.prevX + c._r <= this._x + this._l)) {
       //On left
-      c.xVelocity = 0
-      c.x = this.x - c.w
-    } else if (this.obstructFromSides && (c.prevX >= this.x + this.w)) {
+      if (c.xVelocity > 0) c.xVelocity = 0
+      c.x = this._x + this._l - c._r
+    } else if (this.obstructFromSides && (c.prevX + c._l >= this._x + this._r)) {
       // On right
-      c.xVelocity = 0
-      c.x = this.x + this.w
-    } else if (this.obstructFromBelow && (c.prevY >= this.y + this.h)) {
+      if (c.xVelocity < 0) c.xVelocity = 0
+      c.x = this._x + this._r - c._l
+    } else if (this.obstructFromBelow && (c.prevY + c._t >= this._y + this._b)) {
       // below
-      c.yVelocity = 0
-      c.y = this.y + this.h
+      if (c.yVelocity < 0) c.yVelocity = 0
+      c.y = this._y + this._b - c._t
     }
+  }
+})
+
+Crafty.c("ForwardSlope", {
+  "init": function() {
+    this.requires("HandlesCollisions")
+    this.unbind("PhysicsCollision", this._genericHandleCollision)
+    this.bind("PhysicsCollision", this._forwardSlopeCollision)
+  },
+  "_forwardSlopeCollision": function(c) {
+    var cX = c._x + c._r
+    var cY = c._y + c._b
+    var intersectPoint = this._y + this._h - (cX - this._x)
+    if ((cX <= this._x + this._w) && (cX >= this._x) && (cY > intersectPoint)) {
+      c._y = intersectPoint - c._b
+      c._falling = false
+      if (c.xVelocity + c.yVelocity > 0) {
+        // Project velocity
+        c.xVelocity = (c.xVelocity - c.yVelocity) / 2
+        c.yVelocity = -(c.xVelocity)
+      }
+    }
+      
+  }
+})
+
+Crafty.c("BackwardSlope", {
+  "init": function() {
+    this.requires("HandlesCollisions")
+    this.unbind("PhysicsCollision", this._genericHandleCollision)
+    this.bind("PhysicsCollision", this._backwardSlopeCollision)
+  },
+  "_backwardSlopeCollision": function(c) {
+    var cX = c._x + c._l
+    var cY = c._y + c._b
+    var intersectPoint = this._y +  (cX - this._x)
+    if ((cX <= this._x + this._w) && (cX >= this._x) && (cY > intersectPoint)) {
+      c._y = intersectPoint - c._b
+      c._falling = false
+      if (c.yVelocity - c.xVelocity > 0) {
+        // Project velocity
+        c.xVelocity = (c.xVelocity + c.yVelocity) / 2
+        c.yVelocity = c.xVelocity
+      }
+    }
+      
   }
 })
 
 Crafty.c("Platform", {
   "obstructFromAbove": true,
   "init": function() {
-    this.requires("2D, HandlesCollisions")
+    this.requires("HandlesCollisions")
   }
 })
 
 Crafty.c("Wall", {
   "obstructFromSides": true,
   "init": function() {
-    this.requires("2D, HandlesCollisions")
+    this.requires("HandlesCollisions")
   }
 })
 
 Crafty.c("Ceiling", {
   "obstructFromBelow": true,
   "init": function() {
-    this.requires("2D, HandlesCollisions")
+    this.requires("HandlesCollisions")
     this.obstructFromBelow = true
   }
 })
@@ -334,7 +409,7 @@ Crafty.c("Phys", {
   "_falling": true,
   
   "init": function() {
-    this.requires("2D, BasicPhys")
+    this.requires("2D, BasicPhys, AABB")
     this.bind("PhysicsCallbacks", this._handleCollisions)
   },
   
@@ -615,6 +690,7 @@ Crafty.c("Player", {
     this.attr({
       "w": 52, "h": 70
     })
+    this.aabb({"l": 6, "r": 46, "t": 6, "b": 70})
     this.platformer()
     this.animate("WalkRight", 5, 0, 15)
     this.animate("JumpRight", 3, 0, 3)
@@ -624,7 +700,7 @@ Crafty.c("Player", {
       this.stop()
       if (this._falling) {
         this.animate("JumpRight", 1000, -1);
-      } else if (Math.round(data.x) !== 0) {
+      } else if (Math.abs(data.x) > 1.0) {
         this.animate('WalkRight', animation_speed, -1);
       } else {
         this.animate("StillRight", animation_speed, -1)
@@ -766,13 +842,7 @@ Crafty.c("Deadly", {
   }
 })
 
-Crafty.c("Water", {
-  "init": function() {
-    this.requires("Deadly")
-  }
-})
-
-Crafty.c("Lava", {
+Crafty.c("Liquid", {
   "init": function() {
     this.requires("Deadly")
   }
