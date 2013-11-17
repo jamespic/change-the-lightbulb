@@ -263,22 +263,22 @@ Levels = [
   {
     title: "Heath and Robinson Boxes",
     level: "HeathRobinson",
-    body:  "<p>We'll be working with some clients in the financial sector," +
-           " so we need to put you through the company's mandatory" + 
-           " bribery training. It's important to that we don't get caught" + 
-           " giving out bribes.</p>" +
-           "<p>Knock yourself out, The Boss</p>",
-    depends: ["Chimney"]
-  },
-  {
-    title: "Bribery Training",
-    level: "Bribery",
     body:  "<p>Heath and Robinson need us to change the lightbulb" +
              " in their box factory.</p>" + 
              "<p>The details of how they make their boxes is a closely" +
              " guarded trade secret, so it must be either very clever," +
              " or embarassingly stupid.</p>" +
              "<p>Anyway, get to it, The Boss</p>",
+    depends: ["Chimney"]
+  },
+  {
+    title: "Bribery Training",
+    level: "Bribery",
+    body:  "<p>We'll be working with some clients in the financial sector," +
+           " so we need to put you through the company's mandatory" + 
+           " bribery training. It's important to that we don't get caught" + 
+           " giving out bribes.</p>" +
+           "<p>Knock yourself out, The Boss</p>",
     depends: ["Chimney"]
   },
   {
