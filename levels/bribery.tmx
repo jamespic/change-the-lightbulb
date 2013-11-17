@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="50" tileheight="50">
+ <tileset firstgid="1" source="grass.tsx"/>
+ <tileset firstgid="21" source="items.tsx"/>
+ <tileset firstgid="77" source="blocker.tsx"/>
+ <tileset firstgid="80" source="poker.tsx"/>
+ <tileset firstgid="86" source="box.tsx"/>
+ <tileset firstgid="102" source="lightbulb.tsx"/>
+ <tileset firstgid="104" source="misc.tsx"/>
+ <tileset firstgid="134" source="talker.tsx"/>
+ <objectgroup name="Object Layer 1" width="50" height="50">
+  <object gid="78" x="329" y="551"/>
+  <object gid="84" x="547" y="608"/>
+  <object gid="85" x="728" y="608"/>
+  <object x="79" y="474" width="76" height="121">
+   <properties>
+    <property name="components" value="PlayerSpawn"/>
+   </properties>
+  </object>
+  <object gid="135" x="177" y="600">
+   <properties>
+    <property name="message" value="Round numbers look suspicious, so if you need to bribe someone, make it an irregular amount"/>
+    <property name="msgWidth" value="200"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="Tile Layer 1" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt0kEKhDAQBMDgE9wfqH/yB3tZ/382HjwKkc3ECFXQ124GZkgpDQFprcbmN6DzrohNd/S16Y6+Nt0RvznlzDlLxc6aSjfHnE9hnrxjC+hs6dz8/dGxXnS2dGyW/kvPfwUAAAAAAADwNjuQGQSm
+  </data>
+ </layer>
+</map>

@@ -21,6 +21,21 @@
    <property name="components" value="YellowButton"/>
   </properties>
  </tile>
+ <tile id="13">
+  <properties>
+   <property name="components" value="Money"/>
+  </properties>
+ </tile>
+ <tile id="14">
+  <properties>
+   <property name="components" value="Money"/>
+  </properties>
+ </tile>
+ <tile id="15">
+  <properties>
+   <property name="components" value="Money"/>
+  </properties>
+ </tile>
  <tile id="33">
   <properties>
    <property name="components" value="BlueKey"/>

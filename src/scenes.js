@@ -11,6 +11,9 @@ Crafty.scene("Load", function() {
       "assets/jump_02.ogg",
       "assets/jump_02.mp3",
       "assets/jump_02.wav",
+      "assets/coin7.ogg",
+      "assets/coin7.mp3",
+      "assets/coin7.wav",
       "assets/coin10.ogg",
       "assets/coin10.mp3",
       "assets/coin10.wav",
@@ -34,6 +37,11 @@ Crafty.scene("Load", function() {
       "assets/coin10.ogg",
       "assets/coin10.mp3",
       "assets/coin10.wav"
+    ])
+    Crafty.audio.add("bribe", [
+      "assets/coin7.ogg",
+      "assets/coin7.mp3",
+      "assets/coin7.wav"
     ])
     Crafty.sprite(52, 70, "assets/p1_sprites.png", {
       p1_duck_r: [0, 0],
@@ -197,6 +205,12 @@ function generateTiledScene(sceneName, url, bg) {
           this.physicsOn().startTelekinesis(player)
         }
       })
+      // Hook up blockers
+      Crafty("PlayerBlocker").each(function(i) {
+        if (this.has("PlayerBlocker")) {
+          this.physicsOn().followSHM(player)
+        }
+      })
       followPlayerWithCamera(false)
       Crafty.background(bg)
     })
@@ -217,6 +231,8 @@ generateTiledScene("Loop", "/levels/loop.json", Backgrounds.grassland)
 generateTiledScene("Bunker", "/levels/bunker.json", Backgrounds.desert)
 generateTiledScene("Chimney", "/levels/chimney.json", Backgrounds.desert)
 generateTiledScene("HeathRobinson", "/levels/heathrobinson.json", Backgrounds.castle)
+generateTiledScene("Bribery", "/levels/bribery.json", Backgrounds.grassland)
+generateTiledScene("Volcano", "/levels/volcano.json", Backgrounds.desert) // Not finished
 
 Levels = [
   {
@@ -227,7 +243,7 @@ Levels = [
              " not allowed to know what you're doing, where you're going," +
              " or why.</p>" +
              "<p>Anyway, good luck, The Boss</p>",
-    depends: ["HeathRobinson"]
+    depends: ["HeathRobinson", "Bribery"]
   },
   {
     title: "National Bank of The North",
@@ -242,11 +258,21 @@ Levels = [
               " believer in oompa-loompas. He used them extensively" +
               " in his previous role at a major confectionery brand.</p>" +
               "<p>Make us proud, The Boss</p>",
-    depends: ["HeathRobinson"]
+    depends: ["HeathRobinson", "Bribery"]
   },
   {
     title: "Heath and Robinson Boxes",
     level: "HeathRobinson",
+    body:  "<p>We'll be working with some clients in the financial sector," +
+           " so we need to put you through the company's mandatory" + 
+           " bribery training. It's important to that we don't get caught" + 
+           " giving out bribes.</p>" +
+           "<p>Knock yourself out, The Boss</p>",
+    depends: ["Chimney"]
+  },
+  {
+    title: "Bribery Training",
+    level: "Bribery",
     body:  "<p>Heath and Robinson need us to change the lightbulb" +
              " in their box factory.</p>" + 
              "<p>The details of how they make their boxes is a closely" +

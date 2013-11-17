@@ -7,7 +7,7 @@
  <tileset firstgid="69" source="items.tsx"/>
  <tileset firstgid="125" source="cloud.tsx"/>
  <tileset firstgid="128" source="poker.tsx"/>
- <tileset firstgid="132" source="talker.tsx"/>
+ <tileset firstgid="134" source="talker.tsx"/>
  <objectgroup name="Clouds" width="39" height="20">
   <object gid="125" x="102" y="199"/>
   <object gid="125" x="874" y="129"/>
@@ -32,7 +32,7 @@
     <property name="components" value="Checkpoint"/>
    </properties>
   </object>
-  <object gid="133" x="277" y="949">
+  <object gid="135" x="277" y="949">
    <properties>
     <property name="message" value="I don't know why a bank needs a roof garden, but my boss wanted it, and I didn't get here by saying no."/>
     <property name="msgWidth" value="200"/>

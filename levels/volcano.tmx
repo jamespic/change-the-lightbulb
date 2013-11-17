@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="50" tileheight="50">
+ <tileset firstgid="1" source="sand.tsx"/>
+ <tileset firstgid="21" source="poker.tsx"/>
+ <tileset firstgid="27" source="items.tsx"/>
+ <tileset firstgid="83" source="lightbulb.tsx"/>
+ <tileset firstgid="85" source="liquids.tsx"/>
+ <tileset firstgid="91" source="blocker.tsx"/>
+ <objectgroup name="Object Layer 1" width="50" height="50">
+  <object x="109" y="1177" width="137" height="137">
+   <properties>
+    <property name="components" value="PlayerSpawn"/>
+   </properties>
+  </object>
+  <object gid="25" x="437" y="1350"/>
+  <object gid="26" x="533" y="1351"/>
+  <object gid="26" x="622" y="1351"/>
+  <object gid="92" x="372" y="1298"/>
+ </objectgroup>
+ <layer name="Tile Layer 1" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJzt0sEJwzAQAEHhFtxEnBrcf13OwwUIEcMaZuB+OqQFbWOMLTYrVveeoqNFR4uOFh0tOlp0tOho0dGio0VHi44WHS3/7PhM7p732eM338X7Z94zu7eHpvY/AAAAAN7qAjaHBC8=
+  </data>
+ </layer>
+</map>

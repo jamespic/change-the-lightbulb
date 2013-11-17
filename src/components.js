@@ -184,6 +184,8 @@ Crafty.c("LeadingFollower", {
 Crafty.c("SHMFollower", {
   vCoeff: -0.3,
   sCoeff: -0.1,
+  xFollow: true,
+  yFollow: true,
   init: function() {
     this.requires("BasicPhys")
   },
@@ -199,8 +201,12 @@ Crafty.c("SHMFollower", {
     return this
   },
   _shmEnterFrame: function() {
-    this.xAccel += this.vCoeff * this.xVelocity + this.sCoeff * (this.xPos() - this._target.xPos())
-    this.yAccel += this.vCoeff * this.yVelocity + this.sCoeff * (this.yPos() - this._target.yPos())
+    if (this.xFollow) {
+      this.xAccel += this.vCoeff * this.xVelocity + this.sCoeff * (this.xPos() - this._target.xPos())
+    }
+    if (this.yFollow) {
+      this.yAccel += this.vCoeff * this.yVelocity + this.sCoeff * (this.yPos() - this._target.yPos())
+    }
   }
 })
 
@@ -564,7 +570,55 @@ Crafty.c("TelekinesisBlocker", {
   }
 })
 
+Crafty.c("Money", {
+  init: function() {
+    this.requires("Telekinesis")
+  }
+})
 
+Crafty.c("AngryPoker", {
+  init: function() {
+    this.requires("TelekinesisBlocker, Sprite")
+    this.bind("PhysicsCollision", this._handleMoneyCollision)
+  },
+  _handleMoneyCollision: function(o) {
+    if (this._blockingActive && o.has("Money")) {
+      o.destroy()
+      this.sprite(0, 0, 1, 1)
+      this._blockingActive = false
+      Crafty.audio.play("bribe", 1)
+    }
+  }
+})
+
+Crafty.c("PlayerBlocker", {
+  "_blocking": true,
+  init: function() {
+    this.requires("SHMFollower, HandlesCollisions")
+    this.xFollow = false
+    this.bind("PhysicsCollision", this._handleMoneyCollision)
+    this.obstructFromAbove = true
+    this.obstructFromBelow = true
+    this.obstructFromSides = true
+    this.vCoeff = -0.5
+    this.sCoeff = -0.5
+    this.xGravity = 0
+    this.yGravity = 0
+  },
+  _handleMoneyCollision: function(o) {
+    if (this._blocking && o.has("Money")) {
+      o.destroy()
+      this.sprite(0, 0, 1, 1)
+      this._blocking = false
+      this.obstructFromAbove = false
+      this.obstructFromBelow = false
+      this.obstructFromSides = false
+      this.physicsOff().unfollowSHM()
+      Crafty.audio.play("bribe", 1)
+    }
+  }
+  
+})
 
 Crafty.c("Platformer", {
   speed: 9,
