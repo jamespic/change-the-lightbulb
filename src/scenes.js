@@ -58,6 +58,9 @@ Crafty.scene("Load", function() {
 })
 
 function displayMsgWindow(msgs) {
+  //Prevent Crafty.viewport getting all antsy about boundaries
+  Crafty.e("2D").attr({x: 0, y: 0, w: 1100, h: 650})
+  
   Crafty.background("#A3D1FF")
   var e = Crafty
     .e("Text, DOM, 2D")
@@ -213,6 +216,7 @@ generateTiledScene("Warehouse", "/levels/warehouse.json", Backgrounds.castle)
 generateTiledScene("Loop", "/levels/loop.json", Backgrounds.grassland)
 generateTiledScene("Bunker", "/levels/bunker.json", Backgrounds.desert)
 generateTiledScene("Chimney", "/levels/chimney.json", Backgrounds.desert)
+generateTiledScene("HeathRobinson", "/levels/heathrobinson.json", Backgrounds.castle)
 
 Levels = [
   {
@@ -223,7 +227,7 @@ Levels = [
              " not allowed to know what you're doing, where you're going," +
              " or why.</p>" +
              "<p>Anyway, good luck, The Boss</p>",
-    "depends": ["Chimney"]
+    "depends": ["HeathRobinson"]
   },
   {
     "title": "National Bank of The North",
@@ -238,6 +242,17 @@ Levels = [
               " believer in oompa-loompas. He used them extensively" +
               " in his previous role at a major confectionery brand.</p>" +
               "<p>Make us proud, The Boss</p>",
+    "depends": ["HeathRobinson"]
+  },
+  {
+    "title": "Heath and Robinson Boxes",
+    "level": "HeathRobinson",
+    "body":  "<p>Heath and Robinson need us to change the lightbulb" +
+             " in their box factory.</p>" + 
+             "<p>The details of how they make their boxes is a closely" +
+             " guarded trade secret, so it must be either very clever," +
+             " or embarassingly stupid.</p>" +
+             "<p>Anyway, get to it, The Boss</p>",
     "depends": ["Chimney"]
   },
   {

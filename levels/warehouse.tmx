@@ -23,5 +23,12 @@
     <property name="components" value="PlayerSpawn"/>
    </properties>
   </object>
+  <object x="513" y="92" width="237" height="246">
+   <properties>
+    <property name="components" value="HintText"/>
+    <property name="hintTimeout" value="120000"/>
+    <property name="message" value="Hint: You can stand on boxes. Drag one to underneath the lightbulb, with your telekinetic powers (left mouse button)"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

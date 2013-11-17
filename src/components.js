@@ -438,6 +438,31 @@ Crafty.c("Phys", {
   }
 })
 
+Crafty.c("HintText", {
+  "_timeoutSet": false,
+  "init": function() {
+    this.requires("HTML")
+    if (this.hintTimeout !== undefined) {
+      this._setHintTimeout(this.hintTimeout)
+    } else {
+      this.bind("Change", function(data) {
+        if (!this._timeoutSet && (data.hintTimeout !== undefined)) {
+          this._setHintTimeout(this.hintTimeout)
+        }
+      })
+    }
+  },
+  "_setHintTimeout": function(timeout) {
+    this.timeout(
+      function() {
+        this.replace('<div class="hint-text">' + this.message + '</div>')
+      },
+      timeout
+    )
+    this._timeoutSet = true
+  }
+})
+
 Crafty.c("Telekinesis", {
   "maxRadius":400,
   "_player": null,
@@ -523,6 +548,7 @@ Crafty.c("Telekinesis", {
 })
 
 Crafty.c("TelekinesisBlocker", {
+  "_blockingActive": true,
   "init": function() {
     this.requires("HandlesCollisions")
     this.obstructFromAbove = true
@@ -532,7 +558,7 @@ Crafty.c("TelekinesisBlocker", {
     this.bind("PhysicsCollision", this._restrictedHandleCollision)
   },
   "_restrictedHandleCollision": function(o) {
-    if (o.has("Telekinesis")) {
+    if (this._blockingActive && o.has("Telekinesis")) {
       this._genericHandleCollision(o)
     }
   }

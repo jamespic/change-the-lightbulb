@@ -137,7 +137,7 @@
                  "y":54
                 }, 
                 {
-                 "gid":133,
+                 "gid":135,
                  "height":0,
                  "name":"",
                  "properties":
@@ -427,9 +427,9 @@
         }, 
         {
          "firstgid":128,
-         "image":"..\/assets\/35x105.png",
+         "image":"..\/assets\/poker.png",
          "imageheight":105,
-         "imagewidth":140,
+         "imagewidth":210,
          "margin":0,
          "name":"poker",
          "properties":
@@ -441,12 +441,12 @@
          "tilewidth":35
         }, 
         {
-         "firstgid":132,
+         "firstgid":134,
          "image":"..\/assets\/p3_sprites.png",
          "imageheight":70,
          "imagewidth":832,
          "margin":0,
-         "name":"player3",
+         "name":"talker",
          "properties":
             {
 

@@ -21,6 +21,11 @@
    </properties>
   </object>
  </objectgroup>
+ <layer name="Tile Layer 1" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztl1sKwjAQRYduQfDTz1Zdg0Jdj5tw6aaYQJFqHtPbMM09MGQI4aYHkpZ2ItIBamsQe9IDs+czcS4nE8W/PXtXg6uTr6k/KzNRxPY8/ug1mQha8rjO+jUyEaR4hDti3WOp12QiaM2jl314fPeaTAQteYTvuXWPpV6TiYAe5ZkI6FGeiYDvq/JMBC15XOTzD2Ldg/djO/biMUTKyrkKz3bPWBujpsctY+3Ey4+jq4cfRz9XyyN2tuZn7JBQNTwIIYQQQgghhBDLvAEJwQ3+
+  </data>
+ </layer>
  <objectgroup name="Foreground Objects" width="50" height="50">
   <object gid="143" x="480" y="280"/>
   <object gid="79" x="188" y="1467"/>
@@ -39,10 +44,12 @@
     <property name="components" value="PlayerSpawn"/>
    </properties>
   </object>
+  <object x="607" y="787" width="270" height="203">
+   <properties>
+    <property name="components" value="HintText"/>
+    <property name="hintTimeout" value="120000"/>
+    <property name="message" value="Hint: When dragging a box, hold down the right mouse button to keep it still. You can now use it as a platform"/>
+   </properties>
+  </object>
  </objectgroup>
- <layer name="Tile Layer 1" width="50" height="50">
-  <data encoding="base64" compression="zlib">
-   eJztl1sKwjAQRYduQfDTz1Zdg0Jdj5tw6aaYQJFqHtPbMM09MGQI4aYHkpZ2ItIBamsQe9IDs+czcS4nE8W/PXtXg6uTr6k/KzNRxPY8/ug1mQha8rjO+jUyEaR4hDti3WOp12QiaM2jl314fPeaTAQteYTvuXWPpV6TiYAe5ZkI6FGeiYDvq/JMBC15XOTzD2Ldg/djO/biMUTKyrkKz3bPWBujpsctY+3Ey4+jq4cfRz9XyyN2tuZn7JBQNTwIIYQQQgghhBDLvAEJwQ3+
-  </data>
- </layer>
 </map>

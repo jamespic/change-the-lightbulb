@@ -43,6 +43,21 @@
                  "width":76,
                  "x":134,
                  "y":730
+                }, 
+                {
+                 "height":246,
+                 "name":"",
+                 "properties":
+                    {
+                     "components":"HintText",
+                     "hintTimeout":"120000",
+                     "message":"Hint: You can stand on boxes. Drag one to underneath the lightbulb, with your telekinetic powers (left mouse button)"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":237,
+                 "x":513,
+                 "y":92
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -192,7 +207,7 @@
          "imageheight":70,
          "imagewidth":832,
          "margin":0,
-         "name":"player3",
+         "name":"talker",
          "properties":
             {
 

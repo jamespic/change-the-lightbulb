@@ -5,9 +5,7 @@
  <tileset firstgid="23" source="misc.tsx"/>
  <tileset firstgid="53" source="box.tsx"/>
  <tileset firstgid="69" source="items.tsx"/>
- <tileset firstgid="125" name="cloud" tilewidth="93" tileheight="51">
-  <image source="../assets/93x51.png" width="279" height="51"/>
- </tileset>
+ <tileset firstgid="125" source="cloud.tsx"/>
  <tileset firstgid="128" source="poker.tsx"/>
  <tileset firstgid="132" source="talker.tsx"/>
  <objectgroup name="Clouds" width="39" height="20">
