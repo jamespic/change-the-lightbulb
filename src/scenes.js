@@ -175,6 +175,13 @@ function win() {
 function generateTiledScene(sceneName, url, bg) {
   Crafty.scene(sceneName, function() {
     window.currentLevel = sceneName
+    var escapeListener = Crafty.e()
+    escapeListener.bind("KeyDown", function(e) {
+      if (e.key === Crafty.keys.ESC) {
+        Crafty.scene("MainMenu")
+      }
+    })
+    
     //Crafty.e("FPS").attr({maxValues:1}).bind("MessureFPS", function(fps){console.log("FPS: " + fps.value);})
     var map = Crafty.e("TiledLevel")
     map.tiledLevel(url)
@@ -262,14 +269,17 @@ Levels = [
     "body":  "<p>After a lengthy consultation, we have decided on our new" + 
              " strategic enterprise control system.</p>" +
              "<p>There are two major control systems used in the industry: " + 
-             " The older \"arrow keys\" layout, and the newer \"WASD\" layout." + 
+             " The older <b>arrow keys</b> layout, and the newer <b>WASD</b> layout." + 
              " Both have their benefits, so we have selected a \"best-of-breed\"" + 
              " approach. We recommend that you move left and right with" +
              " the arrow keys, and jump with the W key.</p>" +
              "<p>Those of you with telekinetic powers should continue to" +
-             " use the existing scheme. Hold left mouse button to drag items." +
-             " Whilst dragging, you can hold down the right mouse button" +
-             " to hold the dragged item still.</p>" +
+             " use the existing scheme. Hold <b>left mouse button</b> to drag items." +
+             " If you need to hold something still, you can hold down" + 
+             " the <b>right mouse button</b>, whilst dragging. This will" +
+             " hold the dragged item still.</p>" +
+             "<p>You can abort your current assignment and return to the" +
+             " menu with <b>Esc</b>.</p>" +
              "<p>This new control system will synergise with our existing" +
              " frameworks, allowing us to effect a step change in " +
              " cost-optimisation.</p>" +

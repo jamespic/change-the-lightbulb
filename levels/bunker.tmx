@@ -7,6 +7,14 @@
  <tileset firstgid="132" source="box.tsx"/>
  <tileset firstgid="148" source="lightbulb.tsx"/>
  <tileset firstgid="150" source="talker.tsx"/>
+ <objectgroup name="Background Objects" width="27" height="23">
+  <object x="44" y="903" width="1288" height="237">
+   <properties>
+    <property name="_color" value="grey"/>
+    <property name="components" value="Color, Canvas"/>
+   </properties>
+  </object>
+ </objectgroup>
  <layer name="Tile Layer 1" width="27" height="23">
   <data encoding="base64" compression="zlib">
    eJxjYmBgYKIjpjXwp6NdnHS0i2EQ2hWGxOYBYmEgjiQDE7KLFWo2DPNC1QuTgQciDLnQMDcN7aIHGCx2gfIfNcN2oP0VTmO7sOUHNhrZRW0gwABxL3Jck2JXLhI7D4caSyQ2srlBDPjDEBmrQ3ErFMP4pJZREiTgEigmRQ86pgVANxfZriwoXYOmBp0PA60E1BXisSsTjxux2dMFxC141OCyS50OGGQPADBDGhw=
@@ -32,7 +40,7 @@
  </objectgroup>
  <layer name="Foreground Tiles" width="27" height="23">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwSigDZgy0A4YRgAAyaQAlQ==
+   eJxjYBgFo2AUjIJRMApGASVAFI+cGN1cMTjBlIF2wDACAC7DAMA=
   </data>
  </layer>
 </map>

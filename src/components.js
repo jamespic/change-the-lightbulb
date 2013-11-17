@@ -542,9 +542,9 @@ Crafty.c("TelekinesisBlocker", {
 
 Crafty.c("Platformer", {
   "speed": 9,
-  "jump": 17,
+  "jump": 17.5,
   "acceleration": 3,
-  "airAcceleration": 0.4,
+  "airAcceleration": 0.7,
   "disableControls": false,
   "_leftKeyDown": false,
   "_rightKeyDown": false,
