@@ -8,12 +8,12 @@
  </tile>
  <tile id="1">
   <properties>
-   <property name="components" value="Liquid"/>
+   <property name="components" value="Liquid, HalfHeight"/>
   </properties>
  </tile>
  <tile id="2">
   <properties>
-   <property name="components" value="Liquid"/>
+   <property name="components" value="Liquid, HalfHeight"/>
   </properties>
  </tile>
  <tile id="3">
@@ -23,12 +23,12 @@
  </tile>
  <tile id="4">
   <properties>
-   <property name="components" value="Liquid"/>
+   <property name="components" value="Liquid, HalfHeight"/>
   </properties>
  </tile>
  <tile id="5">
   <properties>
-   <property name="components" value="Liquid"/>
+   <property name="components" value="Liquid, HalfHeight"/>
   </properties>
  </tile>
 </tileset>

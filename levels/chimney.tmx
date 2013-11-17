@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="50" tileheight="50">
+ <tileset firstgid="1" source="dirt.tsx"/>
+ <tileset firstgid="21" source="castle.tsx"/>
+ <tileset firstgid="41" source="box.tsx"/>
+ <tileset firstgid="57" source="misc.tsx"/>
+ <tileset firstgid="87" source="items.tsx"/>
+ <tileset firstgid="143" source="lightbulb.tsx"/>
+ <tileset firstgid="145" source="talker.tsx"/>
+ <objectgroup name="Background" width="50" height="50">
+  <object x="431" y="215" width="135" height="1319">
+   <properties>
+    <property name="_color" value="black"/>
+    <property name="components" value="Color, Canvas"/>
+   </properties>
+  </object>
+  <object x="43" y="1386" width="397" height="127">
+   <properties>
+    <property name="_color" value="black"/>
+    <property name="components" value="Color, Canvas"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Foreground Objects" width="50" height="50">
+  <object gid="143" x="480" y="280"/>
+  <object gid="79" x="188" y="1467"/>
+  <object gid="79" x="316" y="1462"/>
+  <object gid="79" x="473" y="1455"/>
+  <object gid="79" x="473" y="924"/>
+  <object gid="79" x="502" y="518"/>
+  <object gid="146" x="251" y="1499">
+   <properties>
+    <property name="message" value="It's not much fun working in the dark, but I don't have the authority to request a new lightbulb"/>
+    <property name="msgWidth" value="200"/>
+   </properties>
+  </object>
+  <object x="82" y="1400" width="78" height="98">
+   <properties>
+    <property name="components" value="PlayerSpawn"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="Tile Layer 1" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztl1sKwjAQRYduQfDTz1Zdg0Jdj5tw6aaYQJFqHtPbMM09MGQI4aYHkpZ2ItIBamsQe9IDs+czcS4nE8W/PXtXg6uTr6k/KzNRxPY8/ug1mQha8rjO+jUyEaR4hDti3WOp12QiaM2jl314fPeaTAQteYTvuXWPpV6TiYAe5ZkI6FGeiYDvq/JMBC15XOTzD2Ldg/djO/biMUTKyrkKz3bPWBujpsctY+3Ey4+jq4cfRz9XyyN2tuZn7JBQNTwIIYQQQgghhBDLvAEJwQ3+
+  </data>
+ </layer>
+</map>

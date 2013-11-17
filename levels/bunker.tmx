@@ -1,65 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="50" tileheight="50">
+<map version="1.0" orientation="orthogonal" width="27" height="23" tilewidth="50" tileheight="50">
  <tileset firstgid="1" source="sand.tsx"/>
  <tileset firstgid="21" source="stone.tsx"/>
- <tileset firstgid="46" name="items" tilewidth="50" tileheight="50">
-  <image source="../assets/items.png" width="400" height="350"/>
-  <tile id="3">
-   <properties>
-    <property name="components" value="BlueButton"/>
-   </properties>
-  </tile>
-  <tile id="5">
-   <properties>
-    <property name="components" value="GreenButton"/>
-   </properties>
-  </tile>
-  <tile id="7">
-   <properties>
-    <property name="components" value="RedButton"/>
-   </properties>
-  </tile>
-  <tile id="9">
-   <properties>
-    <property name="components" value="YellowButton"/>
-   </properties>
-  </tile>
-  <tile id="33">
-   <properties>
-    <property name="components" value="BlueKey"/>
-   </properties>
-  </tile>
-  <tile id="34">
-   <properties>
-    <property name="components" value="GreenKey"/>
-   </properties>
-  </tile>
-  <tile id="35">
-   <properties>
-    <property name="components" value="RedKey"/>
-   </properties>
-  </tile>
-  <tile id="36">
-   <properties>
-    <property name="components" value="YellowKey"/>
-   </properties>
-  </tile>
-  <tile id="43">
-   <properties>
-    <property name="components" value="Deadly"/>
-   </properties>
-  </tile>
- </tileset>
+ <tileset firstgid="46" source="items.tsx"/>
  <tileset firstgid="102" source="misc.tsx"/>
  <tileset firstgid="132" source="box.tsx"/>
  <tileset firstgid="148" source="lightbulb.tsx"/>
  <tileset firstgid="150" source="talker.tsx"/>
- <layer name="Tile Layer 1" width="50" height="50">
+ <layer name="Tile Layer 1" width="27" height="23">
   <data encoding="base64" compression="zlib">
-   eJztlksKwjAYhENBwRcI3XiDnsFTCC4Uj6CgILh0aTee2oYmEIJRE5w/1c4HQxOa/NNp+kihlCqEhARdX7MS8JHIMRLwkcgh4dOXHBunPW1UNtolKGeOgWqv22pmxpcJyr0ev+Kj6489TUA+SP5pPSTIlUP/u775vHE90upvhXwQ9Z9974cAHySI+nPV3gv33epKjqPTPgXGLAN11xE+qXyyz6iMaiPb79K+ZBGhi1HMHFfoHBJ1pXIczPHqnff7lvrNuHPAB4Wtv4+YozPcG91ejMmRoxIQOgchhBBCCCGEEEIIIYT0jQcShhoc
+   eJxjYmBgYKIjpjXwp6NdnHS0i2EQ2hWGxOYBYmEgjiQDE7KLFWo2DPNC1QuTgQciDLnQMDcN7aIHGCx2gfIfNcN2oP0VTmO7sOUHNhrZRW0gwABxL3Jck2JXLhI7D4caSyQ2srlBDPjDEBmrQ3ErFMP4pJZREiTgEigmRQ86pgVANxfZriwoXYOmBp0PA60E1BXisSsTjxux2dMFxC141OCyS50OGGQPADBDGhw=
   </data>
  </layer>
- <objectgroup name="Foreground Objects" width="50" height="50">
+ <objectgroup name="Foreground Objects" width="27" height="23">
   <object gid="151" x="344" y="1099">
    <properties>
     <property name="message" value="We take security very seriously. That's why nobody has the key to this bunker"/>
@@ -77,9 +30,9 @@
    </properties>
   </object>
  </objectgroup>
- <layer name="Foreground Tiles" width="50" height="50">
+ <layer name="Foreground Tiles" width="27" height="23">
   <data encoding="base64" compression="zlib">
-   eJztzjENAAAIA7D5vxGMg4WPp1XQBAAAAGjmOwAAAAAAAJws7mMAlQ==
+   eJxjYBgFo2AUjIJRMApGwSigDZgy0A4YRgAAyaQAlQ==
   </data>
  </layer>
 </map>

@@ -105,6 +105,7 @@ function displayMsgWindow(msgs) {
           clickToStartHint.text("Click on the message to start the assignment")
         } else {
           clickToStartHint.text("")
+          localStorage['read_"' + item.title + '"'] = true
         }
         msgPane.replace(item.body)
       })
@@ -126,7 +127,8 @@ function generateMessageList() {
       newMsg.title       = level.title
       newMsg.level       = level.level
       newMsg.body        = level.body
-      newMsg.highlighted = !localStorage["completed_" + level.level]
+      newMsg.highlighted = !(localStorage["completed_" + level.level]
+                           || localStorage['read_"' + level.title + '"'])
       messages.push(newMsg)
     }
   })
@@ -203,6 +205,7 @@ generateTiledScene("Untitled", "/levels/untitled.json", Backgrounds.castle)
 generateTiledScene("Warehouse", "/levels/warehouse.json", Backgrounds.castle)
 generateTiledScene("Loop", "/levels/loop.json", Backgrounds.grassland)
 generateTiledScene("Bunker", "/levels/bunker.json", Backgrounds.desert)
+generateTiledScene("Chimney", "/levels/chimney.json", Backgrounds.desert)
 
 Levels = [
   {
@@ -213,7 +216,7 @@ Levels = [
              " not allowed to know what you're doing, where you're going," +
              " or why.</p>" +
              "<p>Anyway, good luck, The Boss</p>",
-    "depends": ["Warehouse"]
+    "depends": ["Chimney"]
   },
   {
     "title": "National Bank of The North",
@@ -228,18 +231,49 @@ Levels = [
               " believer in oompa-loompas. He used them extensively" +
               " in his previous role at a major confectionery brand.</p>" +
               "<p>Make us proud, The Boss</p>",
+    "depends": ["Chimney"]
+  },
+  {
+    "title": "Southern Power",
+    "level": "Chimney",
+    "body":  "<p>Southern Power has asked us to change the lightbulb" +
+             " in the chimney of their main power station. They keep" +
+             " losing chimney sweeps up there, and they're running out" +
+             " of orphans.</p>" + 
+             "<p>See what you can do, The Boss</p>",
     "depends": ["Warehouse"]
   },
   {
-    "title": "Welcome abord!",
+    "title": "Welcome Aboard!",
     "level": "Warehouse",
-    "body":  "<p>Hi, welcome to Speedy Electrical Contractors. We work with" +
-             " large corporations and governments, who are unwilling or" +
-             " unable to change their own lightbulbs.</p>" +
+    "body":  "<p>Welcome to Speedy Electrical Contractors, the world's" +
+             " leading supplier of lighbulb replacement services to big" + 
+             " businesses and governments.</p>" +
+             "<p>We seek out exceptional individuals like yourself," + 
+             " to work in this challenging and vibrant industry.</p>" +
              "<p>Since it's your first day, we'll start you off with" +
              " something easy. The lightbulb's gone in our warehouse. Go" +
-             " take a look</p>" +
-             "<p>Cheer, The Boss</p>",
+             " take a look.</p>" +
+             "<p>Cheers, The Boss</p>",
     "depends": []
-  }
+  },
+  {
+    "title": "Controls - Best Practice",
+    "body":  "<p>After a lengthy consultation, we have decided on our new" + 
+             " strategic enterprise control system.</p>" +
+             "<p>There are two major control systems used in the industry: " + 
+             " The older \"arrow keys\" layout, and the newer \"WASD\" layout." + 
+             " Both have their benefits, so we have selected a \"best-of-breed\"" + 
+             " approach. We recommend that you move left and right with" +
+             " the arrow keys, and jump with the W key.</p>" +
+             "<p>Those of you with telekinetic powers should continue to" +
+             " use the existing scheme. Hold left mouse button to drag items." +
+             " Whilst dragging, you can hold down the right mouse button" +
+             " to hold the dragged item still.</p>" +
+             "<p>This new control system will synergise with our existing" +
+             " frameworks, allowing us to effect a step change in " +
+             " cost-optimisation.</p>" +
+             "<p>\"Kind\" regards, The Boss</p>",
+    "depends": []
+  },
 ]

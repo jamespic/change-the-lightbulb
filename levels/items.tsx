@@ -43,7 +43,7 @@
  </tile>
  <tile id="43">
   <properties>
-   <property name="components" value="Deadly"/>
+   <property name="components" value="Deadly, HalfHeight"/>
   </properties>
  </tile>
 </tileset>

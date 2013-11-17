@@ -23,8 +23,14 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=0
-FILE_NAME_0=896;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fcomponents.js;0;2
+current_page=6
+FILE_NAME_0=20339;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fcomponents.js;0;2
+FILE_NAME_1=379;HTML;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Findex.html;0;2
+FILE_NAME_2=174;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fgame.js;0;2
+FILE_NAME_3=7468;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fscenes.js;0;2
+FILE_NAME_4=67;CSS;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fstyle.css;0;2
+FILE_NAME_5=2638;None;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Fcrafty-tiled%2FCrafty-Tiled-Map-Importer%2FTiledLevelImporter.coffee;0;2
+FILE_NAME_6=60;XML;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Flevels%2Ftalker.tsx;0;2
 
 [VTE]
 last_dir=/home/james

@@ -720,8 +720,8 @@ Crafty.c("Player", {
     var spawnPoint = this.lastCheckpoint || Crafty("PlayerSpawn")
     this.attr(
       {
-      "x": spawnPoint.x + spawnPoint.w / 2,
-      "y": spawnPoint.y + spawnPoint.h / 2,
+      "x": spawnPoint.x + spawnPoint.w / 2 - this._w,
+      "y": spawnPoint.y + spawnPoint.h / 2 - this._h,
       "xVelocity": 0.0,
       "yVelocity": 0.0
       }
@@ -836,7 +836,7 @@ Crafty.c("Deadly", {
   },
   "_deadlyCollision": function(obj) {
     if (obj.has("Player")
-        && (obj.prevY + obj.h > this.y)) { // Only die on the second frame - allows you to stand on the water's edge
+        && (obj.prevY + obj._b > this._y + this._t)) { // Only die on the second frame - allows you to stand on the water's edge
       obj.die()
     }
   }
@@ -845,6 +845,13 @@ Crafty.c("Deadly", {
 Crafty.c("Liquid", {
   "init": function() {
     this.requires("Deadly")
+  }
+})
+
+Crafty.c("HalfHeight", {
+  "init": function() {
+    this.requires("AABB")
+    this.aabb({"l": 0, "r": 50, "t": 25, "b": 50})
   }
 })
 
