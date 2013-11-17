@@ -36,22 +36,22 @@ Crafty.scene("Load", function() {
       "assets/coin10.wav"
     ])
     Crafty.sprite(52, 70, "assets/p1_sprites.png", {
-      "p1_duck_r": [0, 0],
-      "p1_front_r": [1, 0],
-      "p1_hurt_r": [2, 0],
-      "p1_jump_r": [3, 0],
-      "p1_stand_r": [4, 0],
-      "p1_walk01_r": [5, 0],
-      "p1_walk02_r": [6, 0],
-      "p1_walk03_r": [7, 0],
-      "p1_walk04_r": [8, 0],
-      "p1_walk05_r": [9, 0],
-      "p1_walk06_r": [10, 0],
-      "p1_walk07_r": [11, 0],
-      "p1_walk08_r": [12, 0],
-      "p1_walk09_r": [13, 0],
-      "p1_walk10_r": [14, 0],
-      "p1_walk11_r": [15, 0],
+      p1_duck_r: [0, 0],
+      p1_front_r: [1, 0],
+      p1_hurt_r: [2, 0],
+      p1_jump_r: [3, 0],
+      p1_stand_r: [4, 0],
+      p1_walk01_r: [5, 0],
+      p1_walk02_r: [6, 0],
+      p1_walk03_r: [7, 0],
+      p1_walk04_r: [8, 0],
+      p1_walk05_r: [9, 0],
+      p1_walk06_r: [10, 0],
+      p1_walk07_r: [11, 0],
+      p1_walk08_r: [12, 0],
+      p1_walk09_r: [13, 0],
+      p1_walk10_r: [14, 0],
+      p1_walk11_r: [15, 0],
     })
     Crafty.scene("MainMenu")
   })
@@ -65,8 +65,8 @@ function displayMsgWindow(msgs) {
   var e = Crafty
     .e("Text, DOM, 2D")
     .text("Email: Speedy Electrical Contractors")
-    .textFont({"size": "50px", "family": "Comic Sans MS"})
-    .attr({"x": 50, "y": 50, "w": 950, "h": 400})
+    .textFont({size: "50px", family: "Comic Sans MS"})
+    .attr({x: 50, y: 50, w: 950, h: 400})
   var selectedLevel = null
   function playLevel() {
     if (selectedLevel) {
@@ -75,20 +75,20 @@ function displayMsgWindow(msgs) {
   }
 
   var msgBox = Crafty.e("2D, Canvas, Mouse, Color")
-    .attr({"x": 500, "y": 150, "w": 550, "h": 450})
+    .attr({x: 500, y: 150, w: 550, h: 450})
     .color("white")
     .bind("Click", playLevel)
     
   var msgPane = Crafty.e("HTML")
-    .attr({"x": 500, "y": 150, "w": 550, "h": 450})
+    .attr({x: 500, y: 150, w: 550, h: 450})
     
   var clickToStartHint = Crafty
     .e("Text, DOM, 2D")
-    .textFont({"size": "12pt", "family": "Comic Sans MS"})
-    .attr({"x": 500, "y": 125, "w": 550, "h": 25})
+    .textFont({size: "12pt", family: "Comic Sans MS"})
+    .attr({x: 500, y: 125, w: 550, h: 25})
   
   var msgListBg = Crafty.e("2D, DOM, Color")
-    .attr({"x": 50, "y": 150, "w": 400, "h": 450})
+    .attr({x: 50, y: 150, w: 400, h: 450})
     .color("white")
   
   var i = 0
@@ -97,11 +97,11 @@ function displayMsgWindow(msgs) {
     if (item.highlighted) text = '<b>' + text + '</b>'
     
     var listBox = Crafty.e("HTML")
-      .attr({"x": 50, "y": 150 + i * 25, "w": 400, "h": 25})
+      .attr({x: 50, y: 150 + i * 25, w: 400, h: 25})
       .replace('<div class="email-item">' + text + '</div>')
     
     var clickBox = Crafty.e("2D, Mouse")
-      .attr({"x": 50, "y": 150 + i * 25, "w": 400, "h": 25})
+      .attr({x: 50, y: 150 + i * 25, w: 400, h: 25})
       .bind("Click", function() {
         selectedLevel = item.level
         if (selectedLevel) {
@@ -153,7 +153,7 @@ function followPlayerWithCamera(showCameraPos) {
   if (showCameraPos) {
     playerFollower = Crafty.e("SHMFollower, 2D, Canvas, Color")
       .color("pink")
-      .attr({"w":16,"h":16})
+      .attr({w:16,h:16})
   } else {
     playerFollower = Crafty.e("SHMFollower")
   }
@@ -161,10 +161,10 @@ function followPlayerWithCamera(showCameraPos) {
     .followSHM(playerLeader)
     .physicsOn()
     .attr({
-      "yGravity": 0.0,
-      "xGravity": 0.0,
-      "vCoeff": -0.2,
-      "sCoeff": -0.01,
+      yGravity: 0.0,
+      xGravity: 0.0,
+      vCoeff: -0.2,
+      sCoeff: -0.01,
       })
   Crafty.map.remove(playerFollower)
   var camera = Crafty.e("Camera").follow(playerFollower)
@@ -204,10 +204,10 @@ function generateTiledScene(sceneName, url, bg) {
 }
 
 var Backgrounds = {
-  "desert":    "#c0e8ec url('assets/bg_desert.png') repeat-x top",
-  "grassland": "#c0e8ec url('assets/bg_grasslands.png') repeat-x top",
-  "shroom":    "#6da41a url('assets/bg_shroom.png') repeat-x top",
-  "castle":    "#869595 url('assets/bg_castle.png')"
+  desert:    "#c0e8ec url('assets/bg_desert.png') repeat-x top",
+  grassland: "#c0e8ec url('assets/bg_grasslands.png') repeat-x top",
+  shroom:    "#6da41a url('assets/bg_shroom.png') repeat-x top",
+  castle:    "#869595 url('assets/bg_castle.png')"
 }
   
 
@@ -220,19 +220,19 @@ generateTiledScene("HeathRobinson", "/levels/heathrobinson.json", Backgrounds.ca
 
 Levels = [
   {
-    "title": "Government Bunker",
-    "level": "Bunker",
-    "body":  "<p>We need you to change a lightbulb at a top-secret government" +
+    title: "Government Bunker",
+    level: "Bunker",
+    body:  "<p>We need you to change a lightbulb at a top-secret government" +
              " bunker. Needless to say, it's all very secretive, and you're" + 
              " not allowed to know what you're doing, where you're going," +
              " or why.</p>" +
              "<p>Anyway, good luck, The Boss</p>",
-    "depends": ["HeathRobinson"]
+    depends: ["HeathRobinson"]
   },
   {
-    "title": "National Bank of The North",
-    "level": "Loop",
-    "body":  "<p>We've won a contract to change the lightbulb in" +
+    title: "National Bank of The North",
+    level: "Loop",
+    body:  "<p>We've won a contract to change the lightbulb in" +
              " the NBN roof garden.</p>" + 
              "<p>The bank have outsourced the job to oompa-loompas," +
               " but they're too short to reach the lightbulbs, so the" +
@@ -242,33 +242,33 @@ Levels = [
               " believer in oompa-loompas. He used them extensively" +
               " in his previous role at a major confectionery brand.</p>" +
               "<p>Make us proud, The Boss</p>",
-    "depends": ["HeathRobinson"]
+    depends: ["HeathRobinson"]
   },
   {
-    "title": "Heath and Robinson Boxes",
-    "level": "HeathRobinson",
-    "body":  "<p>Heath and Robinson need us to change the lightbulb" +
+    title: "Heath and Robinson Boxes",
+    level: "HeathRobinson",
+    body:  "<p>Heath and Robinson need us to change the lightbulb" +
              " in their box factory.</p>" + 
              "<p>The details of how they make their boxes is a closely" +
              " guarded trade secret, so it must be either very clever," +
              " or embarassingly stupid.</p>" +
              "<p>Anyway, get to it, The Boss</p>",
-    "depends": ["Chimney"]
+    depends: ["Chimney"]
   },
   {
-    "title": "Southern Power",
-    "level": "Chimney",
-    "body":  "<p>Southern Power has asked us to change the lightbulb" +
+    title: "Southern Power",
+    level: "Chimney",
+    body:  "<p>Southern Power has asked us to change the lightbulb" +
              " in the chimney of their main power station. They keep" +
              " losing chimney sweeps up there, and they're running out" +
              " of orphans.</p>" + 
              "<p>See what you can do, The Boss</p>",
-    "depends": ["Warehouse"]
+    depends: ["Warehouse"]
   },
   {
-    "title": "Welcome Aboard!",
-    "level": "Warehouse",
-    "body":  "<p>Welcome to Speedy Electrical Contractors, the world's" +
+    title: "Welcome Aboard!",
+    level: "Warehouse",
+    body:  "<p>Welcome to Speedy Electrical Contractors, the world's" +
              " leading supplier of lighbulb replacement services to big" + 
              " businesses and governments.</p>" +
              "<p>We seek out exceptional individuals like yourself," + 
@@ -277,11 +277,11 @@ Levels = [
              " something easy. The lightbulb's gone in our warehouse. Go" +
              " take a look.</p>" +
              "<p>Cheers, The Boss</p>",
-    "depends": []
+    depends: []
   },
   {
-    "title": "Controls - Best Practice",
-    "body":  "<p>After a lengthy consultation, we have decided on our new" + 
+    title: "Controls - Best Practice",
+    body:  "<p>After a lengthy consultation, we have decided on our new" + 
              " strategic enterprise control system.</p>" +
              "<p>There are two major control systems used in the industry: " + 
              " The older <b>arrow keys</b> layout, and the newer <b>WASD</b> layout." + 
@@ -299,6 +299,6 @@ Levels = [
              " frameworks, allowing us to effect a step change in " +
              " cost-optimisation.</p>" +
              "<p>\"Kind\" regards, The Boss</p>",
-    "depends": []
+    depends: []
   },
 ]

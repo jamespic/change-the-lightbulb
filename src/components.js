@@ -2,8 +2,8 @@
  * Class to allow objects to have non-standard bounding boxes
  */
 Crafty.c("AABB", {
-  "_aabbInitialised": false,
-  "init": function() {
+  _aabbInitialised: false,
+  init: function() {
     this.requires("2D")
     this._l || (this._l = 0)
     this._r || (this._r = this._w)
@@ -11,14 +11,14 @@ Crafty.c("AABB", {
     this._b || (this._b = this._h)
     this.bind("Move", this._aabbMove)
   },
-  "aabb": function(aabb) {
+  aabb: function(aabb) {
     this._l = aabb._l || aabb.l
     this._r = aabb._r || aabb.r
     this._t = aabb._t || aabb.t
     this._b = aabb._b || aabb.b
     this._aabbInitialised = true
   },
-  "intersects": function(o) {
+  intersects: function(o) {
     return (
       (this._x + this._l < o._x + o._r)
       && (o._x + o._l < this._x + this._r)
@@ -26,7 +26,7 @@ Crafty.c("AABB", {
       && (o._y + o._t < this._y + this._b)
     )
   },
-  "_aabbMove": function (old) {
+  _aabbMove: function (old) {
     if (!this._aabbInitialised) {
       this._r = this._w
       this._b = this._h
@@ -35,11 +35,11 @@ Crafty.c("AABB", {
 })
 
 Crafty.c("HandlesCollisions", {
-  "init": function() {
+  init: function() {
     this.requires("AABB")
     this.bind("PhysicsCollision", this._genericHandleCollision)
   },
-  "_genericHandleCollision": function(c) {
+  _genericHandleCollision: function(c) {
     // WARNING: This assumes the hitbox for the object matches its 2D co-ords
     if (this.obstructFromAbove && (c.prevY + c._b <= this._y + this._t)) {
       // On top
@@ -63,12 +63,12 @@ Crafty.c("HandlesCollisions", {
 })
 
 Crafty.c("ForwardSlope", {
-  "init": function() {
+  init: function() {
     this.requires("HandlesCollisions")
     this.unbind("PhysicsCollision", this._genericHandleCollision)
     this.bind("PhysicsCollision", this._forwardSlopeCollision)
   },
-  "_forwardSlopeCollision": function(c) {
+  _forwardSlopeCollision: function(c) {
     var cX = c._x + c._r
     var cY = c._y + c._b
     var intersectPoint = this._y + this._h - (cX - this._x)
@@ -86,12 +86,12 @@ Crafty.c("ForwardSlope", {
 })
 
 Crafty.c("BackwardSlope", {
-  "init": function() {
+  init: function() {
     this.requires("HandlesCollisions")
     this.unbind("PhysicsCollision", this._genericHandleCollision)
     this.bind("PhysicsCollision", this._backwardSlopeCollision)
   },
-  "_backwardSlopeCollision": function(c) {
+  _backwardSlopeCollision: function(c) {
     var cX = c._x + c._l
     var cY = c._y + c._b
     var intersectPoint = this._y +  (cX - this._x)
@@ -109,22 +109,22 @@ Crafty.c("BackwardSlope", {
 })
 
 Crafty.c("Platform", {
-  "obstructFromAbove": true,
-  "init": function() {
+  obstructFromAbove: true,
+  init: function() {
     this.requires("HandlesCollisions")
   }
 })
 
 Crafty.c("Wall", {
-  "obstructFromBelow": true,
-  "obstructFromSides": true,
-  "init": function() {
+  obstructFromBelow: true,
+  obstructFromSides: true,
+  init: function() {
     this.requires("HandlesCollisions")
   }
 })
 
 Crafty.c("Obstacle", {
-  "init": function() {
+  init: function() {
     this.requires("Wall, Platform")
   }
 })
@@ -139,9 +139,9 @@ function signum(x) {
 Crafty.c("Followable", {
   // Abstract class. Must define xPos() and yPos() methods, and emit
   // "FollowMe" events
-  "init": function() {
+  init: function() {
   },
-  "distFrom": function(o) {
+  distFrom: function(o) {
     var dx = this.xPos() - o.xPos(),
         dy = this.yPos() - o.yPos()
     return Math.sqrt(dx * dx + dy * dy)
@@ -149,68 +149,68 @@ Crafty.c("Followable", {
 })
 
 Crafty.c("LeadingFollower", {
-  "_xFactor": 30.0,
-  "_yFactor": 15.0,
-  "_target": null,
-  "_followMeCallback": null,
-  "init": function() {
+  _xFactor: 30.0,
+  _yFactor: 15.0,
+  _target: null,
+  _followMeCallback: null,
+  init: function() {
     var self = this
     this.requires("Followable")
     this._followMeCallback = function() {
       self.trigger("FollowMe")
     }
   },
-  "lead": function(target) {
+  lead: function(target) {
     this.unlead()
     this._target = target
     target.bind("FollowMe", this._followMeCallback)
     return this
   },
-  "unlead": function() {
+  unlead: function() {
     if (this._target !== null) {
       this._target.unbind("FollowMe", this._followMeCallback)
       this._target !== null
     }
     return this
   },
-  "xPos": function() {
+  xPos: function() {
     return this._target.xPos() + this._xFactor * this._target.xVelocity
   },
-  "yPos": function() {
+  yPos: function() {
     return this._target.yPos() + this._yFactor * this._target.yVelocity
   },
 })
 
 Crafty.c("SHMFollower", {
-  "vCoeff": -0.3,
-  "sCoeff": -0.1,
-  "init": function() {
+  vCoeff: -0.3,
+  sCoeff: -0.1,
+  init: function() {
     this.requires("BasicPhys")
   },
-  "followSHM": function(target) {
+  followSHM: function(target) {
     this.unbind("EnterFrame", this._shmEnterFrame)
     this._target = target
     this.bind("EnterFrame", this._shmEnterFrame)
     return this
   },
-  "unfollowSHM": function() {
+  unfollowSHM: function() {
     this.unbind("EnterFrame", this._shmEnterFrame)
     this._target = null
     return this
   },
-  "_shmEnterFrame": function() {
+  _shmEnterFrame: function() {
     this.xAccel += this.vCoeff * this.xVelocity + this.sCoeff * (this.xPos() - this._target.xPos())
     this.yAccel += this.vCoeff * this.yVelocity + this.sCoeff * (this.yPos() - this._target.yPos())
   }
 })
 
 Crafty.c("MouseFollower", {
-  "_following": false,
-  "_paused": false,
-  "pausable": false,
-  "_absX":0,
-  "_absY":0,
-  "init": function() {
+  _following: false,
+  _paused: false,
+  pausable: false,
+  _absX:0,
+  _absY:0,
+  init: function() {
     var self = this
     
     self.requires("Followable")
@@ -241,7 +241,7 @@ Crafty.c("MouseFollower", {
     }
   },
   
-  "followMouse": function(pausable) {
+  followMouse: function(pausable) {
     if (pausable !== undefined) {
       this.pausable = pausable
     }
@@ -254,7 +254,7 @@ Crafty.c("MouseFollower", {
     }
     return this
   },
-  "unfollowMouse": function() {
+  unfollowMouse: function() {
     if (this._following) {
       this._following = false
       Crafty.unbind("ViewportPanned", this._followerOnPan)
@@ -264,13 +264,13 @@ Crafty.c("MouseFollower", {
     }
     return this
   },
-  "xPos": function() {
+  xPos: function() {
     return this.x
   },
-  "yPos": function() {
+  yPos: function() {
     return this.y
   },
-  "_updatePos": function() {
+  _updatePos: function() {
     if (!this._paused) {
       var pos = Crafty.DOM.translate(this._absX, this._absY)
       this.x = pos.x
@@ -281,8 +281,8 @@ Crafty.c("MouseFollower", {
 })
 
 Crafty.c("Camera", {
-  "_target": null,
-  "init": function() {
+  _target: null,
+  init: function() {
     var self = this
     self._followMeHandler = function() {
       // Get bounds
@@ -314,13 +314,13 @@ Crafty.c("Camera", {
       if (panned) Crafty.trigger("ViewportPanned");
     }
   },
-  "follow": function(target) {
+  follow: function(target) {
     this.unfollow()
     this._target = target
     target.bind("FollowMe", this._followMeHandler)
     return this
   },
-  "unfollow": function() {
+  unfollow: function() {
     if (this._target !== null) {
       this._target.unbind("FollowMe", this._followMeHandler)
       this._target = null
@@ -330,14 +330,14 @@ Crafty.c("Camera", {
 })
 
 Crafty.c("BasicPhys", {
-  "xAccel": 0.0,
-  "yAccel": 0.0,
-  "xGravity": 0.0,
-  "yGravity": 0.8,
-  "xVelocity": 0.0,
-  "yVelocity": 0.0,
+  xAccel: 0.0,
+  yAccel: 0.0,
+  xGravity: 0.0,
+  yGravity: 0.8,
+  xVelocity: 0.0,
+  yVelocity: 0.0,
 
-  "init": function() {
+  init: function() {
     this.requires("Followable")
     if (this.x === undefined) this.x = 0
     if (this.y === undefined) this.y = 0
@@ -345,7 +345,7 @@ Crafty.c("BasicPhys", {
     if (this.h === undefined) this.h = 0
   },
   
-  "physicsOn": function(params) {
+  physicsOn: function(params) {
     if (params !== undefined) {
       for (var param in params) {
         this[param] = params[param]
@@ -356,18 +356,18 @@ Crafty.c("BasicPhys", {
     return this
   },
   
-  "physicsOff": function() {
+  physicsOff: function() {
     this.unbind("EnterFrame", this._enterFrame)
     return this
   },
   
-  "accelerate": function(x, y) {
+  accelerate: function(x, y) {
     this.xAccel += x
     this.yAccel += y
     return this
   },
   
-  "_enterFrame": function() {
+  _enterFrame: function() {
     var self = this
     self.prevX = self.x
     self.prevY = self.y
@@ -394,27 +394,27 @@ Crafty.c("BasicPhys", {
     var newXSignum = signum(self.xVelocity)
     var newYSignum = signum(self.yVelocity)
     if ((newXSignum != oldXSignum) || (newYSignum != oldYSignum)) {
-      self.trigger("NewDirection",{"x":Math.round(self.xVelocity), "y": Math.round(self.yVelocity)})
+      self.trigger("NewDirection",{x:Math.round(self.xVelocity), y: Math.round(self.yVelocity)})
     }
     if ((self.prevX !== self.x) || (self.prevY !== self.y)) {
       self.trigger("FollowMe")
     }
   },
   
-  "xPos": function() {return this.x + this.w / 2},
-  "yPos": function() {return this.y + this.h / 2},
+  xPos: function() {return this.x + this.w / 2},
+  yPos: function() {return this.y + this.h / 2},
 })
 
 Crafty.c("Phys", {
-  "groundFriction": 0.1,
-  "_falling": true,
+  groundFriction: 0.1,
+  _falling: true,
   
-  "init": function() {
+  init: function() {
     this.requires("2D, BasicPhys, AABB")
     this.bind("PhysicsCallbacks", this._handleCollisions)
   },
   
-  "_handleCollisions": function() {
+  _handleCollisions: function() {
     var self = this
     // Resolve collisions
     
@@ -439,8 +439,8 @@ Crafty.c("Phys", {
 })
 
 Crafty.c("HintText", {
-  "_timeoutSet": false,
-  "init": function() {
+  _timeoutSet: false,
+  init: function() {
     this.requires("HTML")
     if (this.hintTimeout !== undefined) {
       this._setHintTimeout(this.hintTimeout)
@@ -452,7 +452,7 @@ Crafty.c("HintText", {
       })
     }
   },
-  "_setHintTimeout": function(timeout) {
+  _setHintTimeout: function(timeout) {
     this.timeout(
       function() {
         this.replace('<div class="hint-text">' + this.message + '</div>')
@@ -464,13 +464,13 @@ Crafty.c("HintText", {
 })
 
 Crafty.c("Telekinesis", {
-  "maxRadius":400,
-  "_player": null,
-  "_held": false,
-  "_tinted": false,
-  "tintColour": "00D0FF",
-  "tintOpacity": 0.15,
-  "init": function() {
+  maxRadius:400,
+  _player: null,
+  _held: false,
+  _tinted: false,
+  tintColour: "00D0FF",
+  tintOpacity: 0.15,
+  init: function() {
     var self = this
     
     self.requires("Phys, SHMFollower, Mouse, Tint")
@@ -501,7 +501,7 @@ Crafty.c("Telekinesis", {
     }
   },
   
-  "startTelekinesis": function(player) {
+  startTelekinesis: function(player) {
     this.endTelekinesis()
     this._player = player
     this.bind("MouseDown",this._telekinesisMouseDown)
@@ -510,7 +510,7 @@ Crafty.c("Telekinesis", {
     return this
   },
   
-  "endTelekinesis": function() {
+  endTelekinesis: function() {
     this._letGo()
     this.unbind("PhysicsCallbacks", this._telekinesisPhysicsHandler)
     this._mouseFollower.unbind("FollowMe", this._mouseFollowMeHandler)
@@ -518,21 +518,21 @@ Crafty.c("Telekinesis", {
     this._player = null
     return this
   },
-  "_inRange": function() {
+  _inRange: function() {
     var dist = this.distFrom(this._player)
     return dist <= this.maxRadius
   },
-  "_telekinesisMouseDown": function(e) {
+  _telekinesisMouseDown: function(e) {
     if (e.mouseButton === Crafty.mouseButtons.LEFT && this._inRange()) {
       this._holdOn()
     }
   },
-  "_telekinesisMouseUp": function(e) {
+  _telekinesisMouseUp: function(e) {
     if (e.mouseButton === Crafty.mouseButtons.LEFT) {
       this._letGo()
     }
   },
-  "_telekinesisPhysicsHandler": function(e) {
+  _telekinesisPhysicsHandler: function(e) {
     if (this._tinted) {
       if (!this._inRange()) {
         this.tint("#ffffff", 0.0)
@@ -548,8 +548,8 @@ Crafty.c("Telekinesis", {
 })
 
 Crafty.c("TelekinesisBlocker", {
-  "_blockingActive": true,
-  "init": function() {
+  _blockingActive: true,
+  init: function() {
     this.requires("HandlesCollisions")
     this.obstructFromAbove = true
     this.obstructFromSides = true
@@ -557,7 +557,7 @@ Crafty.c("TelekinesisBlocker", {
     this.unbind("PhysicsCollision", this._genericHandleCollision)
     this.bind("PhysicsCollision", this._restrictedHandleCollision)
   },
-  "_restrictedHandleCollision": function(o) {
+  _restrictedHandleCollision: function(o) {
     if (this._blockingActive && o.has("Telekinesis")) {
       this._genericHandleCollision(o)
     }
@@ -567,17 +567,17 @@ Crafty.c("TelekinesisBlocker", {
 
 
 Crafty.c("Platformer", {
-  "speed": 9,
-  "jump": 17.5,
-  "acceleration": 3,
-  "airAcceleration": 0.7,
-  "disableControls": false,
-  "_leftKeyDown": false,
-  "_rightKeyDown": false,
-  "init": function() {
+  speed: 9,
+  jump: 17.5,
+  acceleration: 3,
+  airAcceleration: 0.7,
+  disableControls: false,
+  _leftKeyDown: false,
+  _rightKeyDown: false,
+  init: function() {
     this.requires("Phys, Keyboard")
   },
-  "platformer": function(params) {
+  platformer: function(params) {
     if (params !== undefined) {
       for (var param in params) {
         this[param] = params[param]
@@ -592,26 +592,26 @@ Crafty.c("Platformer", {
     this.physicsOn()
     return this
   },
-  "_keyDown": function(e) {
+  _keyDown: function(e) {
     if ((e.key == Crafty.keys.LEFT_ARROW) || (e.key == Crafty.keys.A)) this._leftKeyDown = true
     if ((e.key == Crafty.keys.RIGHT_ARROW) || (e.key == Crafty.keys.D)) this._rightKeyDown = true
     if ((e.key == Crafty.keys.UP_ARROW) || (e.key == Crafty.keys.W)) {
       this._tryJump()
     }
   },
-  "_tryJump": function() {
+  _tryJump: function() {
     if (!this._falling) {
       this.yVelocity = -(this.jump)
       this._falling = true
-      this.trigger("NewDirection",{"x":Math.round(self.xVelocity), "y": Math.round(self.yVelocity)})
+      this.trigger("NewDirection",{x:Math.round(self.xVelocity), y: Math.round(self.yVelocity)})
       this.trigger("Jump")
     }
   },
-  "_keyUp": function(e) {
+  _keyUp: function(e) {
     if ((e.key == Crafty.keys.LEFT_ARROW) || (e.key == Crafty.keys.A)) this._leftKeyDown = false
     if ((e.key == Crafty.keys.RIGHT_ARROW) || (e.key == Crafty.keys.D)) this._rightKeyDown = false
   },
-  "_platformerEnterFrame": function () {
+  _platformerEnterFrame: function () {
     if (this.disableControls) return
     
     if (this._falling) {
@@ -624,17 +624,17 @@ Crafty.c("Platformer", {
     else if (this._rightKeyDown && !this._leftKeyDown) this._goRight()
     else this._stopMoving()
   },
-  "_goRight": function() {
+  _goRight: function() {
     if (this.xVelocity < this.speed) {
       this.xAccel += Math.min(this._accel, this.speed - this.xVelocity)
     }
   },
-  "_goLeft": function() {
+  _goLeft: function() {
     if (this.xVelocity > (-this.speed)) {
       this.xAccel -= Math.min(this._accel, this.speed + this.xVelocity)
     }
   },
-  "_stopMoving": function() {
+  _stopMoving: function() {
     if (!this._falling) {
       if (this.xVelocity > 0.0) {
         this.xAccel -= Math.min(this._accel, this.xVelocity)
@@ -647,11 +647,11 @@ Crafty.c("Platformer", {
 })
 
 Crafty.c("Checkpoint", {
-  "init": function() {
+  init: function() {
     this.requires("HandlesCollisions")
     this.bind("PhysicsCollision", this._checkpointCollision)
   },
-  "_checkpointCollision": function(o) {
+  _checkpointCollision: function(o) {
     if (o.has("Player")) {
       o.lastCheckpoint = this
     }
@@ -659,12 +659,12 @@ Crafty.c("Checkpoint", {
 })
 
 Crafty.c("Scriptable", {
-  "_scriptTriggered": false,
-  "init": function() {
+  _scriptTriggered: false,
+  init: function() {
     this.requires("HandlesCollisions")
     this.bind("PhysicsCollision", this._scriptableCollision)
   },
-  "_scriptableCollision": function(o) {
+  _scriptableCollision: function(o) {
     if (o.has("Player") && !this._scriptTriggered) {
       this._scriptTriggered = true
       var callback = Callbacks[this.callback]
@@ -674,17 +674,17 @@ Crafty.c("Scriptable", {
 })
 
 Crafty.c("Talker", {
-  "message": "This character currently has no message...",
-  "_msgEntity": null,
-  "msgWidth": "100",
-  "msgHeight": "100",
-  "msgBg": "#FFE0EE",
-  "msgFont": "Comic Sans MS",
-  "init": function() {
+  message: "This character currently has no message...",
+  _msgEntity: null,
+  msgWidth: "100",
+  msgHeight: "100",
+  msgBg: "#FFE0EE",
+  msgFont: "Comic Sans MS",
+  init: function() {
     this.requires("2D")
     this.bind("EnterFrame", this._talkerEnterFrame)
   },
-  "_talkerEnterFrame": function() {
+  _talkerEnterFrame: function() {
     if (Crafty("Player").intersect(this)) {
       if (this._msgEntity === null) {
         var e = Crafty.e("HTML")
@@ -710,13 +710,13 @@ Crafty.c("Talker", {
 })
 
 Crafty.c("Player", {
-  "lastCheckpoint": null,
-  "init": function() {
+  lastCheckpoint: null,
+  init: function() {
     this.requires("2D, Canvas, p1_front_r, SpriteAnimation, Platformer")
     this.attr({
-      "w": 52, "h": 70
+      w: 52, h: 70
     })
-    this.aabb({"l": 6, "r": 46, "t": 6, "b": 70})
+    this.aabb({l: 6, r: 46, t: 6, b: 70})
     this.platformer()
     this.animate("WalkRight", 5, 0, 15)
     this.animate("JumpRight", 3, 0, 3)
@@ -742,19 +742,19 @@ Crafty.c("Player", {
     
     this.bind("Jump", function() {Crafty.audio.play("jump", 1, 0.6)})
   }, 
-  "respawn": function() {
+  respawn: function() {
     var spawnPoint = this.lastCheckpoint || Crafty("PlayerSpawn")
     this.attr(
       {
-      "x": spawnPoint.x + spawnPoint.w / 2 - this._w,
-      "y": spawnPoint.y + spawnPoint.h / 2 - this._h,
-      "xVelocity": 0.0,
-      "yVelocity": 0.0
+      x: spawnPoint.x + spawnPoint.w / 2 - this._w,
+      y: spawnPoint.y + spawnPoint.h / 2 - this._h,
+      xVelocity: 0.0,
+      yVelocity: 0.0
       }
     )
     return this
   },
-  "die": function() {
+  die: function() {
     Crafty.audio.play("death", 1, 0.5)
     // Will improve later
     this.respawn()
@@ -762,21 +762,21 @@ Crafty.c("Player", {
 })
 
 Crafty.c("Lightbulb", {
-  "_winning": false,
-  "init": function() {
+  _winning: false,
+  init: function() {
     this.requires("2D, HandlesCollisions, Sprite, Tween")
     this.bind("PhysicsCollision", this._lightbulbCollision)
   },
-  "_lightbulbCollision": function(o) {
+  _lightbulbCollision: function(o) {
     if (!this._winning && o.has("Player")) {
       this._winning = true
       this.sprite(1, 0, 1, 1)
       Crafty.audio.play("win", 1, 0.3)
       this.tween({
-        "x": this.x - 100,
-        "w": 250,
-        "h": 250,
-        "alpha":0}, 100)
+        x: this.x - 100,
+        w: 250,
+        h: 250,
+        alpha:0}, 100)
       this.bind("TweenEnd", function() {
         win()
       })
@@ -785,31 +785,31 @@ Crafty.c("Lightbulb", {
 })
 
 Crafty.c("LockedDoor", {
-  "obstructFromAbove": true,
-  "obstructFromBelow": true,
-  "obstructFromSides": true,
-  "_disappearing": false,
-  "init": function() {
+  obstructFromAbove: true,
+  obstructFromBelow: true,
+  obstructFromSides: true,
+  _disappearing: false,
+  init: function() {
     this.requires("2D, HandlesCollisions, Tween")
     this.bind("PhysicsCollision", this._doorCollisionHandler)
   },
-  "doorColour": function(colour) {
+  doorColour: function(colour) {
     this.colour = colour
     return this
   },
-  "_doorCollisionHandler": function(obj) {
+  _doorCollisionHandler: function(obj) {
     if (obj.has("DoorKey") && (obj.colour === this.colour)) {
       this._disappear()
     }
   },
-  "_disappear": function() {
+  _disappear: function() {
     if (!this._disappearing) {
       Crafty.audio.play("unlock", 1)
       this._disappearing = true
       this.obstructFromAbove = false
       this.obstructFromBelow = false
       this.obstructFromSides = false
-      this.tween({"alpha": 0.0}, 50)
+      this.tween({alpha: 0.0}, 50)
       this.bind("TweenEnd", function(props) {
         this.destroy()
       })
@@ -818,32 +818,32 @@ Crafty.c("LockedDoor", {
 })
 
 Crafty.c("DoorKey", {
-  "init": function() {
+  init: function() {
     this.requires("Telekinesis")
   },
-  "keyColour": function(colour) {
+  keyColour: function(colour) {
     this.colour = colour
     return true
   }
 })
 
 var buttonPressedSprites = {
-  "Red": [0, 1],
-  "Green": [6, 0],
-  "Blue": [4, 0],
-  "Yellow": [2, 1]
+  Red: [0, 1],
+  Green: [6, 0],
+  Blue: [4, 0],
+  Yellow: [2, 1]
 }
 
 Crafty.c("Button", {
-  "_pressed": false,
-  "init": function() {
+  _pressed: false,
+  init: function() {
     this.requires("HandlesCollisions")
     this.bind("PhysicsCollision", this._buttonPress)
   },
-  "buttonColour": function(colour) {
+  buttonColour: function(colour) {
     this.colour = colour
   },
-  "_buttonPress": function() {
+  _buttonPress: function() {
     if (!this._pressed) {
       Crafty(this.colour + "Door").each(function () {
         this._disappear()
@@ -856,11 +856,11 @@ Crafty.c("Button", {
 })
 
 Crafty.c("Deadly", {
-  "init": function() {
+  init: function() {
     this.requires("HandlesCollisions")
     this.bind("PhysicsCollision", this._deadlyCollision)
   },
-  "_deadlyCollision": function(obj) {
+  _deadlyCollision: function(obj) {
     if (obj.has("Player")
         && (obj.prevY + obj._b > this._y + this._t)) { // Only die on the second frame - allows you to stand on the water's edge
       obj.die()
@@ -869,36 +869,36 @@ Crafty.c("Deadly", {
 })
 
 Crafty.c("Liquid", {
-  "init": function() {
+  init: function() {
     this.requires("Deadly")
   }
 })
 
 Crafty.c("HalfHeight", {
-  "init": function() {
+  init: function() {
     this.requires("AABB")
-    this.aabb({"l": 0, "r": 50, "t": 25, "b": 50})
+    this.aabb({l: 0, r: 50, t: 25, b: 50})
   }
 })
 
 var colours = ["Red", "Green", "Blue", "Yellow"]
 colours.forEach(function(colour) {
   Crafty.c(colour + "Door", {
-    "init": function() {
+    init: function() {
       this.requires("LockedDoor")
       this.doorColour(colour)
     }
   })
   
   Crafty.c(colour + "Key", {
-    "init": function() {
+    init: function() {
       this.requires("DoorKey")
       this.keyColour(colour)
     }
   })
   
   Crafty.c(colour + "Button", {
-    "init": function() {
+    init: function() {
       this.requires("Button")
       this.buttonColour(colour)
     }
