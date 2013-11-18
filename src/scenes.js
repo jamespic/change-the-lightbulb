@@ -95,7 +95,7 @@ Crafty.scene("Load", function() {
       p1_walk10_r: [14, 0],
       p1_walk11_r: [15, 0],
     })
-    Crafty.scene("MainMenu")
+    Crafty.scene("JobCentre")
   })
 })
 
@@ -260,6 +260,7 @@ var Backgrounds = {
   
 
 generateTiledScene("Untitled", "untitled.json", Backgrounds.castle)
+generateTiledScene("JobCentre", "jobcentre.json", "#98FF69")
 generateTiledScene("Warehouse", "warehouse.json", Backgrounds.castle)
 generateTiledScene("Loop", "loop.json", Backgrounds.grassland)
 generateTiledScene("Bunker", "bunker.json", Backgrounds.desert)

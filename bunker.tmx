@@ -23,7 +23,7 @@
  <objectgroup name="Foreground Objects" width="27" height="23">
   <object gid="151" x="344" y="1099">
    <properties>
-    <property name="message" value="We take security very seriously. That's why nobody has the key to this bunker"/>
+    <property name="message" value="We take security very seriously. That's why nobody has the key to this bunker, including me"/>
     <property name="msgWidth" value="200"/>
    </properties>
   </object>

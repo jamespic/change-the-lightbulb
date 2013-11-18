@@ -1,5 +1,5 @@
 var Callbacks = {
-  "debugCallback": function(player) {
+  debugCallback: function(player) {
     console.log("Callback triggered on " + this + " by " + player)
   }
 }

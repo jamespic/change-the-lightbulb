@@ -444,6 +444,23 @@ Crafty.c("Phys", {
   }
 })
 
+Crafty.c("Sign", {
+  init: function() {
+    this.requires("Text, Canvas, 2D")
+    .textFont({size: "50px", family: "Comic Sans MS"})
+  }
+})
+
+Crafty.c("GameLogo", {
+  init: function() {
+    this.requires("Text, Canvas, 2D")
+    .textFont({size: "50px", family: "Comic Sans MS"})
+    .textColor("#ffffff")
+    .text("Change The Lightbulb")
+    .attr({z: 200})
+  }
+})
+
 Crafty.c("HintText", {
   _timeoutSet: false,
   init: function() {

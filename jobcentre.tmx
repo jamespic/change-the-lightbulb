@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="50" tileheight="50">
+ <tileset firstgid="1" source="box.tsx"/>
+ <tileset firstgid="17" source="castle.tsx"/>
+ <tileset firstgid="37" source="misc.tsx"/>
+ <tileset firstgid="67" source="talker.tsx"/>
+ <tileset firstgid="83" source="lightbulb.tsx"/>
+ <objectgroup name="Objects" width="50" height="50">
+  <object x="28" y="202" width="303" height="89">
+   <properties>
+    <property name="_text" value="Job Centre"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="38" y="333" width="79" height="113">
+   <properties>
+    <property name="components" value="PlayerSpawn"/>
+   </properties>
+  </object>
+  <object gid="68" x="479" y="449">
+   <properties>
+    <property name="message" value="Hmm.. I see from your CV that you have telekinetic abilities..."/>
+    <property name="msgHeight" value="75"/>
+    <property name="msgWidth" value="200"/>
+   </properties>
+  </object>
+  <object gid="68" x="677" y="450">
+   <properties>
+    <property name="message" value="Have you considered a career in changing lightbulbs?"/>
+    <property name="msgHeight" value="75"/>
+    <property name="msgWidth" value="200"/>
+   </properties>
+  </object>
+  <object gid="68" x="865" y="449">
+   <properties>
+    <property name="message" value="Excelllent! You start immediately"/>
+    <property name="msgHeight" value="50"/>
+    <property name="msgWidth" value="200"/>
+   </properties>
+  </object>
+  <object x="742" y="105" width="13" height="449">
+   <properties>
+    <property name="_color" value="black"/>
+    <property name="components" value="Color, Canvas"/>
+    <property name="z" value="100"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Scaffolding" width="50" height="50">
+  <object x="0" y="0" width="1100" height="200">
+   <properties>
+    <property name="_color" value="black"/>
+    <property name="components" value="Obstacle, Color, Canvas"/>
+    <property name="z" value="100"/>
+   </properties>
+  </object>
+  <object x="0" y="450" width="1100" height="200">
+   <properties>
+    <property name="_color" value="black"/>
+    <property name="components" value="Obstacle, Color, Canvas"/>
+    <property name="z" value="100"/>
+   </properties>
+  </object>
+  <object x="0" y="0" width="25" height="650">
+   <properties>
+    <property name="_color" value="black"/>
+    <property name="components" value="Obstacle, Color, Canvas"/>
+    <property name="z" value="100"/>
+   </properties>
+  </object>
+  <object x="1075" y="0" width="25" height="650">
+   <properties>
+    <property name="_color" value="black"/>
+    <property name="components" value="Obstacle, Color, Canvas"/>
+    <property name="z" value="100"/>
+   </properties>
+  </object>
+  <object x="338" y="107" width="13" height="449">
+   <properties>
+    <property name="_color" value="black"/>
+    <property name="components" value="Color, Canvas"/>
+    <property name="z" value="100"/>
+   </properties>
+  </object>
+  <object x="538" y="112" width="13" height="449">
+   <properties>
+    <property name="_color" value="black"/>
+    <property name="components" value="Color, Canvas"/>
+    <property name="z" value="100"/>
+   </properties>
+  </object>
+  <object x="930" y="113" width="13" height="449">
+   <properties>
+    <property name="_color" value="black"/>
+    <property name="components" value="Color, Canvas"/>
+    <property name="z" value="100"/>
+   </properties>
+  </object>
+  <object x="41" y="22" width="854" height="94">
+   <properties>
+    <property name="components" value="GameLogo"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="Tile Layer 1" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztzjERACAMBLDKKXrw76UrAjieIVGQKuCVnQ7wjZUOXNLpAAAAAAAAAADAYQA1zgCl
+  </data>
+ </layer>
+</map>

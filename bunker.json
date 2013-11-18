@@ -46,7 +46,7 @@
                  "name":"",
                  "properties":
                     {
-                     "message":"We take security very seriously. That's why nobody has the key to this bunker",
+                     "message":"We take security very seriously. That's why nobody has the key to this bunker, including me",
                      "msgWidth":"200"
                     },
                  "type":"",
@@ -305,6 +305,18 @@
          "tileheight":50,
          "tileproperties":
             {
+             "13":
+                {
+                 "components":"Money"
+                },
+             "14":
+                {
+                 "components":"Money"
+                },
+             "15":
+                {
+                 "components":"Money"
+                },
              "3":
                 {
                  "components":"BlueButton"
@@ -404,6 +416,10 @@
              "1":
                 {
                  "components":"Telekinesis, Platform"
+                },
+             "15":
+                {
+                 "components":"Obstacle, Telekinesis"
                 },
              "6":
                 {
