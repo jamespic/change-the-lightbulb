@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset name="liquids" tilewidth="50" tileheight="50">
- <image source="../assets/liquid.png" width="150" height="100"/>
+ <image source="liquid.png" width="150" height="100"/>
  <tile id="0">
   <properties>
    <property name="components" value="Liquid"/>

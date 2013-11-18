@@ -60,7 +60,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/assets\/stone.png",
+         "image":"stone.png",
          "imageheight":250,
          "imagewidth":250,
          "margin":0,
@@ -154,7 +154,7 @@
         }, 
         {
          "firstgid":26,
-         "image":"..\/assets\/items.png",
+         "image":"items.png",
          "imageheight":350,
          "imagewidth":400,
          "margin":0,
@@ -208,7 +208,7 @@
         }, 
         {
          "firstgid":82,
-         "image":"..\/assets\/50x50.png",
+         "image":"50x50.png",
          "imageheight":250,
          "imagewidth":300,
          "margin":0,
@@ -246,7 +246,7 @@
         }, 
         {
          "firstgid":112,
-         "image":"..\/assets\/lightbulb.png",
+         "image":"lightbulb.png",
          "imageheight":50,
          "imagewidth":100,
          "margin":0,
@@ -268,7 +268,7 @@
         }, 
         {
          "firstgid":114,
-         "image":"..\/assets\/p3_sprites.png",
+         "image":"p3_sprites.png",
          "imageheight":70,
          "imagewidth":832,
          "margin":0,
@@ -290,7 +290,7 @@
         }, 
         {
          "firstgid":130,
-         "image":"..\/assets\/box.png",
+         "image":"box.png",
          "imageheight":200,
          "imagewidth":200,
          "margin":0,

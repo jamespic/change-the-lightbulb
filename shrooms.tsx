@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset name="shrooms" tilewidth="50" tileheight="50">
- <image source="../assets/shrooms.png" width="350" height="350"/>
+ <image source="shrooms.png" width="350" height="350"/>
  <tile id="0">
   <properties>
    <property name="components" value="Platform"/>

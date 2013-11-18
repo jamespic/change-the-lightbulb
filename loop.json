@@ -178,7 +178,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/assets\/grass.png",
+         "image":"grass.png",
          "imageheight":200,
          "imagewidth":250,
          "margin":0,
@@ -268,7 +268,7 @@
         }, 
         {
          "firstgid":21,
-         "image":"..\/assets\/lightbulb.png",
+         "image":"lightbulb.png",
          "imageheight":50,
          "imagewidth":100,
          "margin":0,
@@ -290,7 +290,7 @@
         }, 
         {
          "firstgid":23,
-         "image":"..\/assets\/50x50.png",
+         "image":"50x50.png",
          "imageheight":250,
          "imagewidth":300,
          "margin":0,
@@ -328,7 +328,7 @@
         }, 
         {
          "firstgid":53,
-         "image":"..\/assets\/box.png",
+         "image":"box.png",
          "imageheight":200,
          "imagewidth":200,
          "margin":0,
@@ -358,7 +358,7 @@
         }, 
         {
          "firstgid":69,
-         "image":"..\/assets\/items.png",
+         "image":"items.png",
          "imageheight":350,
          "imagewidth":400,
          "margin":0,
@@ -412,7 +412,7 @@
         }, 
         {
          "firstgid":125,
-         "image":"..\/assets\/93x51.png",
+         "image":"93x51.png",
          "imageheight":51,
          "imagewidth":279,
          "margin":0,
@@ -427,7 +427,7 @@
         }, 
         {
          "firstgid":128,
-         "image":"..\/assets\/poker.png",
+         "image":"poker.png",
          "imageheight":105,
          "imagewidth":210,
          "margin":0,
@@ -442,7 +442,7 @@
         }, 
         {
          "firstgid":134,
-         "image":"..\/assets\/p3_sprites.png",
+         "image":"p3_sprites.png",
          "imageheight":70,
          "imagewidth":832,
          "margin":0,

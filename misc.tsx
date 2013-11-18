@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset name="misc" tilewidth="50" tileheight="50">
- <image source="../assets/50x50.png" width="300" height="250"/>
+ <image source="50x50.png" width="300" height="250"/>
  <tile id="0">
   <properties>
    <property name="components" value="Obstacle"/>

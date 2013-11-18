@@ -8,76 +8,76 @@ Crafty.scene("Load", function() {
   
   Crafty.load(
     [
-      "assets/14x10.png",
-      "assets/15x15.png",
-      "assets/50x50.png",
-      "assets/93x51.png",
-      "assets/bg_castle.png",
-      "assets/bg_desert.png",
-      "assets/bg_grasslands.png",
-      "assets/bg_shroom.png",
-      "assets/blocker.png",
-      "assets/box.png",
-      "assets/castle.png",
-      "assets/dirt.png",
-      "assets/fish.png",
-      "assets/fly.png",
-      "assets/grass.png",
-      "assets/items.png",
-      "assets/lightbulb.png",
-      "assets/liquid.png",
-      "assets/p1_sprites.png",
-      "assets/p2_sprites.png",
-      "assets/p3_sprites.png",
-      "assets/poker.png",
-      "assets/sand.png",
-      "assets/shrooms.png",
-      "assets/slime.png",
-      "assets/snail.png",
-      "assets/snow.png",
-      "assets/stone.png",
-      "assets/round_end.ogg",
-      "assets/round_end.mp3",
-      "assets/round_end.wav",
-      "assets/death.ogg",
-      "assets/death.mp3",
-      "assets/death.wav",
-      "assets/jump_02.ogg",
-      "assets/jump_02.mp3",
-      "assets/jump_02.wav",
-      "assets/coin7.ogg",
-      "assets/coin7.mp3",
-      "assets/coin7.wav",
-      "assets/coin10.ogg",
-      "assets/coin10.mp3",
-      "assets/coin10.wav",
+      "14x10.png",
+      "15x15.png",
+      "50x50.png",
+      "93x51.png",
+      "bg_castle.png",
+      "bg_desert.png",
+      "bg_grasslands.png",
+      "bg_shroom.png",
+      "blocker.png",
+      "box.png",
+      "castle.png",
+      "dirt.png",
+      "fish.png",
+      "fly.png",
+      "grass.png",
+      "items.png",
+      "lightbulb.png",
+      "liquid.png",
+      "p1_sprites.png",
+      "p2_sprites.png",
+      "p3_sprites.png",
+      "poker.png",
+      "sand.png",
+      "shrooms.png",
+      "slime.png",
+      "snail.png",
+      "snow.png",
+      "stone.png",
+      "round_end.ogg",
+      "round_end.mp3",
+      "round_end.wav",
+      "death.ogg",
+      "death.mp3",
+      "death.wav",
+      "jump_02.ogg",
+      "jump_02.mp3",
+      "jump_02.wav",
+      "coin7.ogg",
+      "coin7.mp3",
+      "coin7.wav",
+      "coin10.ogg",
+      "coin10.mp3",
+      "coin10.wav",
     ], function() {
     Crafty.audio.add("death", [
-      "assets/death.ogg",
-      "assets/death.mp3",
-      "assets/death.wav"
+      "death.ogg",
+      "death.mp3",
+      "death.wav"
     ])
     Crafty.audio.add("win", [
-      "assets/round_end.ogg",
-      "assets/round_end.mp3",
-      "assets/round_end.wav"
+      "round_end.ogg",
+      "round_end.mp3",
+      "round_end.wav"
     ])
     Crafty.audio.add("jump", [
-      "assets/jump_02.ogg",
-      "assets/jump_02.mp3",
-      "assets/jump_02.wav"
+      "jump_02.ogg",
+      "jump_02.mp3",
+      "jump_02.wav"
     ])
     Crafty.audio.add("unlock", [
-      "assets/coin10.ogg",
-      "assets/coin10.mp3",
-      "assets/coin10.wav"
+      "coin10.ogg",
+      "coin10.mp3",
+      "coin10.wav"
     ])
     Crafty.audio.add("bribe", [
-      "assets/coin7.ogg",
-      "assets/coin7.mp3",
-      "assets/coin7.wav"
+      "coin7.ogg",
+      "coin7.mp3",
+      "coin7.wav"
     ])
-    Crafty.sprite(52, 70, "assets/p1_sprites.png", {
+    Crafty.sprite(52, 70, "p1_sprites.png", {
       p1_duck_r: [0, 0],
       p1_front_r: [1, 0],
       p1_hurt_r: [2, 0],
@@ -252,21 +252,21 @@ function generateTiledScene(sceneName, url, bg) {
 }
 
 var Backgrounds = {
-  desert:    "#c0e8ec url('assets/bg_desert.png') repeat-x top",
-  grassland: "#c0e8ec url('assets/bg_grasslands.png') repeat-x top",
-  shroom:    "#6da41a url('assets/bg_shroom.png') repeat-x top",
-  castle:    "#869595 url('assets/bg_castle.png')"
+  desert:    "#c0e8ec url('bg_desert.png') repeat-x top",
+  grassland: "#c0e8ec url('bg_grasslands.png') repeat-x top",
+  shroom:    "#6da41a url('bg_shroom.png') repeat-x top",
+  castle:    "#869595 url('bg_castle.png')"
 }
   
 
-generateTiledScene("Untitled", "levels/untitled.json", Backgrounds.castle)
-generateTiledScene("Warehouse", "levels/warehouse.json", Backgrounds.castle)
-generateTiledScene("Loop", "levels/loop.json", Backgrounds.grassland)
-generateTiledScene("Bunker", "levels/bunker.json", Backgrounds.desert)
-generateTiledScene("Chimney", "levels/chimney.json", Backgrounds.desert)
-generateTiledScene("HeathRobinson", "levels/heathrobinson.json", Backgrounds.castle)
-generateTiledScene("Bribery", "levels/bribery.json", Backgrounds.grassland)
-generateTiledScene("Volcano", "levels/volcano.json", Backgrounds.desert)
+generateTiledScene("Untitled", "untitled.json", Backgrounds.castle)
+generateTiledScene("Warehouse", "warehouse.json", Backgrounds.castle)
+generateTiledScene("Loop", "loop.json", Backgrounds.grassland)
+generateTiledScene("Bunker", "bunker.json", Backgrounds.desert)
+generateTiledScene("Chimney", "chimney.json", Backgrounds.desert)
+generateTiledScene("HeathRobinson", "heathrobinson.json", Backgrounds.castle)
+generateTiledScene("Bribery", "bribery.json", Backgrounds.grassland)
+generateTiledScene("Volcano", "volcano.json", Backgrounds.desert)
 
 Levels = [
   {

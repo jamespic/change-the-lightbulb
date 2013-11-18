@@ -192,7 +192,7 @@
  "tilesets":[
         {
          "firstgid":1,
-         "image":"..\/assets\/sand.png",
+         "image":"sand.png",
          "imageheight":200,
          "imagewidth":250,
          "margin":0,
@@ -282,7 +282,7 @@
         }, 
         {
          "firstgid":21,
-         "image":"..\/assets\/poker.png",
+         "image":"poker.png",
          "imageheight":105,
          "imagewidth":210,
          "margin":0,
@@ -308,7 +308,7 @@
         }, 
         {
          "firstgid":27,
-         "image":"..\/assets\/items.png",
+         "image":"items.png",
          "imageheight":350,
          "imagewidth":400,
          "margin":0,
@@ -374,7 +374,7 @@
         }, 
         {
          "firstgid":83,
-         "image":"..\/assets\/lightbulb.png",
+         "image":"lightbulb.png",
          "imageheight":50,
          "imagewidth":100,
          "margin":0,
@@ -396,7 +396,7 @@
         }, 
         {
          "firstgid":85,
-         "image":"..\/assets\/liquid.png",
+         "image":"liquid.png",
          "imageheight":100,
          "imagewidth":150,
          "margin":0,
@@ -438,7 +438,7 @@
         }, 
         {
          "firstgid":91,
-         "image":"..\/assets\/blocker.png",
+         "image":"blocker.png",
          "imageheight":37,
          "imagewidth":111,
          "margin":0,
@@ -464,7 +464,7 @@
         }, 
         {
          "firstgid":94,
-         "image":"..\/assets\/50x50.png",
+         "image":"50x50.png",
          "imageheight":250,
          "imagewidth":300,
          "margin":0,
@@ -502,7 +502,7 @@
         }, 
         {
          "firstgid":124,
-         "image":"..\/assets\/box.png",
+         "image":"box.png",
          "imageheight":200,
          "imagewidth":200,
          "margin":0,
@@ -536,7 +536,7 @@
         }, 
         {
          "firstgid":140,
-         "image":"..\/assets\/castle.png",
+         "image":"castle.png",
          "imageheight":200,
          "imagewidth":250,
          "margin":0,
@@ -626,7 +626,7 @@
         }, 
         {
          "firstgid":160,
-         "image":"..\/assets\/p3_sprites.png",
+         "image":"p3_sprites.png",
          "imageheight":70,
          "imagewidth":832,
          "margin":0,
