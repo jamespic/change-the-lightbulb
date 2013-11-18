@@ -42,6 +42,8 @@ Crafty.c("HandlesCollisions", {
   _genericHandleCollision: function(c) {
     // WARNING: This assumes the hitbox for the object matches its 2D co-ords
     if (this.obstructFromAbove && (c.prevY + c._b <= this._y + this._t)) {
+      // Special case to allow you to drag boxes back through platforms
+      if (!this.obstructFromBelow && (c._held || c._climbDown)) return
       // On top
       c.y = this._y + this._t - c._b
       if (c.yVelocity > 0) c.yVelocity = 0
@@ -645,6 +647,7 @@ Crafty.c("Platformer", {
   disableControls: false,
   _leftKeyDown: false,
   _rightKeyDown: false,
+  _climbDown: false,
   init: function() {
     this.requires("Phys, Keyboard")
   },
@@ -669,6 +672,9 @@ Crafty.c("Platformer", {
     if ((e.key == Crafty.keys.UP_ARROW) || (e.key == Crafty.keys.W)) {
       this._tryJump()
     }
+    if ((e.key == Crafty.keys.DOWN_ARROW) || (e.key == Crafty.keys.S)) {
+      this._climbDown = true
+    }
   },
   _tryJump: function() {
     if (!this._falling) {
@@ -681,6 +687,9 @@ Crafty.c("Platformer", {
   _keyUp: function(e) {
     if ((e.key == Crafty.keys.LEFT_ARROW) || (e.key == Crafty.keys.A)) this._leftKeyDown = false
     if ((e.key == Crafty.keys.RIGHT_ARROW) || (e.key == Crafty.keys.D)) this._rightKeyDown = false
+    if ((e.key == Crafty.keys.DOWN_ARROW) || (e.key == Crafty.keys.S)) {
+      this._climbDown = false
+    }
   },
   _platformerEnterFrame: function () {
     if (this.disableControls) return

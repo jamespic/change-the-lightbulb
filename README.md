@@ -9,6 +9,7 @@ tasks for large corporations!
 - A / Left Arrow: Left
 - D / Right Arrow: Jump
 - W / Up Arrow: Jump
+- S / Down Arrow: Climb down from ledge
 - Left Mouse Button: Drag object (telekinesis)
 - Right Mouse Button (while dragging): Hold object still
 

@@ -360,7 +360,7 @@ Levels = [
              " The older <b>arrow keys</b> layout, and the newer <b>WASD</b> layout." + 
              " Both have their benefits, so we have selected a \"best-of-breed\"" + 
              " approach. We recommend that you move left and right with" +
-             " the arrow keys, and jump with the W key.</p>" +
+             " the arrow keys, jump with the W key, and use the down arrow to climb down from ledges.</p>" +
              "<p>Those of you with telekinetic powers should continue to" +
              " use the existing scheme. Hold <b>left mouse button</b> to drag items." +
              " If you need to hold something still, you can hold down" + 
