@@ -45,19 +45,19 @@
                  "y":730
                 }, 
                 {
-                 "height":246,
+                 "height":238,
                  "name":"",
                  "properties":
                     {
                      "components":"HintText",
-                     "hintTimeout":"120000",
-                     "message":"Hint: You can stand on boxes. Drag one to underneath the lightbulb, with your telekinetic powers (left mouse button)"
+                     "hintTimeout":"20000",
+                     "message":"Hint: You can stand on boxes. Drag one underneath the lightbulb with your telekinetic powers (left mouse button). It's in telekinesis range when it turns blue"
                     },
                  "type":"",
                  "visible":true,
-                 "width":237,
-                 "x":513,
-                 "y":92
+                 "width":375,
+                 "x":408,
+                 "y":71
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -267,6 +267,10 @@
              "1":
                 {
                  "components":"Telekinesis, Platform"
+                },
+             "15":
+                {
+                 "components":"Obstacle, Telekinesis"
                 },
              "6":
                 {

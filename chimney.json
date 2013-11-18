@@ -172,7 +172,7 @@
                  "properties":
                     {
                      "components":"HintText",
-                     "hintTimeout":"120000",
+                     "hintTimeout":"30000",
                      "message":"Hint: When dragging a box, hold down the right mouse button to keep it still. You can now use it as a platform"
                     },
                  "type":"",
@@ -398,6 +398,10 @@
                 {
                  "components":"Telekinesis, Platform"
                 },
+             "15":
+                {
+                 "components":"Obstacle, Telekinesis"
+                },
              "6":
                 {
                  "components":"Telekinesis, Platform"
@@ -458,6 +462,18 @@
          "tileheight":50,
          "tileproperties":
             {
+             "13":
+                {
+                 "components":"Money"
+                },
+             "14":
+                {
+                 "components":"Money"
+                },
+             "15":
+                {
+                 "components":"Money"
+                },
              "3":
                 {
                  "components":"BlueButton"

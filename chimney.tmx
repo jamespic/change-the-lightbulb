@@ -47,7 +47,7 @@
   <object x="607" y="787" width="270" height="203">
    <properties>
     <property name="components" value="HintText"/>
-    <property name="hintTimeout" value="120000"/>
+    <property name="hintTimeout" value="30000"/>
     <property name="message" value="Hint: When dragging a box, hold down the right mouse button to keep it still. You can now use it as a platform"/>
    </properties>
   </object>

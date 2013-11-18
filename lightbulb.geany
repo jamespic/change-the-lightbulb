@@ -23,12 +23,14 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=3
-FILE_NAME_0=16339;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fcomponents.js;0;2
+current_page=6
+FILE_NAME_0=1346;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fcomponents.js;0;2
 FILE_NAME_1=379;HTML;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Findex.html;0;2
 FILE_NAME_2=174;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fgame.js;0;2
-FILE_NAME_3=7288;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fscenes.js;0;2
-FILE_NAME_4=219;CSS;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fstyle.css;0;2
+FILE_NAME_3=11483;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fscenes.js;0;2
+FILE_NAME_4=119;CSS;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fstyle.css;0;2
+FILE_NAME_5=226;Sh;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Frepoint.sh;0;2
+FILE_NAME_6=342;Markdown;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2FREADME.md;0;2
 
 [VTE]
 last_dir=/home/james

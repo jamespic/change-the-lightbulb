@@ -23,11 +23,11 @@
     <property name="components" value="PlayerSpawn"/>
    </properties>
   </object>
-  <object x="513" y="92" width="237" height="246">
+  <object x="408" y="71" width="375" height="238">
    <properties>
     <property name="components" value="HintText"/>
-    <property name="hintTimeout" value="120000"/>
-    <property name="message" value="Hint: You can stand on boxes. Drag one to underneath the lightbulb, with your telekinetic powers (left mouse button)"/>
+    <property name="hintTimeout" value="20000"/>
+    <property name="message" value="Hint: You can stand on boxes. Drag one underneath the lightbulb with your telekinetic powers (left mouse button). It's in telekinesis range when it turns blue"/>
    </properties>
   </object>
  </objectgroup>
