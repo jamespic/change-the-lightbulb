@@ -342,7 +342,7 @@ Levels = [
     title: "Welcome Aboard!",
     level: "Warehouse",
     body:  "<p>Welcome to Speedy Electrical Contractors, the world's" +
-             " leading supplier of lighbulb replacement services to big" + 
+             " leading supplier of lightbulb replacement services to big" + 
              " businesses and governments.</p>" +
              "<p>We seek out exceptional individuals like yourself," + 
              " to work in this challenging and vibrant industry.</p>" +
