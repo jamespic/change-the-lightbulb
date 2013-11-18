@@ -1,7 +1,41 @@
 Crafty.scene("Load", function() {
+  Crafty.background("#A3D1FF")
+  Crafty
+    .e("Text, DOM, 2D")
+    .text("Loading...")
+    .textFont({size: "50px", family: "Comic Sans MS"})
+    .attr({x: 50, y: 50, w: 950, h: 400})
+  
   Crafty.load(
     [
+      "assets/14x10.png",
+      "assets/15x15.png",
+      "assets/50x50.png",
+      "assets/93x51.png",
+      "assets/bg_castle.png",
+      "assets/bg_desert.png",
+      "assets/bg_grasslands.png",
+      "assets/bg_shroom.png",
+      "assets/blocker.png",
+      "assets/box.png",
+      "assets/castle.png",
+      "assets/dirt.png",
+      "assets/fish.png",
+      "assets/fly.png",
+      "assets/grass.png",
+      "assets/items.png",
+      "assets/lightbulb.png",
+      "assets/liquid.png",
       "assets/p1_sprites.png",
+      "assets/p2_sprites.png",
+      "assets/p3_sprites.png",
+      "assets/poker.png",
+      "assets/sand.png",
+      "assets/shrooms.png",
+      "assets/slime.png",
+      "assets/snail.png",
+      "assets/snow.png",
+      "assets/stone.png",
       "assets/round_end.ogg",
       "assets/round_end.mp3",
       "assets/round_end.wav",

@@ -23,11 +23,11 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=0
+current_page=3
 FILE_NAME_0=16339;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fcomponents.js;0;2
 FILE_NAME_1=379;HTML;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Findex.html;0;2
 FILE_NAME_2=174;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fgame.js;0;2
-FILE_NAME_3=8421;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fscenes.js;0;2
+FILE_NAME_3=7288;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fscenes.js;0;2
 FILE_NAME_4=219;CSS;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fstyle.css;0;2
 
 [VTE]

@@ -54,7 +54,7 @@
  </objectgroup>
  <layer name="Background Tiles" width="58" height="21">
   <data encoding="base64" compression="zlib">
-   eJxjYmBgYBoheLiDXoZRfw4nAPOnMA4sMnBOoyogFJ9Z9HIIjcFI8yeudIsPcwExN/2dTBYgtxyid9k1G4jnUYCHij9BoJdCvaP+RAWcDJA8iYy50eRomV8HIj4HAmDzZzkOtejiQ92fpOgl5E8hhsHRNiLXnyoMtItPHgZI2IQTiUFq+QiYie7PuQy0r1fwAZAfeaHm8jMQbm8gq8XnV2qnW0rSKbIfycH4/IrLnyVEiFMzPin1IzF+JRdQ6k81KE0tP9LCr/YMlLXjseUxamL0vE1p+xYApYM3WA==
+   eJxjYmBgYBoheLiDXoZRfw4nAPOnMA4sMnBOoyogFJ9Z9HIIjcFI8yeudIsPcwExN/2dTBYgtxyid9k1G4jnUYCHij9BoJdCvaP+RAWcDJA8iYy50eRomV8HIj4HAmDzZzkOtejiQ92fpOgl5E8hhsHRNiLXnyoMtItPHgZI2IQTiUFq+QiYie7PuQy0r1fwAZAfeaHm8jMQbm8gq8XnV2qnW0rSKbIfycH4/IrLnyVEiCP7M4kIf+ADlPqRGL+SC5D9mUiGfjUoTS0/0sKv9gyUteOx5TFqYvS8TWn7FgBZyTgb
   </data>
  </layer>
  <layer name="Foreground Tiles" width="58" height="21">
