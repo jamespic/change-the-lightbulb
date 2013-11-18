@@ -16,4 +16,9 @@
    <property name="components" value="Telekinesis, Platform"/>
   </properties>
  </tile>
+ <tile id="15">
+  <properties>
+   <property name="components" value="Obstacle, Telekinesis"/>
+  </properties>
+ </tile>
 </tileset>

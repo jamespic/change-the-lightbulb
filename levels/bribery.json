@@ -73,6 +73,21 @@
                  "width":0,
                  "x":177,
                  "y":600
+                }, 
+                {
+                 "height":190,
+                 "name":"",
+                 "properties":
+                    {
+                     "components":"HintText",
+                     "hintTimeout":"60000",
+                     "message":"Hint: From time to time, people will try to get in your way. A \"facilitation payment\" will usually get things moving"
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":286,
+                 "x":128,
+                 "y":106
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -329,6 +344,10 @@
              "1":
                 {
                  "components":"Telekinesis, Platform"
+                },
+             "15":
+                {
+                 "components":"Obstacle, Telekinesis"
                 },
              "6":
                 {

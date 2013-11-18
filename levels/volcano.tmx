@@ -1,25 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="50" tileheight="50">
+<map version="1.0" orientation="orthogonal" width="58" height="21" tilewidth="50" tileheight="50">
  <tileset firstgid="1" source="sand.tsx"/>
  <tileset firstgid="21" source="poker.tsx"/>
  <tileset firstgid="27" source="items.tsx"/>
  <tileset firstgid="83" source="lightbulb.tsx"/>
  <tileset firstgid="85" source="liquids.tsx"/>
  <tileset firstgid="91" source="blocker.tsx"/>
- <objectgroup name="Object Layer 1" width="50" height="50">
-  <object x="109" y="1177" width="137" height="137">
+ <tileset firstgid="94" source="misc.tsx"/>
+ <tileset firstgid="124" source="box.tsx"/>
+ <tileset firstgid="140" source="castle.tsx"/>
+ <tileset firstgid="160" source="talker.tsx"/>
+ <objectgroup name="Deeper Background Objects" width="58" height="21">
+  <object x="2129" y="427" width="753" height="608">
+   <properties>
+    <property name="_color" value="grey"/>
+    <property name="components" value="Canvas, Color"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Background Objects" width="58" height="21">
+  <object x="64" y="800" width="125" height="187">
    <properties>
     <property name="components" value="PlayerSpawn"/>
    </properties>
   </object>
-  <object gid="25" x="437" y="1350"/>
-  <object gid="26" x="533" y="1351"/>
-  <object gid="26" x="622" y="1351"/>
-  <object gid="92" x="372" y="1298"/>
+  <object gid="92" x="584" y="955"/>
+  <object gid="25" x="2107" y="1009"/>
+  <object gid="92" x="2531" y="928"/>
+  <object gid="93" x="512" y="306"/>
+  <object x="1091" y="591" width="64" height="154">
+   <properties>
+    <property name="components" value="Checkpoint"/>
+   </properties>
+  </object>
+  <object x="1639" y="588" width="66" height="160">
+   <properties>
+    <property name="components" value="Checkpoint"/>
+   </properties>
+  </object>
+  <object gid="161" x="2400" y="750">
+   <properties>
+    <property name="message" value="Welcome to our headquarters. People say it's a bit evil-y, but I don't see it."/>
+    <property name="msgWidth" value="175"/>
+   </properties>
+  </object>
+  <object x="554" y="606" width="351" height="207">
+   <properties>
+    <property name="components" value="HintText"/>
+    <property name="hintTimeout" value="300000"/>
+    <property name="message" value="Hint: These metal boxes look pretty strong. You can't jump through them, like the wooden crates, but they'll withstand the heat of the volcano"/>
+   </properties>
+  </object>
  </objectgroup>
- <layer name="Tile Layer 1" width="50" height="50">
+ <layer name="Background Tiles" width="58" height="21">
   <data encoding="base64" compression="zlib">
-   eJzt0sEJwzAQAEHhFtxEnBrcf13OwwUIEcMaZuB+OqQFbWOMLTYrVveeoqNFR4uOFh0tOlp0tOho0dGio0VHi44WHS3/7PhM7p732eM338X7Z94zu7eHpvY/AAAAAN7qAjaHBC8=
+   eJxjYmBgYBoheLiDXoZRfw4nAPOnMA4sMnBOoyogFJ9Z9HIIjcFI8yeudIsPcwExN/2dTBYgtxyid9k1G4jnUYCHij9BoJdCvaP+RAWcDJA8iYy50eRomV8HIj4HAmDzZzkOtejiQ92fpOgl5E8hhsHRNiLXnyoMtItPHgZI2IQTiUFq+QiYie7PuQy0r1fwAZAfeaHm8jMQbm8gq8XnV2qnW0rSKbIfycH4/IrLnyVEiFMzPin1IzF+JRdQ6k81KE0tP9LCr/YMlLXjseUxamL0vE1p+xYApYM3WA==
+  </data>
+ </layer>
+ <layer name="Foreground Tiles" width="58" height="21">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIJRQC+gAcRaSGzNAXTLKBgY0D3QDqAT6GZA+DUHCQ8mEEwFM9D9acsw+PxJbTBY43MUjIJRgBvwEaGGh+auGAWjYBSMgsEBAOXtB2U=
   </data>
  </layer>
 </map>

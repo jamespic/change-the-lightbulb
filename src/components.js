@@ -594,7 +594,7 @@ Crafty.c("AngryPoker", {
 Crafty.c("PlayerBlocker", {
   "_blocking": true,
   init: function() {
-    this.requires("SHMFollower, HandlesCollisions")
+    this.requires("SHMFollower, Phys, HandlesCollisions")
     this.xFollow = false
     this.bind("PhysicsCollision", this._handleMoneyCollision)
     this.obstructFromAbove = true

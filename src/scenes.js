@@ -236,6 +236,18 @@ generateTiledScene("Volcano", "/levels/volcano.json", Backgrounds.desert) // Not
 
 Levels = [
   {
+    title: "Happy Friendly Coffee Company",
+    level: "Volcano",
+    body:  "<p>We've got a job through from the Happy Friendly Coffee" +
+           " Company. They need a lightbulb changing at their corporate" +
+           " headquarters.</p>" +
+           "<p>In the last five years, they've grown to be the largest" +
+           " coffee concern in the world, through a series of hostile" +
+           " takeovers, and cut-throat business tactics.</p>" +
+           "<p>Be on your guard, The Boss</p>",
+    depends: ["Bunker", "Loop"]
+  },
+  {
     title: "Government Bunker",
     level: "Bunker",
     body:  "<p>We need you to change a lightbulb at a top-secret government" +
