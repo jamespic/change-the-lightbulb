@@ -259,14 +259,14 @@ var Backgrounds = {
 }
   
 
-generateTiledScene("Untitled", "/levels/untitled.json", Backgrounds.castle)
-generateTiledScene("Warehouse", "/levels/warehouse.json", Backgrounds.castle)
-generateTiledScene("Loop", "/levels/loop.json", Backgrounds.grassland)
-generateTiledScene("Bunker", "/levels/bunker.json", Backgrounds.desert)
-generateTiledScene("Chimney", "/levels/chimney.json", Backgrounds.desert)
-generateTiledScene("HeathRobinson", "/levels/heathrobinson.json", Backgrounds.castle)
-generateTiledScene("Bribery", "/levels/bribery.json", Backgrounds.grassland)
-generateTiledScene("Volcano", "/levels/volcano.json", Backgrounds.desert) // Not finished
+generateTiledScene("Untitled", "levels/untitled.json", Backgrounds.castle)
+generateTiledScene("Warehouse", "levels/warehouse.json", Backgrounds.castle)
+generateTiledScene("Loop", "levels/loop.json", Backgrounds.grassland)
+generateTiledScene("Bunker", "levels/bunker.json", Backgrounds.desert)
+generateTiledScene("Chimney", "levels/chimney.json", Backgrounds.desert)
+generateTiledScene("HeathRobinson", "levels/heathrobinson.json", Backgrounds.castle)
+generateTiledScene("Bribery", "levels/bribery.json", Backgrounds.grassland)
+generateTiledScene("Volcano", "levels/volcano.json", Backgrounds.desert)
 
 Levels = [
   {
