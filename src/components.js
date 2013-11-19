@@ -362,6 +362,7 @@ Crafty.c("BasicPhys", {
   yGravity: 0.8,
   xVelocity: 0.0,
   yVelocity: 0.0,
+  speedLimit: 20.0,
 
   init: function() {
     this.requires("Followable")
@@ -406,11 +407,12 @@ Crafty.c("BasicPhys", {
     self.yVelocity += self.yAccel + self.yGravity
     self.yAccel = 0
     
-    // Limit velocity to 50 in any direction, to avoid clipping issues
-    if (self.xVelocity < -50.0) self.xVelocity = -50.0
-    if (self.xVelocity > 50.0) self.xVelocity = 50.0
-    if (self.yVelocity < -50.0) self.yVelocity = -50.0
-    if (self.yVelocity > 50.0) self.yVelocity = 50.0
+    // Limit velocity, to avoid clipping issues
+    var l = this.speedLimit
+    if (self.xVelocity < -l) self.xVelocity = -l
+    if (self.xVelocity > l) self.xVelocity = l
+    if (self.yVelocity < -l) self.yVelocity = -l
+    if (self.yVelocity > l) self.yVelocity = l
     
     self.x += Math.round(self.xVelocity)
     self.y += Math.ceil(self.yVelocity)
@@ -436,6 +438,7 @@ Crafty.c("BasicPhys", {
 
 Crafty.c("Phys", {
   groundFriction: 0.1,
+  airFriction: 0.02,
   _falling: true,
   
   init: function() {
@@ -466,6 +469,9 @@ Crafty.c("Phys", {
     
     if (!self._falling) {
       self.xAccel -= self.xVelocity * self.groundFriction
+    } else {
+      self.xAccel -= self.xVelocity * self.airFriction
+      self.yAccel -= self.yVelocity * self.airFriction
     }
   }
 })
@@ -524,7 +530,7 @@ Crafty.c("Telekinesis", {
     
     self.requires("Phys, SHMFollower, Mouse, Tint")
     
-    self.vCoeff = -0.8
+    self.vCoeff = -0.6
     self.sCoeff = -0.3
   
     
@@ -538,9 +544,13 @@ Crafty.c("Telekinesis", {
       self.followSHM(self._mouseFollower)
       Crafty.addEvent(self, Crafty.stage.elem, "mouseup", self._telekinesisMouseUp)
       self._held = true
+      // Increase speed limit when dragging, to make it more responsive
+      this.speedLimit = 50.0 
     }
     
     self._letGo = function() {
+      // Reduce speed limit on letting go
+      this.speedLimit = 20.0
       self._held = false
       self.unfollowSHM(self._mouseFollower)
       Crafty.removeEvent(self, Crafty.stage.elem, "mouseup", self._telekinesisMouseUp)
@@ -669,7 +679,7 @@ Crafty.c("PlayerBlocker", {
 
 Crafty.c("Platformer", {
   speed: 9,
-  jump: 17.5,
+  jump: 20.0,
   acceleration: 3,
   airAcceleration: 0.7,
   disableControls: false,
