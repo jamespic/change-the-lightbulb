@@ -61,4 +61,9 @@
    <property name="components" value="Deadly, HalfHeight"/>
   </properties>
  </tile>
+ <tile id="44">
+  <properties>
+   <property name="components" value="Springer"/>
+  </properties>
+ </tile>
 </tileset>

@@ -45,6 +45,9 @@ Crafty.scene("Load", function() {
       "jump_02.ogg",
       "jump_02.mp3",
       "jump_02.wav",
+      "jump_10.ogg",
+      "jump_10.mp3",
+      "jump_10.wav",
       "coin7.ogg",
       "coin7.mp3",
       "coin7.wav",
@@ -66,6 +69,11 @@ Crafty.scene("Load", function() {
       "jump_02.ogg",
       "jump_02.mp3",
       "jump_02.wav"
+    ])
+    Crafty.audio.add("boing", [
+      "jump_10.ogg",
+      "jump_10.mp3",
+      "jump_10.wav"
     ])
     Crafty.audio.add("unlock", [
       "coin10.ogg",
@@ -274,8 +282,22 @@ generateTiledScene("Chimney", "chimney.json", Backgrounds.desert)
 generateTiledScene("HeathRobinson", "heathrobinson.json", Backgrounds.castle)
 generateTiledScene("Bribery", "bribery.json", Backgrounds.grassland)
 generateTiledScene("Volcano", "volcano.json", Backgrounds.desert)
+generateTiledScene("Shrooms", "shrooms.json", Backgrounds.shroom)
 
 Levels = [
+  {
+    title: "Big-Mart Supermarkets",
+    level: "Shrooms",
+    body:  "<p>We've been asked to change for lightbulb by Big-Mart" +
+           " supermarkets. The bulb's at one of their mushroom farms.</p>" +
+           "<p>As you'll see, they're big believers in economies of scale," +
+           " and vertical integration, so they're slightly embarassed" +
+           " to be asking for our help. But, they've created something" +
+           " they don't understand themselves, so they've called in" +
+           " consultants.</p>" +
+           "<p>Discretion, as always, The Boss</p>",
+    depends: ["Bunker", "Loop"]
+  },
   {
     title: "Happy Friendly Coffee Company",
     level: "Volcano",

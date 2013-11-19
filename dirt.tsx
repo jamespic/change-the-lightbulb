@@ -33,7 +33,7 @@
  </tile>
  <tile id="6">
   <properties>
-   <property name="Components" value="Platform"/>
+   <property name="components" value="Platform"/>
   </properties>
  </tile>
  <tile id="7">

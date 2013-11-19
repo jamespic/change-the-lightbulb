@@ -9,7 +9,7 @@
  <tileset firstgid="145" source="lightbulb.tsx"/>
  <layer name="Background" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztlF0KwjAQhJc++V+wHkTsLTxHoYcQxaPbYAv7YKPEDRv0+2Ao27QzDCSpRKRykiXWfl659Cgrlx5l5dKjrFx6lJX77z06p9xv/JaDVjNaZ8z19PPKjfmdPvi/H59Hw9wUYn6LyNp+UKN0MMxN4Vf31TnybZsx19pvbi9Nd1bq/fQu18JvZ+y5keeZuSuF+aqUo8dW7LqEDvXoe1MK80UpR4+pS2OgWnnq969mAAAAAAAAAAAAAIAHGoQLTw==
+   eJztlF0KwjAQhJc++V+wHkT0Fp5D8NEDiOLRbbCFfWhXjRsS9PtgKNu0MwwkqUSkyiRPvP1y5dKjrFx6lJVLj7Jy6VFW7r/3OGbK/cZv2mo2onnC3Jx+uXItv90b/5+659YxNwbLb2KsrVs1ShvH3Bh+dV8djG/3CXO9/cb2Un9nxd5Pr3I9/FbOngt5npm7UpivSil6LMXucv7AL3SoO9+bUpgvSil69F0aB9XKU78fmgEAAAAAAAAAAAAAHjUOC74=
   </data>
  </layer>
  <layer name="Foreground" width="50" height="50">

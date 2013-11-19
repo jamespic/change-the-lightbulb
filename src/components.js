@@ -357,7 +357,7 @@ Crafty.c("BasicPhys", {
   yGravity: 0.8,
   xVelocity: 0.0,
   yVelocity: 0.0,
-  speedLimit: 20.0,
+  speedLimit: 40.0,
 
   init: function() {
     this.requires("Followable")
@@ -529,6 +529,7 @@ Crafty.c("Telekinesis", {
     
     self.vCoeff = -0.6
     self.sCoeff = -0.3
+    self.speedLimit = 20.0 // Limit speed of telekinetics, to keep them from escaping
   
     
     if (Crafty("MouseFollower").length !== 0) {
@@ -876,10 +877,8 @@ Crafty.c("Player", {
     })
     
     this.bind("Jump", function() {Crafty.audio.play("jump", 1, 0.6)})
+
     this.dots = []
-    
-    
-    
   },
   hideDots: function() {
     this.dots.forEach(function(dot) {
@@ -934,8 +933,8 @@ Crafty.c("Player", {
     var spawnPoint = this.lastCheckpoint || Crafty("PlayerSpawn")
     this.attr(
       {
-      x: spawnPoint.x + spawnPoint.w / 2 - this._w,
-      y: spawnPoint.y + spawnPoint.h / 2 - this._h,
+      x: spawnPoint.x + spawnPoint.w / 2 - this._w / 2,
+      y: spawnPoint.y + spawnPoint.h / 2 - this._h / 2,
       xVelocity: 0.0,
       yVelocity: 0.0
       }
@@ -1066,6 +1065,23 @@ Crafty.c("HalfHeight", {
   init: function() {
     this.requires("AABB")
     this.aabb({l: 0, r: 50, t: 25, b: 50})
+  }
+})
+
+Crafty.c("Springer", {
+  init: function() {
+    this.requires("HalfHeight, HandlesCollisions, Sprite")
+    this.bind("PhysicsCollision", this._springCollisionHandler)
+  },
+  _springCollisionHandler: function(o) {
+    if (o.prevY + o._b <= this._y + this._t) {
+      Crafty.audio.play("boing", 1, 0.6)
+      o.yVelocity = Math.min(-35, o.speedLimit)
+      this.sprite(5,5,1,1)
+      this.timeout(function() {
+        this.sprite(4, 5, 1, 1)
+      }, 500)
+    }
   }
 })
 

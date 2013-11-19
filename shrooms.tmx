@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="50" tileheight="50">
+ <tileset firstgid="1" source="grass.tsx"/>
+ <tileset firstgid="21" source="shrooms.tsx"/>
+ <tileset firstgid="70" source="items.tsx"/>
+ <tileset firstgid="126" source="sand.tsx"/>
+ <tileset firstgid="146" source="liquids.tsx"/>
+ <tileset firstgid="152" source="box.tsx"/>
+ <tileset firstgid="168" source="blocker.tsx"/>
+ <tileset firstgid="171" source="lightbulb.tsx"/>
+ <tileset firstgid="173" source="talker.tsx"/>
+ <layer name="Background Tiles" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztlkEOwyAMBPkUh0i8qv8/VD0gWQgvEHBtpJ1LmriAF69DUiKEEHse7wQOkb0TOAR1+NHrhRt19HIuf89in17OkeuhvUt7OUfWoXnFQ8fO+aTl5uErNP9IozbWo8/R/KM9jOQrND/S+ICx0XSMYrf0x6hWWtzjPC/KujWmkUHco8+RP976yqs/btZRvbTqDxmL0OdZXFfykeMjnB91XvTeOekrqz6v877tj1X9nr76PUff5nLc08S09U4jdWg1H+15bu7lOAn6htllth6ol2WsNLH2v1Y6irjO7jmKab/rGhZ9/kn7vmpjSIdlPWZ9daIeljoIIYQQQgghhOh8AcZ/I/Y=
+  </data>
+ </layer>
+ <layer name="Mid Tiles" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztmFsKwjAQRWO3UEQRFd9v63NlbsAt+OcSuk2nmEIoVpJptFNyDxzSQtPmMikdGimlopq8W2pDZHldXSCHLJDjP+zJRHswjo+F66TnsAU5ymlxFlIRifUYk1Ny5DBHYg4OyMFjTi4Ml4XzFfO+vnLcmM/3RZUca3JDbvW487UoBr/aV22yR3b02Hec70qI73miyvsbFwbkRL2/EUNyVuFeOSHW4x+cyDN50ePVcl7VHFkP4XuPcJBWDy4h58h7i7yn4PYSPgm5HhJBju+Y/bnZm396l4q9WNfxWRmS62H7zydDcg5bUtX8HKlqfo5U8XLEhs+ajQva5ng0QAAAAAAAAACQxAsGMU8B
+  </data>
+ </layer>
+ <layer name="Foreground Tiles" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztzqENADAMBLGQqvvPkSWLwys9iL3AXRW/dXoAAAAAAAAYbrB9gm0AAIBtHgK+ALg=
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="50" height="50">
+  <object x="81" y="1453" width="89" height="136">
+   <properties>
+    <property name="components" value="PlayerSpawn"/>
+   </properties>
+  </object>
+  <object gid="169" x="555" y="1379"/>
+  <object x="543" y="49" width="71" height="347">
+   <properties>
+    <property name="components" value="Checkpoint"/>
+   </properties>
+  </object>
+  <object gid="170" x="1293" y="484"/>
+  <object x="1750" y="1289" width="248" height="113">
+   <properties>
+    <property name="components" value="Checkpoint"/>
+   </properties>
+  </object>
+  <object x="274" y="538" width="126" height="159">
+   <properties>
+    <property name="components" value="Checkpoint"/>
+   </properties>
+  </object>
+  <object x="1012" y="414" width="195" height="182">
+   <properties>
+    <property name="components" value="Checkpoint"/>
+   </properties>
+  </object>
+  <object gid="174" x="765" y="1350">
+   <properties>
+    <property name="message" value="I've made this farm needlessly complicated. That way, they can't afford to fire me."/>
+    <property name="msgWidth" value="175"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>
