@@ -513,12 +513,14 @@ Crafty.c("HintText", {
   }
 })
 
+var telekinesisRadius = 400
+
 Crafty.c("Telekinesis", {
-  maxRadius:400,
+  maxRadius: telekinesisRadius,
   _player: null,
   _held: false,
   _tinted: false,
-  tintColour: "00D0FF",
+  tintColour: "#00D0FF",
   tintOpacity: 0.25,
   init: function() {
     var self = this
@@ -834,14 +836,20 @@ Crafty.c("Talker", {
 })
 
 Crafty.c("Player", {
+  dotCount: 48,
+  dotSize: 4,
+  dotColors: ["#3BDBFF", "#009ABD"],
   lastCheckpoint: null,
   init: function() {
     this.requires("2D, Canvas, p1_front_r, SpriteAnimation, Platformer")
+    
     this.attr({
       w: 52, h: 70
     })
     this.aabb({l: 6, r: 46, t: 6, b: 70})
+    
     this.platformer()
+    
     this.animate("WalkRight", 5, 0, 15)
     this.animate("JumpRight", 3, 0, 3)
     this.animate("StillRight", 4, 0, 4)
@@ -850,10 +858,13 @@ Crafty.c("Player", {
       this.stop()
       if (this._falling) {
         this.animate("JumpRight", 1000, -1);
+        this.hideDots()
       } else if (data.x !== 0) {
         this.animate('WalkRight', animation_speed, -1);
+        this.hideDots()
       } else {
         this.animate("StillRight", animation_speed, -1)
+        this.showDots()
       }
       if (data.x > 0) {
         this._direction = "r"
@@ -865,8 +876,58 @@ Crafty.c("Player", {
     })
     
     this.bind("Jump", function() {Crafty.audio.play("jump", 1, 0.6)})
-  }, 
+    this.dots = []
+    
+    
+    
+  },
+  hideDots: function() {
+    this.dots.forEach(function(dot) {
+      dot.destroy()
+    })
+    this.dots = []
+  },
+  showDots: function () {
+    this.hideDots()
+
+    var leftBound = -Crafty.viewport._x
+    var rightBound = Crafty.viewport.width - Crafty.viewport._x
+    var topBound = -Crafty.viewport._y
+    var bottomBound = Crafty.viewport.height - Crafty.viewport._y
+      
+    var colors = this.dotColors
+    var c = this.dotCount
+    var sz = this.dotSize
+    var hf = sz / 2
+    for (var i = 0; i < c; i++) {
+      // Draw dots in a circle around player
+      var xDotPos = telekinesisRadius * Math.sin(2 * Math.PI * i / c) + this.xPos()
+      var yDotPos = telekinesisRadius * Math.cos(2 * Math.PI * i / c) + this.yPos()
+      if ((xDotPos > leftBound + hf)
+           && (xDotPos < rightBound - hf)
+           && (yDotPos > topBound + hf)
+           && (yDotPos < bottomBound - hf)) {
+             
+        var dot = Crafty.e("2D, Canvas, Color, Tween")
+          .attr(
+            {
+              w: sz,
+              h: sz,
+              x: xDotPos - hf,
+              y: yDotPos - hf,
+              z: -100,
+              alpha: 0.0
+            }
+          )
+          .color(colors[i % colors.length])
+          .tween({alpha: 1.0}, 35)
+        this.attach(dot)
+        this.dots.push(dot)
+      }
+    }
+  },
   respawn: function() {
+    this.hideDots()
     var spawnPoint = this.lastCheckpoint || Crafty("PlayerSpawn")
     this.attr(
       {

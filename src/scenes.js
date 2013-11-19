@@ -51,6 +51,7 @@ Crafty.scene("Load", function() {
       "coin10.ogg",
       "coin10.mp3",
       "coin10.wav",
+      "field.svg"
     ], function() {
     Crafty.audio.add("death", [
       "death.ogg",
