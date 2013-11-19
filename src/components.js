@@ -89,10 +89,7 @@ Crafty.c("ForwardSlope", {
       }
     } else if (cX > this._x + this._w) {
       c.y = this._y + this._t - c._b
-      if (c._platformer) {
-        //Special case player, to avoid jumps at ridges
-        c.yVelocity = Math.max(0, -c.xVelocity)
-      } else if (c.yVelocity > 0) c.yVelocity = 0
+      if (c.yVelocity > 0) c.yVelocity = 0
       c._falling = false
     }
       
@@ -124,10 +121,7 @@ Crafty.c("BackwardSlope", {
       }
     } else if (cX < this._x) {
       c.y = this._y + this._t - c._b
-      if (c._platformer) {
-        //Special case player, to avoid jumps at ledges
-        c.yVelocity = Math.max(0, c.xVelocity)
-      } else if (c.yVelocity > 0) c.yVelocity = 0
+      if (c.yVelocity > 0) c.yVelocity = 0
       c._falling = false
     }
       
