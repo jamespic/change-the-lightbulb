@@ -24,5 +24,12 @@
     <property name="msgWidth" value="200"/>
    </properties>
   </object>
+  <object x="206" y="59" width="287" height="225">
+   <properties>
+    <property name="components" value="HintText"/>
+    <property name="hintTimeout" value="10000"/>
+    <property name="message" value="Coloured door are opened by switches or keys. You can push a button with anything that moves."/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

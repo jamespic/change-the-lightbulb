@@ -7,7 +7,7 @@
  <tileset firstgid="69" source="box.tsx"/>
  <layer name="Tile Layer 1" width="26" height="18">
   <data encoding="base64" compression="zlib">
-   eJxjYmBgYKITpgVwRmLT0h5kMGoPYaCNhY3NHmzqiDUXF6C2f3iAWBgLRreHE4i50DA3DjNZsJjHy0D//IMM6G0PtjAVoYE9tAak2uNGI3uEGKgTnuj2SJJhBjn2SFBglisR9mBLb9TEIDsAeBkGCg==
+   eJxjYmBgYKITpgVwRmLT0h5kMGoPYaCNhY3NHmzqiDUXF8DlHzci9GIDPEAsjAWj28MJxFxomBuHmSxYzONloH/+QQaDyR4hBtSwEaGRPdQAg9UecsMQ3R5JEuwkBaDbI0GBWa5E2IMtD1MTg+wAAMaZBeM=
   </data>
  </layer>
  <objectgroup name="Foreground Objects" width="26" height="18">
@@ -23,11 +23,18 @@
     <property name="components" value="PlayerSpawn"/>
    </properties>
   </object>
-  <object x="409" y="101" width="375" height="238">
+  <object x="401" y="78" width="398" height="261">
    <properties>
     <property name="components" value="HintText"/>
     <property name="hintTimeout" value="20000"/>
-    <property name="message" value="Hint: You can stand on boxes. Drag one underneath the lightbulb with your telekinetic powers (left mouse button). The box is in telekinesis range when it turns blue"/>
+    <property name="message" value="You have telekinetic powers. You can pick up boxes if they're in range. Walk up to a box, and click on it to pick it up. Hold down the mouse button and you can move it around. You can stand on boxes to reach items"/>
+   </properties>
+  </object>
+  <object x="64" y="445" width="322" height="221">
+   <properties>
+    <property name="components" value="HintText"/>
+    <property name="hintTimeout" value="10000"/>
+    <property name="message" value="Move around with either the arrow keys, or WASD. You can jump through thin platforms, but not thick ones. You can also climb down from thin platforms, by pressing &quot;down&quot;"/>
    </properties>
   </object>
  </objectgroup>

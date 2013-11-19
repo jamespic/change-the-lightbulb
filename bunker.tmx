@@ -17,7 +17,7 @@
  </objectgroup>
  <layer name="Tile Layer 1" width="27" height="23">
   <data encoding="base64" compression="zlib">
-   eJxjYmBgYKIjpjXwp6NdnHS0i2EQ2hWGxOYBYmEgjiQDE7KLFWo2DPNC1QuTgQciDLnQMDcN7aIHGCx2gfIfNcN2oP0VTmO7sOUHNhrZRW0gwABxL3Jck2JXLhI7D4caSyQ2srlBDPjDEBmrQ3ErFMP4pJZREiTgEigmRQ86pgVANxfZriwoXYOmBp0PA60E1BXisSsTjxux2dMFxC141OCyS50OGGQPADBDGhw=
+   eJxjYmBgYKIjpjXwp6NdnHS0i2EQ2hWGxOYBYmEgjiQDE7KLFWo2DPNC1QuTgQciDLnQMDcN7aIHGCx2gfIfNcN2oP0VTmO7sOUHNhrZRW0gwABxL3Jck2JXLhI7D4caSyQ2srlBDPjDEBmrQ/FkKIbxSS2jJEjAJVBMih50TAuAbi6yXVlQugZNDTofBloJqCvEY1cmHjdis6cLiFvwqMFllzodMMgeAHIbGjg=
   </data>
  </layer>
  <objectgroup name="Foreground Objects" width="27" height="23">

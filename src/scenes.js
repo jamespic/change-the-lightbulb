@@ -50,8 +50,7 @@ Crafty.scene("Load", function() {
       "coin7.wav",
       "coin10.ogg",
       "coin10.mp3",
-      "coin10.wav",
-      "field.svg"
+      "coin10.wav"
     ], function() {
     Crafty.audio.add("death", [
       "death.ogg",
@@ -365,10 +364,10 @@ Levels = [
              " approach. We recommend that you move left and right with" +
              " the arrow keys, jump with the W key, and use the down arrow to climb down from ledges.</p>" +
              "<p>Those of you with telekinetic powers should continue to" +
-             " use the existing scheme. Hold <b>left mouse button</b> to drag items." +
-             " If you need to hold something still, you can hold down" + 
-             " the <b>right mouse button</b>, whilst dragging. This will" +
-             " hold the dragged item still.</p>" +
+             " use the existing scheme. Hold <b>left mouse button</b> to levitate items." +
+             " If you need to keep something still, you can hold down" + 
+             " the <b>right mouse button</b> while levitating. This will" +
+             " keep the levitated item still.</p>" +
              "<p>You can abort your current assignment and return to the" +
              " menu with <b>Esc</b>.</p>" +
              "<p>This new control system will synergise with our existing" +

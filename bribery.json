@@ -80,8 +80,8 @@
                  "properties":
                     {
                      "components":"HintText",
-                     "hintTimeout":"60000",
-                     "message":"Hint: From time to time, people will try to get in your way. A \"facilitation payment\" will usually get things moving"
+                     "hintTimeout":"10000",
+                     "message":"From time to time, people will try to get in your way, or prevent you using your powers. A \"facilitation payment\" will usually get things moving"
                     },
                  "type":"",
                  "visible":true,
@@ -145,17 +145,9 @@
                 {
                  "components":"ForwardSlope"
                 },
-             "12":
-                {
-                 "components":"Obstacle"
-                },
              "13":
                 {
                  "components":"BackwardSlope"
-                },
-             "14":
-                {
-                 "components":"Obstacle"
                 },
              "17":
                 {

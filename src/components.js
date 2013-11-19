@@ -618,7 +618,7 @@ Crafty.c("TelekinesisBlocker", {
     this.bind("PhysicsCollision", this._restrictedHandleCollision)
   },
   _restrictedHandleCollision: function(o) {
-    if (this._blockingActive && o.has("Telekinesis")) {
+    if (this._blockingActive && o.has("Telekinesis") && !o.has("Money")) {
       this._genericHandleCollision(o)
     }
   }
@@ -836,7 +836,7 @@ Crafty.c("Talker", {
 })
 
 Crafty.c("Player", {
-  dotCount: 48,
+  dotCount: 32,
   dotSize: 4,
   dotColors: ["#3BDBFF", "#009ABD"],
   lastCheckpoint: null,
@@ -921,7 +921,7 @@ Crafty.c("Player", {
           )
           .color(colors[i % colors.length])
           .tween({alpha: 1.0}, 35)
-        this.attach(dot)
+        //this.attach(dot)
         this.dots.push(dot)
       }
     }

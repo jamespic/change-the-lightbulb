@@ -26,8 +26,8 @@
   <object x="128" y="106" width="286" height="190">
    <properties>
     <property name="components" value="HintText"/>
-    <property name="hintTimeout" value="60000"/>
-    <property name="message" value="Hint: From time to time, people will try to get in your way. A &quot;facilitation payment&quot; will usually get things moving"/>
+    <property name="hintTimeout" value="10000"/>
+    <property name="message" value="From time to time, people will try to get in your way, or prevent you using your powers. A &quot;facilitation payment&quot; will usually get things moving"/>
    </properties>
   </object>
  </objectgroup>

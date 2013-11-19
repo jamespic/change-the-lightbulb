@@ -43,6 +43,21 @@
                  "width":0,
                  "x":268,
                  "y":649
+                }, 
+                {
+                 "height":225,
+                 "name":"",
+                 "properties":
+                    {
+                     "components":"HintText",
+                     "hintTimeout":"10000",
+                     "message":"Coloured door are opened by switches or keys. You can push a button with anything that moves."
+                    },
+                 "type":"",
+                 "visible":true,
+                 "width":287,
+                 "x":206,
+                 "y":59
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -92,14 +107,6 @@
              "12":
                 {
                  "components":"Platform"
-                },
-             "13":
-                {
-                 "components":"Obstacle"
-                },
-             "14":
-                {
-                 "components":"Obstacle"
                 },
              "17":
                 {
@@ -167,6 +174,18 @@
          "tileheight":50,
          "tileproperties":
             {
+             "13":
+                {
+                 "components":"Money"
+                },
+             "14":
+                {
+                 "components":"Money"
+                },
+             "15":
+                {
+                 "components":"Money"
+                },
              "3":
                 {
                  "components":"BlueButton"
@@ -310,6 +329,10 @@
              "1":
                 {
                  "components":"Telekinesis, Platform"
+                },
+             "15":
+                {
+                 "components":"Obstacle, Telekinesis"
                 },
              "6":
                 {

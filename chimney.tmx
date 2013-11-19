@@ -23,7 +23,7 @@
  </objectgroup>
  <layer name="Tile Layer 1" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztl1sKwjAQRYduQfDTz1Zdg0Jdj5tw6aaYQJFqHtPbMM09MGQI4aYHkpZ2ItIBamsQe9IDs+czcS4nE8W/PXtXg6uTr6k/KzNRxPY8/ug1mQha8rjO+jUyEaR4hDti3WOp12QiaM2jl314fPeaTAQteYTvuXWPpV6TiYAe5ZkI6FGeiYDvq/JMBC15XOTzD2Ldg/djO/biMUTKyrkKz3bPWBujpsctY+3Ey4+jq4cfRz9XyyN2tuZn7JBQNTwIIYQQQgghhBDLvAEJwQ3+
+   eJztlUEKgzAQRQevUOiyS7U9QRcV7Hm8hEdvhARKscZk+IYx/8HgEMIfHyTaiEgDqKNBzKQHZua0cy0lE8XWzNZV5+rma+l7ZSaK2Mzrn16TiaA2j6fY9wh3xLrHWq/JRFCbRyvn8PjtNZkIavII/3PrHmu9JhMBPfIzEdAjPxMBv1f5mQhq8ri7eoh9D96P4ziLRxcpK+cqvNuQsDdGSY9Xwt6F2T9HV2//HP1aKY/Y2fo+Y5cdVcKDEEIIIYQQQgixzAfdSA4M
   </data>
  </layer>
  <objectgroup name="Foreground Objects" width="50" height="50">
@@ -44,11 +44,25 @@
     <property name="components" value="PlayerSpawn"/>
    </properties>
   </object>
-  <object x="607" y="787" width="270" height="203">
+  <object x="615" y="1165" width="270" height="203">
    <properties>
     <property name="components" value="HintText"/>
-    <property name="hintTimeout" value="30000"/>
-    <property name="message" value="Hint: When dragging a box, hold down the right mouse button to keep it still. You can now use it as a platform"/>
+    <property name="hintTimeout" value="8000"/>
+    <property name="message" value="You can jump through wooden boxes, just like thin platforms."/>
+   </properties>
+  </object>
+  <object x="615" y="786" width="359" height="224">
+   <properties>
+    <property name="components" value="HintText"/>
+    <property name="hintTimeout" value="15000"/>
+    <property name="message" value="Sometimes you need to jump extra high. Luckily, you can stand on boxes that are in mid-air. If you're levitating a box, and you need it to stop moving around, hold down the right mouse button."/>
+   </properties>
+  </object>
+  <object x="628" y="256" width="359" height="224">
+   <properties>
+    <property name="components" value="HintText"/>
+    <property name="hintTimeout" value="22000"/>
+    <property name="message" value="You can't jump through metal boxes - they're like thick platforms. However, you can still move them around"/>
    </properties>
   </object>
  </objectgroup>
