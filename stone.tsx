@@ -66,16 +66,6 @@
    <property name="components" value="Platform"/>
   </properties>
  </tile>
- <tile id="13">
-  <properties>
-   <property name="components" value="Obstacle"/>
-  </properties>
- </tile>
- <tile id="14">
-  <properties>
-   <property name="components" value="Obstacle"/>
-  </properties>
- </tile>
  <tile id="17">
   <properties>
    <property name="components" value="Obstacle"/>

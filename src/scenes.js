@@ -217,7 +217,7 @@ function win() {
   Crafty.scene("MainMenu")
 }
 
-function generateTiledScene(sceneName, url, bg) {
+function generateTiledScene(sceneName, url, bg, disablePanning) {
   Crafty.scene(sceneName, function() {
     window.currentLevel = sceneName
     var escapeListener = Crafty.e()
@@ -245,7 +245,9 @@ function generateTiledScene(sceneName, url, bg) {
           this.physicsOn().followSHM(player)
         }
       })
-      followPlayerWithCamera(false)
+      if (!disablePanning) {
+        followPlayerWithCamera(false)
+      }
       Crafty.background(bg)
     })
   })
@@ -260,7 +262,7 @@ var Backgrounds = {
   
 
 generateTiledScene("Untitled", "untitled.json", Backgrounds.castle)
-generateTiledScene("JobCentre", "jobcentre.json", "#98FF69")
+generateTiledScene("JobCentre", "jobcentre.json", "#98FF69", true)
 generateTiledScene("Warehouse", "warehouse.json", Backgrounds.castle)
 generateTiledScene("Loop", "loop.json", Backgrounds.grassland)
 generateTiledScene("Bunker", "bunker.json", Backgrounds.desert)

@@ -221,17 +221,9 @@
                 {
                  "components":"ForwardSlope"
                 },
-             "12":
-                {
-                 "components":"Obstacle"
-                },
              "13":
                 {
                  "components":"BackwardSlope"
-                },
-             "14":
-                {
-                 "components":"Obstacle"
                 },
              "17":
                 {

@@ -46,19 +46,19 @@ Crafty.c("HandlesCollisions", {
       if (!this.obstructFromBelow && (c._held || c._climbDown)) return
       // On top
       c.y = this._y + this._t - c._b
-      if (c.yVelocity > 0) c.yVelocity = 0
+      c.yVelocity = 0
       c._falling = false
     } else if (this.obstructFromSides && (c.prevX + c._r <= this._x + this._l)) {
       //On left
-      if (c.xVelocity > 0) c.xVelocity = 0
+      c.xVelocity = 0
       c.x = this._x + this._l - c._r
     } else if (this.obstructFromSides && (c.prevX + c._l >= this._x + this._r)) {
       // On right
-      if (c.xVelocity < 0) c.xVelocity = 0
+      c.xVelocity = 0
       c.x = this._x + this._r - c._l
     } else if (this.obstructFromBelow && (c.prevY + c._t >= this._y + this._b)) {
       // below
-      if (c.yVelocity < 0) c.yVelocity = 0
+      c.yVelocity = 0
       c.y = this._y + this._b - c._t
     }
   }
@@ -75,13 +75,25 @@ Crafty.c("ForwardSlope", {
     var cY = c._y + c._b
     var intersectPoint = this._y + this._h - (cX - this._x)
     if ((cX <= this._x + this._w) && (cX >= this._x) && (cY > intersectPoint)) {
-      c._y = intersectPoint - c._b
+      c.y = intersectPoint - c._b
       c._falling = false
       if (c.xVelocity + c.yVelocity > 0) {
-        // Project velocity
-        c.xVelocity = (c.xVelocity - c.yVelocity) / 2
-        c.yVelocity = -(c.xVelocity)
+        if (c._platformer) {
+          //Special case player, to avoid jumps at ridges
+          c.yVelocity = Math.max(0, -c.xVelocity)
+        } else {
+          //Project velocity
+          c.xVelocity = (c.xVelocity - c.yVelocity) / 2
+          c.yVelocity = -(c.xVelocity)
+        }
       }
+    } else if (cX > this._x + this._w) {
+      c.y = this._y + this._t - c._b
+      if (c._platformer) {
+        //Special case player, to avoid jumps at ridges
+        c.yVelocity = Math.max(0, -c.xVelocity)
+      } else if (c.yVelocity > 0) c.yVelocity = 0
+      c._falling = false
     }
       
   }
@@ -98,13 +110,25 @@ Crafty.c("BackwardSlope", {
     var cY = c._y + c._b
     var intersectPoint = this._y +  (cX - this._x)
     if ((cX <= this._x + this._w) && (cX >= this._x) && (cY > intersectPoint)) {
-      c._y = intersectPoint - c._b
+      c.y = intersectPoint - c._b
       c._falling = false
       if (c.yVelocity - c.xVelocity > 0) {
-        // Project velocity
-        c.xVelocity = (c.xVelocity + c.yVelocity) / 2
-        c.yVelocity = c.xVelocity
+        if (c._platformer) {
+          //Special case player, to avoid jumps at ledges
+          c.yVelocity = Math.max(0, c.xVelocity)
+        } else {
+          // Project velocity
+          c.xVelocity = (c.xVelocity + c.yVelocity) / 2
+          c.yVelocity = c.xVelocity
+        }
       }
+    } else if (cX < this._x) {
+      c.y = this._y + this._t - c._b
+      if (c._platformer) {
+        //Special case player, to avoid jumps at ledges
+        c.yVelocity = Math.max(0, c.xVelocity)
+      } else if (c.yVelocity > 0) c.yVelocity = 0
+      c._falling = false
     }
       
   }
@@ -131,11 +155,11 @@ Crafty.c("Obstacle", {
   }
 })
 
-function signum(x) {
-  var i = Math.round(x)
-  if (i < 0) return -1
-  if (i > 0) return 1
-  if (i == 0) return 0
+var signumPadding = 1.0
+function floatSignum(x) {
+  if (x < -signumPadding) return -1
+  if (x > signumPadding) return 1
+  else return 0
 }
 
 Crafty.c("Followable", {
@@ -379,8 +403,9 @@ Crafty.c("BasicPhys", {
     var self = this
     self.prevX = self.x
     self.prevY = self.y
-    var oldXSignum = signum(self.xVelocity)
-    var oldYSignum = signum(self.yVelocity)
+    self._forceNewDirection = false
+    var oldXSignum = floatSignum(self.xVelocity)
+    var oldYSignum = floatSignum(self.yVelocity)
     
     self.xVelocity += self.xAccel + self.xGravity
     self.xAccel = 0
@@ -399,10 +424,12 @@ Crafty.c("BasicPhys", {
     this.trigger("PhysicsCallbacks")
     
     // Trigger NewDirection listener.
-    var newXSignum = signum(self.xVelocity)
-    var newYSignum = signum(self.yVelocity)
-    if ((newXSignum != oldXSignum) || (newYSignum != oldYSignum)) {
-      self.trigger("NewDirection",{x:Math.round(self.xVelocity), y: Math.round(self.yVelocity)})
+    var newXSignum = floatSignum(self.xVelocity)
+    var newYSignum = floatSignum(self.yVelocity)
+    if ((newXSignum != oldXSignum)
+        || (newYSignum != oldYSignum)
+        || self._forceNewDirection) {
+      self.trigger("NewDirection",{x: newXSignum, y: newYSignum})
     }
     if ((self.prevX !== self.x) || (self.prevY !== self.y)) {
       self.trigger("FollowMe")
@@ -425,6 +452,7 @@ Crafty.c("Phys", {
   _handleCollisions: function() {
     var self = this
     // Resolve collisions
+    var wasFalling = self._falling
     
     var q = Crafty.map.search(self, false);
     self._falling = true // Falling, unless proven otherwise
@@ -439,6 +467,8 @@ Crafty.c("Phys", {
         o.trigger("PhysicsCollision", self)
       }
     })
+    
+    if (self._falling !== wasFalling) self._forceNewDirection = true
     
     if (!self._falling) {
       self.xAccel -= self.xVelocity * self.groundFriction
@@ -494,11 +524,15 @@ Crafty.c("Telekinesis", {
   _held: false,
   _tinted: false,
   tintColour: "00D0FF",
-  tintOpacity: 0.15,
+  tintOpacity: 0.25,
   init: function() {
     var self = this
     
     self.requires("Phys, SHMFollower, Mouse, Tint")
+    
+    self.vCoeff = -0.8
+    self.sCoeff = -0.3
+  
     
     if (Crafty("MouseFollower").length !== 0) {
       self._mouseFollower = Crafty(Crafty("MouseFollower")[0])
@@ -648,6 +682,7 @@ Crafty.c("Platformer", {
   _leftKeyDown: false,
   _rightKeyDown: false,
   _climbDown: false,
+  _platformer: true, // Always true
   init: function() {
     this.requires("Phys, Keyboard")
   },
@@ -706,12 +741,22 @@ Crafty.c("Platformer", {
   },
   _goRight: function() {
     if (this.xVelocity < this.speed) {
-      this.xAccel += Math.min(this._accel, this.speed - this.xVelocity)
+      var accelAmount = Math.min(this._accel, this.speed - this.xVelocity)
+      this.xAccel += accelAmount
+      if (!this._falling) {
+        // If on the ground, accelerate downwards too, to hug slopes
+        this.yAccel += accelAmount
+      }
     }
   },
   _goLeft: function() {
     if (this.xVelocity > (-this.speed)) {
-      this.xAccel -= Math.min(this._accel, this.speed + this.xVelocity)
+      var accelAmount = Math.min(this._accel, this.speed + this.xVelocity)
+      this.xAccel -= accelAmount
+      if (!this._falling) {
+        // If on the ground, accelerate downwards too, to hug slopes
+        this.yAccel += accelAmount
+      }
     }
   },
   _stopMoving: function() {
@@ -806,7 +851,7 @@ Crafty.c("Player", {
       this.stop()
       if (this._falling) {
         this.animate("JumpRight", 1000, -1);
-      } else if (Math.abs(data.x) > 1.0) {
+      } else if (data.x !== 0) {
         this.animate('WalkRight', animation_speed, -1);
       } else {
         this.animate("StillRight", animation_speed, -1)
