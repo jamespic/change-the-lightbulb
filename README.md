@@ -15,19 +15,25 @@ tasks for large corporations!
 
 ## Open Source Projects Used
 
-- [Crafty](https://github.com/craftyjs/Crafty)
-- [Crafty Tiled Importer](https://github.com/mleveck/Crafty-Tiled-Map-Importer)
-- [Tiled](https://github.com/bjorn/tiled)
-- [JQuery](https://github.com/jquery/jquery)
-- Kenney's [Platformer Deluxe Tileset](http://opengameart.org/content/platformer-art-deluxe) and [Mushroom add-on pack](http://opengameart.org/content/platformer-art-mushroom-land)
-- [Icons by Tango Project and Linuxerist](http://commons.wikimedia.org/wiki/File:Dialog-information_on.svg)
-- [Coin sound effects by Luke.RUSTLD](http://opengameart.org/content/10-8bit-coin-sounds)
-- [Jump sound effects by rudy85](http://opengameart.org/content/jump-sounds)
-- [Additional sound effects by sauer2](http://opengameart.org/content/oldschool-win-and-die-jump-and-run-sounds)
-- [Music by bart](http://opengameart.org/content/jump-and-run-8-bit) *not currently used*
-- [Coming Soon](http://www.google.com/fonts) by Open Window, from Google's Web Fonts
+- [Crafty](https://github.com/craftyjs/Crafty) (MIT/GPL dual)
+- [Crafty Tiled Importer](https://github.com/mleveck/Crafty-Tiled-Map-Importer) (MIT)
+- [Tiled](https://github.com/bjorn/tiled) (GPLv2)
+- [JQuery](https://github.com/jquery/jquery) (MIT)
+- Kenney's [Platformer Deluxe Tileset](http://opengameart.org/content/platformer-art-deluxe) and [Mushroom add-on pack](http://opengameart.org/content/platformer-art-mushroom-land) (CC0)
+- [Icons by Tango Project and Linuxerist](http://commons.wikimedia.org/wiki/File:Dialog-information_on.svg) (CC-BY-SA 2.5)
+- [Coin sound effects by Luke.RUSTLD](http://opengameart.org/content/10-8bit-coin-sounds) (CC0)
+- [Jump sound effects by rudy85](http://opengameart.org/content/jump-sounds) (CC0)
+- [Additional sound effects by sauer2](http://opengameart.org/content/oldschool-win-and-die-jump-and-run-sounds) (CC0)
+- [Music by bart](http://opengameart.org/content/jump-and-run-8-bit) (CC-BY 3.0) *not currently used*
+- [Coming Soon](http://www.google.com/fonts) by Open Window, from Google's Web Fonts (Apache 2.0)
+- [Academia vs. Business](http://xkcd.com/664/) by Randall Monroe (CC-BY-NC 2.5)
 
 Crafty Tiled Importer and Crafty both needed some modifications. The modifications to
 Crafty Tiled Importer have been submitted back as a pull request. It wasn't practical
 to do the same with Crafty, as the Crafty codebase is in the middle of
 a refactor.
+
+## License
+
+With the exception of the above mentioned projects, which remain under their original
+licenses, this application is released under a CC0 license.

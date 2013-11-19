@@ -311,6 +311,13 @@ Levels = [
     depends: ["Bunker", "Loop"]
   },
   {
+    title: "Thought you'd like this",
+    body:  "<p>Hey, I saw this, and thought you'd appreciate it.</p>" +
+           '<img style="width: 550px" src="http://imgs.xkcd.com/comics/academia_vs_business.png">' +
+           "<p>Cheers, Steve</p>",
+    depends: ["Bunker", "Loop"]
+  },
+  {
     title: "Government Bunker",
     level: "Bunker",
     body:  "<p>We need you to change a lightbulb at a top-secret government" +
