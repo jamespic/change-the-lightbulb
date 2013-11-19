@@ -9,7 +9,7 @@ Crafty.c("AABB", {
     this._r || (this._r = this._w)
     this._t || (this._t = 0)
     this._b || (this._b = this._h)
-    this.bind("Move", this._aabbMove)
+    this.bind("Resize", this._aabbResize)
   },
   aabb: function(aabb) {
     this._l = aabb._l || aabb.l
@@ -26,7 +26,7 @@ Crafty.c("AABB", {
       && (o._y + o._t < this._y + this._b)
     )
   },
-  _aabbMove: function (old) {
+  _aabbResize: function (old) {
     if (!this._aabbInitialised) {
       this._r = this._w
       this._b = this._h
@@ -329,15 +329,10 @@ Crafty.c("Camera", {
       if (newYPos > -topBound) newYPos = -topBound
 
       var panned = false
-      if (newXPos !== Crafty.viewport._x) {
-        Crafty.viewport.scroll('_x', newXPos);
-        panned = true
+      if ((newXPos !== Crafty.viewport._x) || (newYPos !== Crafty.viewport._y))  {
+        Crafty.viewport.scroll({_x: newXPos, _y: newYPos});
+        Crafty.trigger("ViewportPanned");
       }
-      if (newYPos !== Crafty.viewport._y) {
-        Crafty.viewport.scroll('_y', newYPos);
-        panned = true
-      }
-      if (panned) Crafty.trigger("ViewportPanned");
     }
   },
   follow: function(target) {
