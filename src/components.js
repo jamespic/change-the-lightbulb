@@ -681,7 +681,7 @@ Crafty.c("Platformer", {
   speed: 9,
   jump: 20.0,
   acceleration: 3,
-  airAcceleration: 0.7,
+  airAcceleration: 1.5,
   disableControls: false,
   _leftKeyDown: false,
   _rightKeyDown: false,
