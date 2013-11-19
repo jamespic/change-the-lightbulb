@@ -51,7 +51,7 @@
                     {
                      "components":"HintText",
                      "hintTimeout":"10000",
-                     "message":"Coloured door are opened by switches or keys. You can push a button with anything that moves."
+                     "message":"Coloured door are opened by buttons or keys. You can push a button with anything that moves."
                     },
                  "type":"",
                  "visible":true,

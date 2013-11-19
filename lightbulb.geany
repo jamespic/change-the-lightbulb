@@ -23,13 +23,12 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=5
-FILE_NAME_0=14341;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fcomponents.js;0;2
+current_page=3
+FILE_NAME_0=17954;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fcomponents.js;0;2
 FILE_NAME_1=16810;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2FCrafty%2FCrafty%2Fsrc%2Fextensions.js;0;4
 FILE_NAME_2=10024;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2FCrafty%2FCrafty%2Fsrc%2F2D.js;0;2
-FILE_NAME_3=1606;Markdown;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2FREADME.md;0;2
-FILE_NAME_4=7632;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fscenes.js;0;2
-FILE_NAME_5=0;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2FCrafty%2FCrafty%2Fsrc%2FHashMap.js;0;2
+FILE_NAME_3=1841;Markdown;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2FREADME.md;0;2
+FILE_NAME_4=7848;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fscenes.js;0;2
 
 [VTE]
 last_dir=/home/james

@@ -3,7 +3,7 @@ Crafty.scene("Load", function() {
   Crafty
     .e("Text, DOM, 2D")
     .text("Loading...")
-    .textFont({size: "50px", family: "Comic Sans MS"})
+    .textFont({size: "50px", family: 'Coming Soon'})
     .attr({x: 50, y: 50, w: 950, h: 400})
   
   Crafty.load(
@@ -119,7 +119,7 @@ function displayMsgWindow(msgs) {
   var e = Crafty
     .e("Text, DOM, 2D")
     .text("Email: Speedy Electrical Contractors")
-    .textFont({size: "50px", family: "Comic Sans MS"})
+    .textFont({size: "50px", family: 'Coming Soon'})
     .attr({x: 50, y: 50, w: 950, h: 400})
   var selectedLevel = null
   function playLevel() {
@@ -138,7 +138,7 @@ function displayMsgWindow(msgs) {
     
   var clickToStartHint = Crafty
     .e("Text, DOM, 2D")
-    .textFont({size: "12pt", family: "Comic Sans MS"})
+    .textFont({size: "12pt", family: 'Coming Soon'})
     .attr({x: 500, y: 125, w: 550, h: 25})
   
   var msgListBg = Crafty.e("2D, DOM, Color")

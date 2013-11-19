@@ -474,14 +474,14 @@ Crafty.c("Phys", {
 Crafty.c("Sign", {
   init: function() {
     this.requires("Text, Canvas, 2D")
-    .textFont({size: "50px", family: "Comic Sans MS"})
+    .textFont({size: "50px", family: "Coming Soon"})
   }
 })
 
 Crafty.c("GameLogo", {
   init: function() {
     this.requires("Text, Canvas, 2D")
-    .textFont({size: "50px", family: "Comic Sans MS"})
+    .textFont({size: "50px", family: "Coming Soon"})
     .textColor("#ffffff")
     .text("Change The Lightbulb")
     .attr({z: 200})
@@ -806,8 +806,6 @@ Crafty.c("Talker", {
   _msgEntity: null,
   msgWidth: "100",
   msgHeight: "100",
-  msgBg: "#FFE0EE",
-  msgFont: "Comic Sans MS",
   init: function() {
     this.requires("2D")
     this.bind("EnterFrame", this._talkerEnterFrame)
@@ -824,9 +822,7 @@ Crafty.c("Talker", {
         e.w = msgWidth
         e.h = msgHeight
         e.replace(
-          '<div style="text-align: center; background: ' + this.msgBg +
-            '; font-family: ' + this.msgFont + '; width: 100%; height: 100%;' +
-            'border-radius: 15px; padding: 25px">' + this.message + '</div>')
+          '<div class="talker">' + this.message + '</div>')
       }
     } else {
       if (this._msgEntity !== null) {

@@ -28,7 +28,7 @@
    <properties>
     <property name="components" value="HintText"/>
     <property name="hintTimeout" value="10000"/>
-    <property name="message" value="Coloured door are opened by switches or keys. You can push a button with anything that moves."/>
+    <property name="message" value="Coloured door are opened by buttons or keys. You can push a button with anything that moves."/>
    </properties>
   </object>
  </objectgroup>

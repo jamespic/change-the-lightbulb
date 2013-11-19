@@ -25,9 +25,9 @@ tasks for large corporations!
 - [Jump sound effects by rudy85](http://opengameart.org/content/jump-sounds)
 - [Additional sound effects by sauer2](http://opengameart.org/content/oldschool-win-and-die-jump-and-run-sounds)
 - [Music by bart](http://opengameart.org/content/jump-and-run-8-bit) *not currently used*
+- [Coming Soon](http://www.google.com/fonts) by Open Window, from Google's Web Fonts
 
 Crafty Tiled Importer and Crafty both needed some modifications. The modifications to
 Crafty Tiled Importer have been submitted back as a pull request. It wasn't practical
 to do the same with Crafty, as the Crafty codebase is in the middle of
 a refactor.
-

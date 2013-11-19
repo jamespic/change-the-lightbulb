@@ -1,5 +1,5 @@
 body {
-  font-family: "Comic Sans MS";
+  font-family: Coming Soon;
   background: black;
   margin-left: auto;
   margin-right: auto;
@@ -18,4 +18,14 @@ body {
   height: 100%;
   font-size: 18pt;
   text-align: center;
+}
+
+.talker {
+  text-align: center;
+  background: #FFE0EE;
+  font-family: Coming Soon;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  padding: 25px
 }
