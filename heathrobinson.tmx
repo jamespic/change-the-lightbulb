@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="50" tileheight="50">
+<map version="1.0" orientation="orthogonal" width="29" height="14" tilewidth="50" tileheight="50">
  <tileset firstgid="1" source="stone.tsx"/>
  <tileset firstgid="26" source="items.tsx"/>
  <tileset firstgid="82" source="misc.tsx"/>
  <tileset firstgid="112" source="lightbulb.tsx"/>
  <tileset firstgid="114" source="talker.tsx"/>
  <tileset firstgid="130" source="box.tsx"/>
- <layer name="Tile Layer 1" width="50" height="50">
+ <layer name="Tile Layer 1" width="29" height="14">
   <data encoding="base64" compression="zlib">
-   eJzt1UEKwjAQheFRiksV6lbEi/QWdqf2CN6hF5dAg2lMaEIzteD/wUAYkrGPklqJSLVwaXDnvib2NRPnrT7SbyL9ElLnmn3PxPP3zH4JOTm2iec3mf0ScnIc5DuLf948637o95G+hpwcoSzuefdZTXWRvobcHH4We2/8u2Pn7mScQTNHHahTYJ+fpZO0e7P0d3dqn18XSbs3a89Ry/j9mCyPodaaY85cu479P5b+vVZprlkf5fP+NLhzb4XnXp31WX7zvZpbVWCtmQMAAAAAAAAAAADA/3gDXXML3A==
+   eJzFlFEKgzAQRKcS+lkL9reUXsRb6F/VI3gHL14WXIjrbsxCxIGBMEn2kSxJABAuMGuGLVrXGrnUYuStwkyJ1o2ZzN9B7mFWmczbQe5h1gpX7qe6jzVfjNzD1Ljxfll3MnIvU3K5z7LXXPeu8MiN4leCydwJeX1OvZXcc7I/0O/7TGaD7bmJO6wuwfRKMkn8V8Rz/YnMJ7b3wuoKM7/R+I19X0o7KGPm/QGzqQvc
   </data>
  </layer>
- <objectgroup name="Foreground Objects" width="50" height="50">
+ <objectgroup name="Foreground Objects" width="29" height="14">
   <object x="121" y="502" width="97" height="146">
    <properties>
     <property name="components" value="PlayerSpawn"/>

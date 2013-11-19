@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="50" tileheight="50">
+<map version="1.0" orientation="orthogonal" width="22" height="13" tilewidth="50" tileheight="50">
  <tileset firstgid="1" source="box.tsx"/>
  <tileset firstgid="17" source="castle.tsx"/>
  <tileset firstgid="37" source="misc.tsx"/>
  <tileset firstgid="67" source="talker.tsx"/>
  <tileset firstgid="83" source="lightbulb.tsx"/>
- <objectgroup name="Objects" width="50" height="50">
+ <objectgroup name="Objects" width="22" height="13">
   <object x="28" y="202" width="303" height="89">
    <properties>
     <property name="_text" value="Job Centre"/>
@@ -46,7 +46,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Scaffolding" width="50" height="50">
+ <objectgroup name="Scaffolding" width="22" height="13">
   <object x="0" y="0" width="1100" height="200">
    <properties>
     <property name="_color" value="black"/>
@@ -102,9 +102,9 @@
    </properties>
   </object>
  </objectgroup>
- <layer name="Tile Layer 1" width="50" height="50">
+ <layer name="Tile Layer 1" width="22" height="13">
   <data encoding="base64" compression="zlib">
-   eJztzjERACAMBLDKKXrw76UrAjieIVGQKuCVnQ7wjZUOXNLpAAAAAAAAAADAYQA1zgCl
+   eJxjYBgFQwkED7QDKACaNDJXg0bmjgLaAQCDawCl
   </data>
  </layer>
 </map>
