@@ -138,21 +138,6 @@
                  "width":0,
                  "x":2400,
                  "y":750
-                }, 
-                {
-                 "height":207,
-                 "name":"",
-                 "properties":
-                    {
-                     "components":"HintText",
-                     "hintTimeout":"300000",
-                     "message":"Hint: These metal boxes look pretty strong. You can't jump through them, like the wooden crates, but they'll withstand the heat of the volcano"
-                    },
-                 "type":"",
-                 "visible":true,
-                 "width":351,
-                 "x":554,
-                 "y":606
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -557,17 +542,9 @@
                 {
                  "components":"ForwardSlope"
                 },
-             "12":
-                {
-                 "components":"Obstacle"
-                },
              "13":
                 {
                  "components":"BackwardSlope"
-                },
-             "14":
-                {
-                 "components":"Obstacle"
                 },
              "17":
                 {

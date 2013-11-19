@@ -908,7 +908,7 @@ Crafty.c("Player", {
            && (yDotPos > topBound + hf)
            && (yDotPos < bottomBound - hf)) {
              
-        var dot = Crafty.e("2D, Canvas, Color, Tween")
+        var dot = Crafty.e("2D, Canvas, Color")
           .attr(
             {
               w: sz,
@@ -920,7 +920,10 @@ Crafty.c("Player", {
             }
           )
           .color(colors[i % colors.length])
-          .tween({alpha: 1.0}, 35)
+          .timeout(function() {this.alpha = 0.2}, 250)
+          .timeout(function() {this.alpha = 0.6}, 375)
+          .timeout(function() {this.alpha = 1.0}, 500)
+          //.tween({alpha: 1.0}, 35)
         //this.attach(dot)
         this.dots.push(dot)
       }

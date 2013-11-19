@@ -95,7 +95,11 @@ Crafty.scene("Load", function() {
       p1_walk10_r: [14, 0],
       p1_walk11_r: [15, 0],
     })
-    Crafty.scene("JobCentre")
+    if (localStorage["completed_JobCentre"]) {
+      Crafty.scene("MainMenu")
+    } else {
+      Crafty.scene("JobCentre")
+    }
   })
 })
 
