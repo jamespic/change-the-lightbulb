@@ -42,7 +42,7 @@
     <property name="components" value="Checkpoint"/>
    </properties>
   </object>
-  <object x="274" y="538" width="126" height="159">
+  <object x="53" y="660" width="195" height="188">
    <properties>
     <property name="components" value="Checkpoint"/>
    </properties>

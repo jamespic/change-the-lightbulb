@@ -105,7 +105,7 @@
                  "y":1289
                 }, 
                 {
-                 "height":159,
+                 "height":188,
                  "name":"",
                  "properties":
                     {
@@ -113,9 +113,9 @@
                     },
                  "type":"",
                  "visible":true,
-                 "width":126,
-                 "x":274,
-                 "y":538
+                 "width":195,
+                 "x":53,
+                 "y":660
                 }, 
                 {
                  "height":182,
@@ -522,7 +522,7 @@
                 },
              "6":
                 {
-                 "Components":"Platform"
+                 "components":"Platform"
                 },
              "7":
                 {

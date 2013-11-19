@@ -357,7 +357,7 @@ Crafty.c("BasicPhys", {
   yGravity: 0.8,
   xVelocity: 0.0,
   yVelocity: 0.0,
-  speedLimit: 40.0,
+  speedLimit: 35.0,
 
   init: function() {
     this.requires("Followable")
@@ -615,6 +615,7 @@ Crafty.c("TelekinesisBlocker", {
     this.obstructFromAbove = true
     this.obstructFromSides = true
     this.obstructFromBelow = true
+    this.speedLimit = 50.0
     this.unbind("PhysicsCollision", this._genericHandleCollision)
     this.bind("PhysicsCollision", this._restrictedHandleCollision)
   },
@@ -655,8 +656,8 @@ Crafty.c("PlayerBlocker", {
     this.obstructFromAbove = true
     this.obstructFromBelow = true
     this.obstructFromSides = true
-    this.vCoeff = -0.5
-    this.sCoeff = -0.5
+    this.vCoeff = -0.4
+    this.sCoeff = -0.6
     this.xGravity = 0
     this.yGravity = 0
   },
