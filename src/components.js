@@ -564,7 +564,7 @@ Crafty.c("Telekinesis", {
     }
     
     self._mouseFollowMeHandler =  function() {
-      if (!self._inRange() && self._held) {
+      if (!self._inRange()) {
         self._letGo()
       }
     }
