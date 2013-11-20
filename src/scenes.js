@@ -129,20 +129,20 @@ function displayMsgWindow(msgs) {
   }
 
   var msgBox = Crafty.e("2D, Canvas, Mouse, Color")
-    .attr({x: 500, y: 150, w: 550, h: 450})
+    .attr({x: 450, y: 150, w: 600, h: 450})
     .color("white")
     .bind("Click", playLevel)
     
   var msgPane = Crafty.e("HTML")
-    .attr({x: 500, y: 150, w: 550, h: 450})
+    .attr({x: 450, y: 150, w: 600, h: 450})
     
   var clickToStartHint = Crafty
     .e("Text, DOM, 2D")
     .textFont({size: "12pt", family: 'Coming Soon'})
-    .attr({x: 500, y: 125, w: 550, h: 25})
+    .attr({x: 450, y: 125, w: 600, h: 25})
   
   var msgListBg = Crafty.e("2D, DOM, Color")
-    .attr({x: 50, y: 150, w: 400, h: 450})
+    .attr({x: 50, y: 150, w: 350, h: 450})
     .color("white")
   
   var i = 0
@@ -151,11 +151,11 @@ function displayMsgWindow(msgs) {
     if (item.highlighted) text = '<b>' + text + '</b>'
     
     var listBox = Crafty.e("HTML")
-      .attr({x: 50, y: 150 + i * 25, w: 400, h: 25})
+      .attr({x: 50, y: 150 + i * 25, w: 350, h: 25})
       .replace('<div class="email-item">' + text + '</div>')
     
     var clickBox = Crafty.e("2D, Mouse")
-      .attr({x: 50, y: 150 + i * 25, w: 400, h: 25})
+      .attr({x: 50, y: 150 + i * 25, w: 350, h: 25})
       .bind("Click", function() {
         selectedLevel = item.level
         if (selectedLevel) {
@@ -334,7 +334,7 @@ Levels = [
     title: "Thought you'd like this",
     body:  "<p>Hey, I saw this, and thought you'd appreciate it.</p>" +
            '<a href="http://xkcd.com/664/" target="_blank">' +
-           '<img style="width: 550px"' +
+           '<img style="width: 600px"' +
            ' src="http://imgs.xkcd.com/comics/academia_vs_business.png"' +
            ' title="Some engineer out there has solved P=NP and it\'s' +
            ' locked up in an electric eggbeater calibration routine.' +
