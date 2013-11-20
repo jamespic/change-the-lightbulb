@@ -1064,6 +1064,33 @@ Crafty.c("Deadly", {
 Crafty.c("Liquid", {
   init: function() {
     this.requires("Deadly")
+    animateLiquids()
+  },
+})
+
+function animateLiquids() {
+  if (Crafty("LiquidAnimator").length === 0) {
+    Crafty.e("LiquidAnimator")
+  }
+}
+
+// Singleton to animate liquids, to ensure they stay in sync
+Crafty.c("LiquidAnimator", {
+  flipTimeout: 500,
+  init: function() {
+    this._flip()
+  },
+  _flip: function() {
+    Crafty("Liquid").each(function() {
+      this.flip("X")
+    })
+    this.timeout(this._unflip, this.flipTimeout)
+  },
+  _unflip: function() {
+    Crafty("Liquid").each(function() {
+      this.unflip("X")
+    })
+    this.timeout(this._flip, this.flipTimeout)
   }
 })
 
@@ -1088,6 +1115,14 @@ Crafty.c("Springer", {
         this.sprite(4, 5, 1, 1)
       }, 500)
     }
+  }
+})
+
+Crafty.c("Torch", {
+  init: function() {
+    this.requires("SpriteAnimation")
+    this.animate("flame", 4, 3, 5)
+    this.animate("flame", 30, -1)
   }
 })
 

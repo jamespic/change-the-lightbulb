@@ -240,7 +240,7 @@
                 },
              "6":
                 {
-                 "Components":"Platform"
+                 "components":"Platform"
                 },
              "7":
                 {
@@ -333,6 +333,10 @@
              "43":
                 {
                  "components":"Deadly, HalfHeight"
+                },
+             "44":
+                {
+                 "components":"Springer"
                 },
              "5":
                 {
@@ -473,6 +477,10 @@
              "14":
                 {
                  "components":"YellowDoor"
+                },
+             "22":
+                {
+                 "components":"Torch"
                 }
             },
          "tilewidth":50
@@ -576,7 +584,7 @@
                 },
              "6":
                 {
-                 "Components":"Platform"
+                 "components":"Platform"
                 },
              "7":
                 {

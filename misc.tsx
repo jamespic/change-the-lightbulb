@@ -26,4 +26,9 @@
    <property name="components" value="YellowDoor"/>
   </properties>
  </tile>
+ <tile id="22">
+  <properties>
+   <property name="components" value="Torch"/>
+  </properties>
+ </tile>
 </tileset>

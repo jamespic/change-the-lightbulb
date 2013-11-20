@@ -372,7 +372,7 @@
                 },
              "6":
                 {
-                 "Components":"Platform"
+                 "components":"Platform"
                 },
              "7":
                 {
@@ -457,6 +457,10 @@
              "14":
                 {
                  "components":"YellowDoor"
+                },
+             "22":
+                {
+                 "components":"Torch"
                 }
             },
          "tilewidth":50
