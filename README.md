@@ -15,6 +15,7 @@ tasks for large corporations!
 
 ## Open Source Projects Used
 
+The game includes code and art from the following projects:
 - [Crafty](https://github.com/craftyjs/Crafty) (MIT/GPL dual)
 - [Crafty Tiled Importer](https://github.com/mleveck/Crafty-Tiled-Map-Importer) (MIT)
 - [Tiled](https://github.com/bjorn/tiled) (GPLv2)
@@ -28,10 +29,21 @@ tasks for large corporations!
 - [Coming Soon](http://www.google.com/fonts) by Open Window, from Google's Web Fonts (Apache 2.0)
 - [Academia vs. Business](http://xkcd.com/664/) by Randall Monroe (CC-BY-NC 2.5)
 
+Additionally, we made use of the following open source projects during
+development:
+- [Python](http://www.python.org/) (PSF License)
+- [Python Wand](https://github.com/dahlia/wand) (MIT)
+- [ImageMagick](http://www.imagemagick.org/) (Apache 2.0)
+- [The GIMP](http://www.gimp.org/) (GPLv3)
+- [LAME](http://lame.sourceforge.net/) (LGPL 2+)
+- [vorbis-tools](https://wiki.xiph.org/Vorbis-tools) (LGPL 2)
+- [Ubuntu](http://www.ubuntu.com/) (various licenses)
+
 Crafty Tiled Importer and Crafty both needed some modifications. The modifications to
 Crafty Tiled Importer have been submitted back as a pull request. It wasn't practical
 to do the same with Crafty, as the Crafty codebase is in the middle of
-a refactor.
+a refactor. I anticipate that the Crafty refactor, once complete, will make my changes
+redundant.
 
 ## License
 
