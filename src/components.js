@@ -542,7 +542,7 @@ Crafty.c("Telekinesis", {
   init: function() {
     var self = this
     
-    self.requires("Phys, SHMFollower, Mouse, Tint")
+    self.requires("Phys, SHMFollower, Mouse, Tint, Keyboard")
     
     self.vCoeff = -0.6
     self.sCoeff = -0.3
@@ -559,7 +559,7 @@ Crafty.c("Telekinesis", {
       if (!this._held) {
         self.followSHM(self._mouseFollower)
         Crafty.addEvent(self, Crafty.stage.elem, "mouseup", self._telekinesisMouseUp)
-        //Crafty.addEvent(self, Crafty.stage.elem, "mouseout", self._letGo)
+        this.bind("KeyUp", this._telekinesisKeyUp)
         self._held = true
         self._dropThrough = true
         // Increase speed limit when dragging, to make it more responsive
@@ -574,7 +574,7 @@ Crafty.c("Telekinesis", {
         self._dropThrough = false
         self._held = false
         self.unfollowSHM(self._mouseFollower)
-        //Crafty.removeEvent(self, Crafty.stage.elem, "mouseout", self._letGo)
+        this.unbind("KeyUp", this._telekinesisKeyUp)
         Crafty.removeEvent(self, Crafty.stage.elem, "mouseup", self._telekinesisMouseUp)
         self.bind("MouseDown",self._telekinesisMouseDown)
       }
@@ -609,12 +609,22 @@ Crafty.c("Telekinesis", {
     return dist <= this.maxRadius
   },
   _telekinesisMouseDown: function(e) {
-    if (e.mouseButton === Crafty.mouseButtons.LEFT && this._inRange()) {
+    // Special case CTRL - if CTRL is down, don't pick anything else up
+    if (e.mouseButton === Crafty.mouseButtons.LEFT
+        && this._inRange()
+        && !this.isDown(Crafty.keys.CTRL)) {
       this._holdOn()
     }
   },
   _telekinesisMouseUp: function(e) {
-    if (e.mouseButton === Crafty.mouseButtons.LEFT) {
+    // Special case CTRL - if CTRL is down, keep hold until it's released
+    if ((e.mouseButton === Crafty.mouseButtons.LEFT)
+      && !this.isDown(Crafty.keys.CTRL)) {
+      this._letGo()
+    }
+  },
+  _telekinesisKeyUp: function(e) {
+    if (e.key === Crafty.keys.CTRL) {
       this._letGo()
     }
   },
