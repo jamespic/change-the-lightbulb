@@ -304,7 +304,7 @@ Levels = [
            "<p>We're facilitating that change process.  And taking their" +
            " money.</p>" +
            "<p>Show them how it's done, The Boss</p>",
-    depends: ["Bunker", "Loop"]
+    depends: ["Shrooms"]
   },
   {
     title: "Big-Mart Supermarkets",
