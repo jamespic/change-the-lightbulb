@@ -795,6 +795,12 @@ Crafty.c("Checkpoint", {
   }
 })
 
+Crafty.c("PlayerSpawn", {
+  init: function() {
+    this.requires("Checkpoint")
+  }
+})
+
 Crafty.c("Scriptable", {
   _scriptTriggered: false,
   init: function() {

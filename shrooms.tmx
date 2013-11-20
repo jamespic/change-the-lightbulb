@@ -9,6 +9,7 @@
  <tileset firstgid="168" source="blocker.tsx"/>
  <tileset firstgid="171" source="lightbulb.tsx"/>
  <tileset firstgid="173" source="talker.tsx"/>
+ <tileset firstgid="189" source="misc.tsx"/>
  <layer name="Background Tiles" width="41" height="34">
   <data encoding="base64" compression="zlib">
    eJztVkkOxCAM41MckHhV/38YzQEpQsRZGpZK+NLFdXFjAk3p4uLiayi7DSiQdxtQ4Hq0YzT3TvM48lOXu8AY+dlVR249GfnZ5ZHLL9rjm7WVGzc6a6SV/HPa6J5BWunbV2WNtMh/AdqVHiXuhPko1Zjjo/eZyryzcRwy4KN7BmXmzXrGfDzVY8vXmhnlZvdMJkfLWFQ/e31sGtSfkVl7eqZpvPPR+m2zsv7fR/9fVFc6jhvPAuqRy0GqVe6uqY4C7ZsI2jqivqBc7bj+WY/HSo7aWiGOO29jWHvmSe+z7jnk0VtHbdYRdfR6PA0/kA8j9g==
@@ -16,7 +17,7 @@
  </layer>
  <layer name="Mid Tiles" width="41" height="34">
   <data encoding="base64" compression="zlib">
-   eJztl2kKwjAQRsdeoYgiKu67dT2ZF/AK/vMIvaYTTCGMNqRxTJOSDx5pIS2PTNtJEwBIauJuiJjrc6IjT6KjPnskkxyU4yOZF9eRJ1UdW/8S0cT1Oo6RKTKqcE0Ta11HOB3nyEJhSc5Xlvc1cbxZ3psrZY5rZINs5bhzKUViU+s20kM6cuxzS5GE9M5kUN4vq2SATOD9DRwis18FIax1dJETckYucrwaXqdzFH2Lu242ibXmCXUs+lnRx2z7F2dCXEcf01RHdQ+m7r++Pbu0t3cdOXLE9L9VxPda5+C3Yw5+O+bw6ZgqPGsmJQjHRwC8AO4DTwE=
+   eJztl2kOgjAQRkeuQIzGqHHfxY2TeQGv4D+PwDX0Zk5jSWpZUurYUtIveSkESl46wEAAAIElboqwc+sc70gT71iePRJxDsL2UTrPryNNqjq2/iVSEtPrOEamyKjCnCbW2kYoHefIQmAp7a80r6vieNW8NlWKHNfIBtnycScdN+mtU+s20kM6fOxTS0lx6ZmJoLhfVskAmcDnHThEZr8KglvraCIn5Ixc+BgrzitzZH2Lum468bWmieyY9rO0j+n2L8q4uI51TFMdxW8w8fsr796Ve3vXkCNFVP9bWepe6wS+HV8WXfKSQNbxac0mmwSyjqHAwzKhBHO8O8Ab34pQ9A==
   </data>
  </layer>
  <layer name="Foreground Tiles" width="41" height="34">
@@ -25,7 +26,7 @@
   </data>
  </layer>
  <objectgroup name="Object Layer 1" width="41" height="34">
-  <object x="81" y="1453" width="89" height="136">
+  <object x="56" y="1420" width="167" height="177">
    <properties>
     <property name="components" value="PlayerSpawn"/>
    </properties>
@@ -56,6 +57,11 @@
    <properties>
     <property name="message" value="I've made this farm needlessly complicated. That way, they can't afford to fire me."/>
     <property name="msgWidth" value="175"/>
+   </properties>
+  </object>
+  <object x="609" y="1212" width="337" height="133">
+   <properties>
+    <property name="components" value="Checkpoint"/>
    </properties>
   </object>
  </objectgroup>
