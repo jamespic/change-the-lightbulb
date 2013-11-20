@@ -539,22 +539,28 @@ Crafty.c("Telekinesis", {
     }
     
     self._holdOn = function() {
-      self.followSHM(self._mouseFollower)
-      Crafty.addEvent(self, Crafty.stage.elem, "mouseup", self._telekinesisMouseUp)
-      self._held = true
-      self._dropThrough = true
-      // Increase speed limit when dragging, to make it more responsive
-      this.speedLimit = 50.0 
+      if (!this._held) {
+        self.followSHM(self._mouseFollower)
+        Crafty.addEvent(self, Crafty.stage.elem, "mouseup", self._telekinesisMouseUp)
+        //Crafty.addEvent(self, Crafty.stage.elem, "mouseout", self._letGo)
+        self._held = true
+        self._dropThrough = true
+        // Increase speed limit when dragging, to make it more responsive
+        this.speedLimit = 50.0
+      }
     }
     
     self._letGo = function() {
-      // Reduce speed limit on letting go
-      this.speedLimit = 20.0
-      self._dropThrough = false
-      self._held = false
-      self.unfollowSHM(self._mouseFollower)
-      Crafty.removeEvent(self, Crafty.stage.elem, "mouseup", self._telekinesisMouseUp)
-      self.bind("MouseDown",self._telekinesisMouseDown)
+      if (this._held) {
+        // Reduce speed limit on letting go
+        this.speedLimit = 20.0
+        self._dropThrough = false
+        self._held = false
+        self.unfollowSHM(self._mouseFollower)
+        //Crafty.removeEvent(self, Crafty.stage.elem, "mouseout", self._letGo)
+        Crafty.removeEvent(self, Crafty.stage.elem, "mouseup", self._telekinesisMouseUp)
+        self.bind("MouseDown",self._telekinesisMouseDown)
+      }
     }
     
     self._mouseFollowMeHandler =  function() {
