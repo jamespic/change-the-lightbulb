@@ -262,6 +262,19 @@ Crafty.c("MouseFollower", {
       }
     }
     
+    self._followerKeyDown = function(e) {
+      if (self.pausable && (e.key === Crafty.keys.CTRL)) {
+        self._paused = true
+      }
+    }
+    
+    self._followerKeyUp = function(e) {
+      if (self.pausable && (e.key === Crafty.keys.CTRL)) {
+        self._paused = false
+        self._updatePos()
+      }
+    }
+    
     self._followerOnPan = function() {
       self._updatePos()
     }
@@ -275,6 +288,8 @@ Crafty.c("MouseFollower", {
       Crafty.addEvent(this, Crafty.stage.elem, "mousemove", this._followerOnMove)
       Crafty.addEvent(this, Crafty.stage.elem, "mouseup", this._followerOnMouseUp)
       Crafty.addEvent(this, Crafty.stage.elem, "mousedown", this._followerOnMouseDown)
+      this.bind("KeyDown", this._followerKeyDown)
+      this.bind("KeyUp", this._followerKeyUp)
       Crafty.bind("ViewportPanned", this._followerOnPan)
       this._following = true
     }
@@ -284,6 +299,8 @@ Crafty.c("MouseFollower", {
     if (this._following) {
       this._following = false
       Crafty.unbind("ViewportPanned", this._followerOnPan)
+      this.unbind("KeyUp", this._followerKeyUp)
+      this.unbind("KeyDown", this._followerKeyDown)
       Crafty.removeEvent(this, Crafty.stage.elem, "mousedown", this._followerOnMouseDown)
       Crafty.removeEvent(this, Crafty.stage.elem, "mouseup", this._followerOnMouseUp)
       Crafty.removeEvent(this, Crafty.stage.elem, "mousemove", this._followerOnMove)
