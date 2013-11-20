@@ -358,7 +358,7 @@ Crafty.c("BasicPhys", {
   xVelocity: 0.0,
   yVelocity: 0.0,
   speedLimit: 35.0,
-
+  
   init: function() {
     this.requires("Followable")
     if (this.x === undefined) this.x = 0

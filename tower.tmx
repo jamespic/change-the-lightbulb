@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="50" tileheight="50">
+ <tileset firstgid="1" source="castle.tsx"/>
+ <tileset firstgid="21" source="blocker.tsx"/>
+ <tileset firstgid="24" source="misc.tsx"/>
+ <tileset firstgid="54" source="items.tsx"/>
+ <tileset firstgid="110" source="box.tsx"/>
+ <tileset firstgid="126" source="lightbulb.tsx"/>
+ <tileset firstgid="128" source="talker.tsx"/>
+ <tileset firstgid="144" source="poker.tsx"/>
+ <objectgroup name="Object Layer 1" width="50" height="50">
+  <object gid="22" x="755" y="583"/>
+  <object x="88" y="1336" width="104" height="159">
+   <properties>
+    <property name="components" value="PlayerSpawn"/>
+   </properties>
+  </object>
+  <object gid="129" x="130" y="450">
+   <properties>
+    <property name="message" value="My boss put special software on my computer, that prevents me from visiting fun websites. It's called &quot;Internet Explorer 6&quot;"/>
+    <property name="msgHeight" value="125"/>
+    <property name="msgWidth" value="200"/>
+   </properties>
+  </object>
+  <object gid="148" x="806" y="609"/>
+ </objectgroup>
+ <layer name="Tile Layer 1" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztmDsOwjAMhq1sUIEosMGIGHsBBhZO0nvA2aFDhGvFbhrSPJA/KWpJYju/6toVBgDMQiMlUrwL+f3ytPNZj80cHb52PuuxUR3hfpfAxuvQnL2nOh7E7unhNxVSvP1nHJhhHHNbT79LECve4GcDXy05dNwj+jLoPiWu/Jg7WuIPX1MRK56tDbXroP5y6FgHjCGfrlB/XuHz7mBcj3/xG4oUrxPW6Hmpn5J0YFYwzitOh+2dpeqwcHWplufB2eEr7ie5vxNp/jRoL17D5+8d/mp8HsMzODrmU4Lj9ewu3o57L3L3wYbZJ9Wr0vuHi9LrldTzJLua+gfNKakPzvEbk3/rH6F2JdUrCVdOcfWqhfw6zp77p+pVbh0nNOfTDwe7G5T1nof8t2CYK+2HiqIoiqIoiqIoiqJM8waLkQ23
+  </data>
+ </layer>
+</map>

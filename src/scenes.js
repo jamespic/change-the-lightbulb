@@ -219,7 +219,10 @@ function followPlayerWithCamera(showCameraPos) {
       xGravity: 0.0,
       vCoeff: -0.2,
       sCoeff: -0.01,
+      x: player._x,
+      y: player._y
       })
+  var bulb = Crafty("Lightbulb")
   Crafty.map.remove(playerFollower)
   var camera = Crafty.e("Camera").follow(playerFollower)
 }
@@ -283,8 +286,25 @@ generateTiledScene("HeathRobinson", "heathrobinson.json", Backgrounds.castle)
 generateTiledScene("Bribery", "bribery.json", Backgrounds.grassland)
 generateTiledScene("Volcano", "volcano.json", Backgrounds.desert)
 generateTiledScene("Shrooms", "shrooms.json", Backgrounds.shroom)
+generateTiledScene("Tower", "tower.json", Backgrounds.castle)
 
 Levels = [
+  {
+    title: "National Bank of The South",
+    level: "Tower",
+    body:  "<p>NBS heard about our work with" +
+           " their arch-rivals NBN. They're keen" +
+           " to steal NBN's ideas, so they've asked" +
+           " us to come and change a lightbulb for them.</p>" +
+           "<p>In the long run, they're looking to simplify their" +
+           " lightbulb changing setup, by implementing lots of disconnected" +
+           " ideas they stole from their competitors, or read about on" + 
+           " LinkedIn, and don't really understand.</p>" + 
+           "<p>We're facilitating that change process.  And taking their" +
+           " money.</p>" +
+           "<p>Show them how it's done, The Boss</p>",
+    depends: ["Bunker", "Loop"]
+  },
   {
     title: "Big-Mart Supermarkets",
     level: "Shrooms",
@@ -313,7 +333,13 @@ Levels = [
   {
     title: "Thought you'd like this",
     body:  "<p>Hey, I saw this, and thought you'd appreciate it.</p>" +
-           '<img style="width: 550px" src="http://imgs.xkcd.com/comics/academia_vs_business.png">' +
+           '<a href="http://xkcd.com/664/" target="_blank">' +
+           '<img style="width: 550px"' +
+           ' src="http://imgs.xkcd.com/comics/academia_vs_business.png"' +
+           ' title="Some engineer out there has solved P=NP and it\'s' +
+           ' locked up in an electric eggbeater calibration routine.' +
+           '  For every 0x5f375a86 we learn about, there are thousands' +
+           ' we never see."></a>' +
            "<p>Cheers, Steve</p>",
     depends: ["Bunker", "Loop"]
   },
