@@ -236,6 +236,7 @@ Crafty.c("MouseFollower", {
   pausable: false,
   _absX:0,
   _absY:0,
+  leftButtonDown: false,
   init: function() {
     var self = this
     
@@ -243,40 +244,39 @@ Crafty.c("MouseFollower", {
     if (self.x === undefined) self.x = 0
     if (self.y === undefined) self.y = 0
     
-    self._followerOnMove = function(e) {
-      self._absX = e.clientX
-      self._absY = e.clientY
+    self._followerOnPan =  function() {
       self._updatePos()
     }
-    
-    self._followerOnMouseDown = function(e) {
-      if (self.pausable && (e.mouseButton === Crafty.mouseButtons.RIGHT)) {
-        self._paused = true
-      }
+  },
+  
+  _followerOnMove: function(e) {
+    this._absX = e.clientX
+    this._absY = e.clientY
+    this._updatePos()
+  },
+  
+  _followerKeyDown: function(e) {
+    if (this.pausable && (e.key === Crafty.keys.SHIFT)) {
+      this._paused = true
     }
-    
-    self._followerOnMouseUp = function(e) {
-      if (self.pausable && (e.mouseButton === Crafty.mouseButtons.RIGHT)) {
-        self._paused = false
-        self._updatePos()
-      }
+  },
+  
+  _followerKeyUp: function(e) {
+    if (this.pausable && (e.key === Crafty.keys.SHIFT)) {
+      this._paused = false
+      this._updatePos()
     }
-    
-    self._followerKeyDown = function(e) {
-      if (self.pausable && (e.key === Crafty.keys.CTRL)) {
-        self._paused = true
-      }
+  },
+  
+  _followerMouseDown: function(e) {
+    if (e.mouseButton === Crafty.mouseButtons.LEFT) {
+      this.leftButtonDown = true
     }
-    
-    self._followerKeyUp = function(e) {
-      if (self.pausable && (e.key === Crafty.keys.CTRL)) {
-        self._paused = false
-        self._updatePos()
-      }
-    }
-    
-    self._followerOnPan = function() {
-      self._updatePos()
+  },
+  
+  _followerMouseUp: function(e) {
+    if (e.mouseButton === Crafty.mouseButtons.LEFT) {
+      this.leftButtonDown = false
     }
   },
   
@@ -286,8 +286,8 @@ Crafty.c("MouseFollower", {
     }
     if (!this._following) {
       Crafty.addEvent(this, Crafty.stage.elem, "mousemove", this._followerOnMove)
-      Crafty.addEvent(this, Crafty.stage.elem, "mouseup", this._followerOnMouseUp)
-      Crafty.addEvent(this, Crafty.stage.elem, "mousedown", this._followerOnMouseDown)
+      Crafty.addEvent(this, Crafty.stage.elem, "mouseup", this._followerMouseUp)
+      Crafty.addEvent(this, Crafty.stage.elem, "mousedown", this._followerMouseDown)
       this.bind("KeyDown", this._followerKeyDown)
       this.bind("KeyUp", this._followerKeyUp)
       Crafty.bind("ViewportPanned", this._followerOnPan)
@@ -301,8 +301,8 @@ Crafty.c("MouseFollower", {
       Crafty.unbind("ViewportPanned", this._followerOnPan)
       this.unbind("KeyUp", this._followerKeyUp)
       this.unbind("KeyDown", this._followerKeyDown)
-      Crafty.removeEvent(this, Crafty.stage.elem, "mousedown", this._followerOnMouseDown)
-      Crafty.removeEvent(this, Crafty.stage.elem, "mouseup", this._followerOnMouseUp)
+      Crafty.removeEvent(this, Crafty.stage.elem, "mousedown", this._followerMouseDown)
+      Crafty.removeEvent(this, Crafty.stage.elem, "mouseup", this._followerMouseUp)
       Crafty.removeEvent(this, Crafty.stage.elem, "mousemove", this._followerOnMove)
     }
     return this
@@ -609,25 +609,30 @@ Crafty.c("Telekinesis", {
     return dist <= this.maxRadius
   },
   _telekinesisMouseDown: function(e) {
-    // Special case CTRL - if CTRL is down, don't pick anything else up
+    // Special case SHIFT - if SHIFT is down, don't pick anything else up
     if (e.mouseButton === Crafty.mouseButtons.LEFT
         && this._inRange()
-        && !this.isDown(Crafty.keys.CTRL)) {
+        && !this.isDown(Crafty.keys.SHIFT)) {
       this._holdOn()
     }
   },
+  
   _telekinesisMouseUp: function(e) {
-    // Special case CTRL - if CTRL is down, keep hold until it's released
+    // Special case SHIFT - if SHIFT is down, keep hold until it's released
     if ((e.mouseButton === Crafty.mouseButtons.LEFT)
-      && !this.isDown(Crafty.keys.CTRL)) {
+      && !this.isDown(Crafty.keys.SHIFT)) {
       this._letGo()
     }
   },
+  
   _telekinesisKeyUp: function(e) {
-    if (e.key === Crafty.keys.CTRL) {
+    // Don't let go if left mouse button down
+    if ((e.key === Crafty.keys.SHIFT)
+        && !this._mouseFollower.leftButtonDown) {
       this._letGo()
     }
   },
+  
   _telekinesisEnterFrame: function(e) {
     if (this._tinted) {
       if (!this._inRange()) {

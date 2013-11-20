@@ -51,11 +51,11 @@
     <property name="message" value="You can jump through wooden boxes, just like thin platforms."/>
    </properties>
   </object>
-  <object x="615" y="786" width="359" height="224">
+  <object x="615" y="751" width="427" height="246">
    <properties>
     <property name="components" value="HintText"/>
     <property name="hintTimeout" value="15000"/>
-    <property name="message" value="Sometimes you need to jump extra high. Luckily, you can stand on boxes that are in mid-air. If you're levitating a box, and you need it to stop moving around, hold down the right mouse button."/>
+    <property name="message" value="Sometimes you need to jump extra high. Luckily, you can stand on boxes that are in mid-air. If you're levitating a box, and you need it to stop moving around, hold down the Shift key. The box will keep levitating as long as you hold down Shift."/>
    </properties>
   </object>
   <object x="628" y="256" width="359" height="224">

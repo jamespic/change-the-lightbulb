@@ -182,19 +182,19 @@
                  "y":1165
                 }, 
                 {
-                 "height":224,
+                 "height":246,
                  "name":"",
                  "properties":
                     {
                      "components":"HintText",
                      "hintTimeout":"15000",
-                     "message":"Sometimes you need to jump extra high. Luckily, you can stand on boxes that are in mid-air. If you're levitating a box, and you need it to stop moving around, hold down the right mouse button."
+                     "message":"Sometimes you need to jump extra high. Luckily, you can stand on boxes that are in mid-air. If you're levitating a box, and you need it to stop moving around, hold down the Shift key. The box will keep levitating as long as you hold down Shift."
                     },
                  "type":"",
                  "visible":true,
-                 "width":359,
+                 "width":427,
                  "x":615,
-                 "y":786
+                 "y":751
                 }, 
                 {
                  "height":224,

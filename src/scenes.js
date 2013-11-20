@@ -176,7 +176,8 @@ function generateMessageList() {
   Levels.forEach(function(level) {
     var show = true
     level.depends.forEach(function(dependency) {
-      if (!localStorage["completed_" + dependency])
+      if (!(localStorage["completed_" + dependency]
+          || localStorage['read_"' + dependency + '"']))
       show = false
     })
     if (show) {
@@ -414,7 +415,21 @@ Levels = [
     depends: []
   },
   {
-    title: "Controls - Best Practice",
+    title: "Updated Controls",
+    body:  "<p>Greetings Brave Play-tester!</p>" +
+           "<p>I've made a change to " +
+           " the controls. You now hold levitated items still with" +
+           " <b>Shift</b>, rather than <b>Right Mouse Button</b>. Also," +
+           " the item keeps levitating as long as you've got either" +
+           " Shift or the left mouse button held down.</p>" +
+           "<p>If you've never seen the old controls screen, you shouldn't" +
+           " be able to read this message.</p>" +
+           "<p>Thanks again for all the help with play-testing</p>" +
+           "<p>James</p>",
+    depends: ["Controls - Best Practice"]
+  },
+  {
+    title: "Controls - Best Practice ",
     body:  "<p>After a lengthy consultation, we have decided on our new" + 
              " strategic enterprise control system.</p>" +
              "<p>There are two major control systems used in the industry: " + 
@@ -425,7 +440,7 @@ Levels = [
              "<p>Those of you with telekinetic powers should continue to" +
              " use the existing scheme. Hold <b>left mouse button</b> to levitate items." +
              " If you need to keep something still, you can hold down" + 
-             " the <b>right mouse button</b> while levitating. This will" +
+             " <b>Shift</b> while levitating. This will" +
              " keep the levitated item still.</p>" +
              "<p>You can abort your current assignment and return to the" +
              " menu with <b>Esc</b>.</p>" +
