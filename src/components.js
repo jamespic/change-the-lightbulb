@@ -43,7 +43,7 @@ Crafty.c("HandlesCollisions", {
     // WARNING: This assumes the hitbox for the object matches its 2D co-ords
     if (this.obstructFromAbove && (c.prevY + c._b <= this._y + this._t)) {
       // Special case to allow you to drag boxes back through platforms
-      if (!this.obstructFromBelow && (c._held || c._climbDown)) return
+      if (!this.obstructFromBelow && c._dropThrough) return
       // On top
       c.y = this._y + this._t - c._b
       c.yVelocity = 0
@@ -542,6 +542,7 @@ Crafty.c("Telekinesis", {
       self.followSHM(self._mouseFollower)
       Crafty.addEvent(self, Crafty.stage.elem, "mouseup", self._telekinesisMouseUp)
       self._held = true
+      self._dropThrough = true
       // Increase speed limit when dragging, to make it more responsive
       this.speedLimit = 50.0 
     }
@@ -549,6 +550,7 @@ Crafty.c("Telekinesis", {
     self._letGo = function() {
       // Reduce speed limit on letting go
       this.speedLimit = 20.0
+      self._dropThrough = false
       self._held = false
       self.unfollowSHM(self._mouseFollower)
       Crafty.removeEvent(self, Crafty.stage.elem, "mouseup", self._telekinesisMouseUp)
@@ -567,13 +569,13 @@ Crafty.c("Telekinesis", {
     this._player = player
     this.bind("MouseDown",this._telekinesisMouseDown)
     this._mouseFollower.bind("FollowMe", this._mouseFollowMeHandler)
-    this.bind("PhysicsCallbacks", this._telekinesisPhysicsHandler)
+    this.bind("EnterFrame", this._telekinesisEnterFrame)
     return this
   },
   
   endTelekinesis: function() {
     this._letGo()
-    this.unbind("PhysicsCallbacks", this._telekinesisPhysicsHandler)
+    this.unbind("EnterFrame", this._telekinesisEnterFrame)
     this._mouseFollower.unbind("FollowMe", this._mouseFollowMeHandler)
     this.unbind("MouseDown",this._telekinesisMouseDown)
     this._player = null
@@ -593,11 +595,12 @@ Crafty.c("Telekinesis", {
       this._letGo()
     }
   },
-  _telekinesisPhysicsHandler: function(e) {
+  _telekinesisEnterFrame: function(e) {
     if (this._tinted) {
       if (!this._inRange()) {
         this.tint("#ffffff", 0.0)
         this._tinted = false
+        this._letGo()
       }
     } else {
       if (this._inRange()) {
@@ -684,7 +687,7 @@ Crafty.c("Platformer", {
   disableControls: false,
   _leftKeyDown: false,
   _rightKeyDown: false,
-  _climbDown: false,
+  _dropThrough: false,
   _platformer: true, // Always true
   init: function() {
     this.requires("Phys, Keyboard")
@@ -711,7 +714,7 @@ Crafty.c("Platformer", {
       this._tryJump()
     }
     if ((e.key == Crafty.keys.DOWN_ARROW) || (e.key == Crafty.keys.S)) {
-      this._climbDown = true
+      this._dropThrough = true
     }
   },
   _tryJump: function() {
@@ -726,7 +729,7 @@ Crafty.c("Platformer", {
     if ((e.key == Crafty.keys.LEFT_ARROW) || (e.key == Crafty.keys.A)) this._leftKeyDown = false
     if ((e.key == Crafty.keys.RIGHT_ARROW) || (e.key == Crafty.keys.D)) this._rightKeyDown = false
     if ((e.key == Crafty.keys.DOWN_ARROW) || (e.key == Crafty.keys.S)) {
-      this._climbDown = false
+      this._dropThrough = false
     }
   },
   _platformerEnterFrame: function () {
