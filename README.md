@@ -48,4 +48,4 @@ redundant.
 ## License
 
 With the exception of the above mentioned projects, which remain under their original
-licenses, this application is released under a CC0 license.
+licenses, this application is released under an MIT license.
