@@ -544,8 +544,8 @@ Crafty.c("Telekinesis", {
     
     self.requires("Phys, SHMFollower, Mouse, Tint, Keyboard")
     
-    self.vCoeff = -0.6
-    self.sCoeff = -0.3
+    self.vCoeff = -0.52
+    self.sCoeff = -0.22
     self.speedLimit = 20.0 // Limit speed of telekinetics, to keep them from escaping
   
     
@@ -563,7 +563,7 @@ Crafty.c("Telekinesis", {
         self._held = true
         self._dropThrough = true
         // Increase speed limit when dragging, to make it more responsive
-        this.speedLimit = 50.0
+        this.speedLimit = 35.0
       }
     }
     
@@ -855,9 +855,9 @@ Crafty.c("Talker", {
   msgHeight: "100",
   init: function() {
     this.requires("2D")
-    this.bind("EnterFrame", this._talkerEnterFrame)
+    this._talkerTick
   },
-  _talkerEnterFrame: function() {
+  _talkerTick: function() {
     if (Crafty("Player").intersect(this)) {
       if (this._msgEntity === null) {
         var e = Crafty.e("HTML")
@@ -877,6 +877,7 @@ Crafty.c("Talker", {
         this._msgEntity = null
       }
     }
+    this.timeout(this._talkerTick, 200)
   }
 })
 
