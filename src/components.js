@@ -74,7 +74,15 @@ Crafty.c("ForwardSlope", {
     var cX = c._x + c._r
     var cY = c._y + c._b
     var intersectPoint = this._y + this._h - (cX - this._x)
-    if ((cX <= this._x + this._w) && (cX >= this._x) && (cY > intersectPoint)) {
+    
+    var prevCX = c.prevX + c._r
+    var prevCY = c.prevY + c._b
+    var prevIP = this._y + this._h - (prevCX - this._x)
+    
+    if ((prevCX <= this._x) && (prevCY > prevIP)) {
+      c.xVelocity = 0
+      c.x = this._x - c._r
+    } else if ((cX <= this._x + this._w) && (cX >= this._x) && (cY > intersectPoint)) {
       c.y = intersectPoint - c._b
       c._falling = false
       if (c.xVelocity + c.yVelocity > 0) {
@@ -106,7 +114,15 @@ Crafty.c("BackwardSlope", {
     var cX = c._x + c._l
     var cY = c._y + c._b
     var intersectPoint = this._y +  (cX - this._x)
-    if ((cX <= this._x + this._w) && (cX >= this._x) && (cY > intersectPoint)) {
+    
+    var prevCX = c.prevX + c._l
+    var prevCY = c.prevY + c._b
+    var prevIP = this._y +  (prevCX - this._x)
+    
+    if ((prevCX >= this._x + this._w) && (prevCY > prevIP)) {
+      c.xVelocity = 0
+      c.x = this._x + this._w - c._l
+    } else if ((cX <= this._x + this._w) && (cX >= this._x) && (cY > intersectPoint)) {
       c.y = intersectPoint - c._b
       c._falling = false
       if (c.yVelocity - c.xVelocity > 0) {

@@ -8,19 +8,19 @@
  <tileset firstgid="126" source="lightbulb.tsx"/>
  <tileset firstgid="128" source="talker.tsx"/>
  <objectgroup name="Background Objects" width="50" height="50">
-  <object x="285" y="1236" width="230" height="228">
+  <object x="285" y="1286" width="230" height="228">
    <properties>
     <property name="_color" value="grey"/>
     <property name="components" value="Canvas, Color"/>
    </properties>
   </object>
-  <object x="543" y="983" width="574" height="487">
+  <object x="543" y="1033" width="574" height="487">
    <properties>
     <property name="_color" value="grey"/>
     <property name="components" value="Canvas, Color"/>
    </properties>
   </object>
-  <object x="831" y="419" width="284" height="577">
+  <object x="831" y="469" width="284" height="577">
    <properties>
     <property name="_color" value="grey"/>
     <property name="components" value="Canvas, Color"/>
@@ -28,13 +28,13 @@
   </object>
  </objectgroup>
  <objectgroup name="Foreground Objects" width="50" height="50">
-  <object x="55" y="1334" width="89" height="113">
+  <object x="55" y="1384" width="89" height="113">
    <properties>
     <property name="components" value="PlayerSpawn"/>
    </properties>
   </object>
-  <object gid="125" x="157" y="743"/>
-  <object gid="129" x="989" y="1249">
+  <object gid="125" x="157" y="793"/>
+  <object gid="129" x="989" y="1299">
    <properties>
     <property name="message" value="Sure, lightbulbs are modern and trendy, but we've invested heavily in flaming torches, and we're not about to throw that investment away."/>
     <property name="msgHeight" value="150"/>
@@ -44,12 +44,19 @@
  </objectgroup>
  <layer name="Background Tiles" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztltsOwiAMQJs9qfPysC/aD/gN+ubl0f9PdNHGWqGAcy3GnoRs2aDshK7QAEAzUdNkqvnc4/P5Fo/W3dr6i3E1adj9Bl5d5nB3bEfE1YB7DHCXsXE14B5HeF+X08i4GnCPHr5TO609Wnj1iOUX/jcdPOsEbdYeeMWW+ldi32vtwfMq5VKTB80FvOa61OSRek9dcsdbe/QFY89s/EWIOzWYS7hfzwrGLqHe9chlcFgJ4609cvKKOsTGW593U+dB7kC/F/fGWvbBGCGHGvMK98EQMYeaPGguhPJKcqjJQ5o7VZdy4mog5ZVUl0riahDLK6kuXTLurddjoKQuIbw+WHuEzu0pD7pv4Hpa51UX+YZf+D8G9uTZQehXGlcLnG9HnqU8pDPYNtBfA8ylVMvtR/s7juM4juM4juM4jvNfXAHzpg3e
+   eJztlksOgjAQhiesFHwsOJEX8Ay687Hk/omSMHEC02mrpTMm8yUNiH196U9LAwDNSqUma43nHt+P106lf5dDwX5r0szuj1DGRdvjBGVctD1aKLMu2h54nbs8fui3BlyuSpwD2h4dLD24fG3hs8e1TNH2uMPSQ3pXQvPV9uByJblY8qBZwGuqiyWP2P/Se2/V45TR9jlrPwj9rg1mqZt+bzLa7sDueqQyOuyF9toeKbmiDqH22t/tnVx94UDni2ejhXNQgnOwmCs8BzlCDpY8aBa4XEkOljyksWP7Ukq/NZByJe1LOf3WIJQraV8aEu6112MkZ19C5vuDtkfou12aFz03cD21c9UH5vAP78fIlTy7CfVy+60Fjnchz2Ie0jfYmalfA8xSrKTWo/Udx3Ecx3Ecx3Ecx0njBQqBDjE=
   </data>
  </layer>
  <layer name="Foreground Tiles" width="50" height="50">
   <data encoding="base64" compression="zlib">
-   eJztzsEJACEQBMHNxRxOTe5iV8SXCSxoFQzMsyMAIr7sAACWmh0AAAn+7ACAS7S5vn85BgAAAPCKAdMrAek=
+   eJztzrEJACAQBEF7sQfR5qxdAyMTw4d3BhYuvFIAcmnRBwAAgC/N6AMASfTdOLteAQAAALwsK7YBsg==
   </data>
  </layer>
+ <objectgroup name="Green Key" width="50" height="50">
+  <object gid="55" x="750" y="700">
+   <properties>
+    <property name="groundFriction" value="0.08"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>

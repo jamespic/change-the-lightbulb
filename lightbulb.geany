@@ -23,7 +23,9 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=-1
+current_page=0
+FILE_NAME_0=12816;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fscenes.js;0;2
+FILE_NAME_1=23518;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fcomponents.js;0;2
 
 [VTE]
 last_dir=/home/james
