@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="50" tileheight="50">
+ <tileset firstgid="1" source="snow.tsx"/>
+ <tileset firstgid="21" source="items.tsx"/>
+ <tileset firstgid="77" source="box.tsx"/>
+ <tileset firstgid="93" source="misc.tsx"/>
+ <tileset firstgid="123" source="blocker.tsx"/>
+ <tileset firstgid="126" source="lightbulb.tsx"/>
+ <tileset firstgid="128" source="talker.tsx"/>
+ <objectgroup name="Background Objects" width="50" height="50">
+  <object x="285" y="1236" width="230" height="228">
+   <properties>
+    <property name="_color" value="grey"/>
+    <property name="components" value="Canvas, Color"/>
+   </properties>
+  </object>
+  <object x="543" y="983" width="574" height="487">
+   <properties>
+    <property name="_color" value="grey"/>
+    <property name="components" value="Canvas, Color"/>
+   </properties>
+  </object>
+  <object x="831" y="419" width="284" height="577">
+   <properties>
+    <property name="_color" value="grey"/>
+    <property name="components" value="Canvas, Color"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <objectgroup name="Foreground Objects" width="50" height="50">
+  <object x="55" y="1334" width="89" height="113">
+   <properties>
+    <property name="components" value="PlayerSpawn"/>
+   </properties>
+  </object>
+  <object gid="125" x="157" y="743"/>
+  <object gid="129" x="989" y="1249">
+   <properties>
+    <property name="message" value="Sure, lightbulbs are modern and trendy, but we've invested heavily in flaming torches, and we're not about to throw that investment away."/>
+    <property name="msgHeight" value="150"/>
+    <property name="msgWidth" value="200"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="Background Tiles" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztltsOwiAMQJs9qfPysC/aD/gN+ubl0f9PdNHGWqGAcy3GnoRs2aDshK7QAEAzUdNkqvnc4/P5Fo/W3dr6i3E1adj9Bl5d5nB3bEfE1YB7DHCXsXE14B5HeF+X08i4GnCPHr5TO609Wnj1iOUX/jcdPOsEbdYeeMWW+ldi32vtwfMq5VKTB80FvOa61OSRek9dcsdbe/QFY89s/EWIOzWYS7hfzwrGLqHe9chlcFgJ4609cvKKOsTGW593U+dB7kC/F/fGWvbBGCGHGvMK98EQMYeaPGguhPJKcqjJQ5o7VZdy4mog5ZVUl0riahDLK6kuXTLurddjoKQuIbw+WHuEzu0pD7pv4Hpa51UX+YZf+D8G9uTZQehXGlcLnG9HnqU8pDPYNtBfA8ylVMvtR/s7juM4juM4juM4jvNfXAHzpg3e
+  </data>
+ </layer>
+ <layer name="Foreground Tiles" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztzsEJACEQBMHNxRxOTe5iV8SXCSxoFQzMsyMAIr7sAACWmh0AAAn+7ACAS7S5vn85BgAAAPCKAdMrAek=
+  </data>
+ </layer>
+</map>

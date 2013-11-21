@@ -670,6 +670,7 @@ Crafty.c("TelekinesisBlocker", {
 Crafty.c("Money", {
   init: function() {
     this.requires("Telekinesis")
+    this.aabb({l: 5, r: 45, t: 5, b: 50})
   }
 })
 
@@ -854,11 +855,12 @@ Crafty.c("Talker", {
   msgWidth: "100",
   msgHeight: "100",
   init: function() {
-    this.requires("2D")
-    this._talkerTick
+    this.requires("2D, AABB")
+    this._talkerTick()
   },
   _talkerTick: function() {
-    if (Crafty("Player").intersect(this)) {
+    var player = Crafty("Player")
+    if ((player.length > 0) && player.intersects(this)) {
       if (this._msgEntity === null) {
         var e = Crafty.e("HTML")
         this._msgEntity = e
@@ -1052,6 +1054,7 @@ Crafty.c("LockedDoor", {
 Crafty.c("DoorKey", {
   init: function() {
     this.requires("Telekinesis")
+    this.aabb({l: 5, r: 45, t: 5, b: 50})
   },
   keyColour: function(colour) {
     this.colour = colour

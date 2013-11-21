@@ -23,15 +23,7 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=7
-FILE_NAME_0=17224;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fcomponents.js;0;2
-FILE_NAME_1=16810;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2FCrafty%2FCrafty%2Fsrc%2Fextensions.js;0;4
-FILE_NAME_2=10024;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2FCrafty%2FCrafty%2Fsrc%2F2D.js;0;2
-FILE_NAME_3=14938;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fscenes.js;0;2
-FILE_NAME_4=72;None;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Fcrafty-tiled%2FCrafty-Tiled-Map-Importer%2FTiledLevelImporter.coffee;0;2
-FILE_NAME_5=144;CSS;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fstyle.css;0;2
-FILE_NAME_6=105;Javascript;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2Fsrc%2Fgame.js;0;2
-FILE_NAME_7=2439;Markdown;0;EUTF-8;0;1;0;%2Fhome%2Fjames%2FGarage%2Flightbulb%2FREADME.md;0;2
+current_page=-1
 
 [VTE]
 last_dir=/home/james

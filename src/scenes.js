@@ -288,8 +288,22 @@ generateTiledScene("Bribery", "bribery.json", Backgrounds.grassland)
 generateTiledScene("Volcano", "volcano.json", Backgrounds.desert)
 generateTiledScene("Shrooms", "shrooms.json", Backgrounds.shroom)
 generateTiledScene("Tower", "tower.json", Backgrounds.castle)
+generateTiledScene("Ski", "ski.json", Backgrounds.grassland)
 
 Levels = [
+  {
+    title: "Swiss Secretive Bank",
+    level: "Ski",
+    body:  "<p>Good news! We're giving you an opportunity to demonstrate" + 
+           " your flexibility. We're sending you abroad at short notice.</p>" +
+           "<p>We've got a job from SSB. They've got some very \"influential\"" +
+           " clients, so they'll need to run a few background checks " +
+           " (just to make sure you're not a cop). They've also got the" +
+           " usual data loss prevention stuff - electronic surveilance," +
+           " keyloggers, cavity searches, etc.</p>" +
+           "<p>Try not to have any fun out there, The Boss</p>",
+    depends: ["Volcano"]
+  },
   {
     title: "National Bank of The South",
     level: "Tower",
@@ -299,7 +313,7 @@ Levels = [
            " us to come and change a lightbulb for them.</p>" +
            "<p>In the long run, they're looking to simplify their" +
            " lightbulb changing setup, by implementing lots of disconnected" +
-           " ideas they stole from their competitors, or read about on" + 
+           " ideas they stole from their competitors or read about on" + 
            " LinkedIn, and don't really understand.</p>" + 
            "<p>We're facilitating that change process.  And taking their" +
            " money.</p>" +
@@ -370,6 +384,23 @@ Levels = [
     depends: ["HeathRobinson", "Bribery"]
   },
   {
+    title: "Change Your Password",
+    body:  "<p>It's time to change your password. Your new password must contain:</p>" +
+           "<ul>" +
+             "<li>at least 8 characters</li>" +
+             "<li>at most 9 characters</li>" +
+             "<li>at least 2 numbers</li>" +
+             "<li>at least 2 punctuation characters</li>" +
+             "<li>at least 1 uppercase character</li>" +
+             "<li>at least 1 lowercase character</li>" +
+             "<li>at least 2 hebrew character</li>" +
+             "<li>the BEL character (^G)</li>" +
+             "<li>at least 2 non-BMP unicode characters</li>" +
+           "</ul>" +
+           "<p>You will be required to change your password again tomorrow.</p>",
+    depends: ["HeathRobinson"]
+  },
+  {
     title: "Heath and Robinson Boxes",
     level: "HeathRobinson",
     body:  "<p>Heath and Robinson need us to change the lightbulb" +
@@ -407,7 +438,8 @@ Levels = [
              " leading supplier of lightbulb replacement services to big" + 
              " businesses and governments.</p>" +
              "<p>We seek out exceptional individuals like yourself," + 
-             " to work in this challenging and vibrant industry.</p>" +
+             " to work in this vibrant industry. " +
+             " With our clients, you'll never be short of challenges.</p>" +
              "<p>Since it's your first day, we'll start you off with" +
              " something easy. The lightbulb's gone in our warehouse. Go" +
              " take a look.</p>" +

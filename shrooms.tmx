@@ -17,7 +17,7 @@
  </layer>
  <layer name="Mid Tiles" width="41" height="34">
   <data encoding="base64" compression="zlib">
-   eJztl2kOgjAQRkeuQIzGqHHfxY2TeQGv4D+PwDX0Zk5jSWpZUurYUtIveSkESl46wEAAAIElboqwc+sc70gT71iePRJxDsL2UTrPryNNqjq2/iVSEtPrOEamyKjCnCbW2kYoHefIQmAp7a80r6vieNW8NlWKHNfIBtnycScdN+mtU+s20kM6fOxTS0lx6ZmJoLhfVskAmcDnHThEZr8KglvraCIn5Ixc+BgrzitzZH2Lum468bWmieyY9rO0j+n2L8q4uI51TFMdxW8w8fsr796Ve3vXkCNFVP9bWepe6wS+HV8WXfKSQNbxac0mmwSyjqHAwzKhBHO8O8Ab34pQ9A==
+   eJztl2kOgjAQRkevQFyjxn0X15N5Aa/gP4/ANfRmTgNNaimk1IEC6Ze8AKGQl051ShMAmpZ4aMLGljnOkSbOMT0HxI84CucnaZybR5pkdWzkJZKSoudxgsyQcYZn6lhr6vSQNtJB+khXMYbScYEsBVbS9drwvTqOd8N3UyXJcYNskV103Ev3i/Q2qXULwrXD19CAWkqK7d+MTrijD8n9MkuGyBTC/8ARMv9XEKo1j0XkjFyQa3S8aT6X5sj6FnXdTOJqTRPZkfcz3sdM+xdlqjiPZUxdHcU9mLj/Uq1duber9od5OFJE97uVpey1DuDX8WPRRZUA4o5vazbxBBB39ARelvEkmOOzAnwBiitRbA==
   </data>
  </layer>
  <layer name="Foreground Tiles" width="41" height="34">
