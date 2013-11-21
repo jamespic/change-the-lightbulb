@@ -393,7 +393,7 @@ Levels = [
              "<li>at least 2 punctuation characters</li>" +
              "<li>at least 1 uppercase character</li>" +
              "<li>at least 1 lowercase character</li>" +
-             "<li>at least 2 hebrew character</li>" +
+             "<li>at least 2 hebrew characters</li>" +
              "<li>the BEL character (^G)</li>" +
              "<li>at least 2 non-BMP unicode characters</li>" +
            "</ul>" +
