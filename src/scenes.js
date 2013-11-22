@@ -200,9 +200,8 @@ function generateMessageList() {
 }
 
 Crafty.scene("MainMenu", function() {
-  Crafty.viewport.scroll({_x: 0, _y: 0})
-  
   displayMsgWindow(generateMessageList())
+  Crafty.viewport.scroll({_x: 0, _y: 0})
 })
 
 function followPlayerWithCamera(showCameraPos) {
