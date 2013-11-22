@@ -511,6 +511,12 @@ Crafty.c("Sign", {
   }
 })
 
+Crafty.c("BackgroundMusic", {
+  init: function() {
+    Crafty.audio.play("music", 1, 0.4)
+  }
+})
+
 Crafty.c("GameLogo", {
   init: function() {
     this.requires("Text, Canvas, 2D")

@@ -53,7 +53,9 @@ Crafty.scene("Load", function() {
       "coin7.wav",
       "coin10.ogg",
       "coin10.mp3",
-      "coin10.wav"
+      "coin10.wav",
+      "music.ogg",
+      "music.mp3"
     ], function() {
     Crafty.audio.add("death", [
       "death.ogg",
@@ -84,6 +86,10 @@ Crafty.scene("Load", function() {
       "coin7.ogg",
       "coin7.mp3",
       "coin7.wav"
+    ])
+    Crafty.audio.add("music", [
+      "music.ogg",
+      "music.mp3"
     ])
     Crafty.sprite(52, 70, "p1_sprites.png", {
       p1_duck_r: [0, 0],
@@ -194,8 +200,7 @@ function generateMessageList() {
 }
 
 Crafty.scene("MainMenu", function() {
-  Crafty.viewport.scroll("_x", 0)
-  Crafty.viewport.scroll("_y", 0)
+  Crafty.viewport.scroll({_x: 0, _y: 0})
   
   displayMsgWindow(generateMessageList())
 })
@@ -289,8 +294,28 @@ generateTiledScene("Volcano", "volcano.json", Backgrounds.desert)
 generateTiledScene("Shrooms", "shrooms.json", Backgrounds.shroom)
 generateTiledScene("Tower", "tower.json", Backgrounds.castle)
 generateTiledScene("Ski", "ski.json", Backgrounds.grassland)
+generateTiledScene("Credits", "credits.json", Backgrounds.grassland)
 
 Levels = [
+  {
+    title: "Credits",
+    body:  "<p>Thanks for playing!</p>" +
+           "<p>I hope you've enjoyed playing Change The Lightbulb" +
+           " as much as we enjoyed making it. It wouldn't have been possible " +
+           " without the support of both my friends, and countless" +
+           " open source projects.</p>" +
+           "<p>If you enjoyed Change The Lightbulb, why not create some" +
+           " levels of your own, or even use it as a starting point for a game" +
+           " of your own. The code is all" + 
+           ' <a href="https://github.com/jamespic/change-the-lightbulb"' +
+           ' target="_blank">' + 
+           "on GitHub</a>.</p>" +
+           '<p>Anyway, ' +
+           '<a href="#" onclick="Crafty.scene(\'Credits\')">' +
+           'click here for the credits</a></p>' +
+           "<p>Thanks again, James</p>",
+    depends: ["Ski", "Shrooms"]
+  },
   {
     title: "Swiss Secretive Bank",
     level: "Ski",

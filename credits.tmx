@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="113" height="13" tilewidth="50" tileheight="50">
+ <tileset firstgid="1" source="grass.tsx"/>
+ <tileset firstgid="21" source="cloud.tsx"/>
+ <tileset firstgid="24" source="shrooms.tsx"/>
+ <tileset firstgid="73" source="liquids.tsx"/>
+ <tileset firstgid="79" source="items.tsx"/>
+ <tileset firstgid="135" source="sand.tsx"/>
+ <tileset firstgid="155" source="lightbulb.tsx"/>
+ <layer name="Backgrounds" width="113" height="13">
+  <data encoding="base64" compression="zlib">
+   eJzt1cEJACAMQ1HH8iA4gOD+43gXREvRtvIf9B4I0ZQAAEBkxToA1LJ1ABxb7a0+TQGN1d7YYRx0GIf0zaRDf6R78/gftums9Eu3I+2QHeIXA1hAC7o=
+  </data>
+ </layer>
+ <layer name="Tile Layer 1" width="113" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztmMkOgjAURRt2zhpWTnuHjcMPOH6VP+BaZUH8WS+xxKa2EKENPPNOctLyQvra3JQFgRAiYMnL0OKpzDlD+nCG9KGa4QQO4QhO4bja7VQK1QyZD0UzbMCmZsvhvlJWcA03ctzmvN+HIRx4qteRf7yHtvO4qteNrAxNd83XfXMJZ1ieX7+zMziXLpT5smB/zpA+VWV4gzF85NRck2YYanY99Gob1t7JcW94/6g9n+V4kuPB0iNQelwc120kWd3hFUbinVus1VzmqO7H9u+tJ75zLWvH49p5PVzVbaZZZRl5OnOyzxftTCA2
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1" width="113" height="13">
+  <object x="84" y="445" width="75" height="102">
+   <properties>
+    <property name="components" value="PlayerSpawn"/>
+   </properties>
+  </object>
+  <object x="62" y="56" width="536" height="60">
+   <properties>
+    <property name="_text" value="Development Lead"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="61" y="126" width="538" height="58">
+   <properties>
+    <property name="_text" value="James Pickering"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="975" y="52" width="536" height="60">
+   <properties>
+    <property name="_text" value="Artwork"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="975" y="116" width="536" height="60">
+   <properties>
+    <property name="_text" value="Kenney"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="975" y="180" width="536" height="60">
+   <properties>
+    <property name="_text" value="Randall Monroe"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="975" y="245" width="536" height="60">
+   <properties>
+    <property name="_text" value="Linuxerist"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="975" y="311" width="536" height="60">
+   <properties>
+    <property name="_text" value="The Tango Project"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="1697" y="53" width="536" height="60">
+   <properties>
+    <property name="_text" value="Sound Effects"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="1698" y="120" width="364" height="60">
+   <properties>
+    <property name="_text" value="Luke.RUSTLD"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="1697" y="188" width="245" height="60">
+   <properties>
+    <property name="_text" value="rudy85"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="1696" y="254" width="246" height="59">
+   <properties>
+    <property name="_text" value="sauer2"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="1697" y="320" width="246" height="50">
+   <properties>
+    <property name="_text" value="bart"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object gid="21" x="670" y="160"/>
+  <object gid="22" x="394" y="319"/>
+  <object gid="23" x="2633" y="182"/>
+  <object x="2739" y="54" width="536" height="60">
+   <properties>
+    <property name="_text" value="Powered By"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="2739" y="120" width="234" height="60">
+   <properties>
+    <property name="_text" value="Crafty"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="2981" y="120" width="234" height="60">
+   <properties>
+    <property name="_text" value="jQuery"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="2740" y="187" width="234" height="60">
+   <properties>
+    <property name="_text" value="Tiled"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="3223" y="120" width="377" height="62">
+   <properties>
+    <property name="_text" value="Crafty Tiled Importer"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="2982" y="188" width="348" height="61">
+   <properties>
+    <property name="_text" value="Open Window / Google Web Fonts"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="4139" y="358" width="67" height="140">
+   <properties>
+    <property name="components" value="Checkpoint"/>
+   </properties>
+  </object>
+  <object x="3875" y="57" width="536" height="60">
+   <properties>
+    <property name="_text" value="Testing"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="3875" y="123" width="419" height="60">
+   <properties>
+    <property name="_text" value="Frances Wood"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="3875" y="188" width="418" height="59">
+   <properties>
+    <property name="_text" value="Andy Mason"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="3875" y="254" width="416" height="60">
+   <properties>
+    <property name="_text" value="Shaun Slator"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="4303" y="124" width="416" height="60">
+   <properties>
+    <property name="_text" value="Daniel Harris"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="4303" y="189" width="418" height="59">
+   <properties>
+    <property name="_text" value="Ben Pickering"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="4304" y="255" width="415" height="58">
+   <properties>
+    <property name="_text" value="Gareth Davidson"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="4840" y="59" width="536" height="60">
+   <properties>
+    <property name="_text" value="Special Thanks To"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="4840" y="126" width="536" height="60">
+   <properties>
+    <property name="_text" value="Frances Wood"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
+  <object x="125" y="217" width="86" height="74">
+   <properties>
+    <property name="components" value="BackgroundMusic"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

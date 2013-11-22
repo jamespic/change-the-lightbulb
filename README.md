@@ -25,7 +25,7 @@ The game includes code and art from the following projects:
 - [Coin sound effects by Luke.RUSTLD](http://opengameart.org/content/10-8bit-coin-sounds) (CC0)
 - [Jump sound effects by rudy85](http://opengameart.org/content/jump-sounds) (CC0)
 - [Additional sound effects by sauer2](http://opengameart.org/content/oldschool-win-and-die-jump-and-run-sounds) (CC0)
-- [Music by bart](http://opengameart.org/content/jump-and-run-8-bit) (CC-BY 3.0) *not currently used*
+- [Music by bart](http://opengameart.org/content/jump-and-run-8-bit) (CC-BY 3.0)
 - [Coming Soon](http://www.google.com/fonts) by Open Window, from Google's Web Fonts (Apache 2.0)
 - [Academia vs. Business](http://xkcd.com/664/) by Randall Monroe (CC-BY-NC 2.5)
 
