@@ -301,7 +301,7 @@ Levels = [
     body:  "<p>Thanks for playing!</p>" +
            "<p>I hope you've enjoyed playing Change The Lightbulb" +
            " as much as we enjoyed making it. It wouldn't have been possible " +
-           " without the support of both my friends, and countless" +
+           " without the support of friends, and other" +
            " open source projects.</p>" +
            "<p>If you enjoyed Change The Lightbulb, why not create some" +
            " levels of your own, or even use it as a starting point for a game" +
