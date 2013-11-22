@@ -233,14 +233,14 @@ function followPlayerWithCamera(showCameraPos) {
 }
 
 function win() {
-  localStorage["completed_" + window.currentLevel] = true
+  localStorage["completed_" + Crafty("CurrentLevelHolder").currentLevel] = true
   Crafty.scene("MainMenu")
 }
 
 function generateTiledScene(sceneName, url, bg, disablePanning) {
   Crafty.scene(sceneName,
     function() {
-      window.currentLevel = sceneName
+      Crafty("CurrentLevelHolder").currentLevel = sceneName
       
       //Crafty.e("FPS").attr({maxValues:1}).bind("MessureFPS", function(fps){console.log("FPS: " + fps.value);})
       var map = Crafty.e("TiledLevel")
