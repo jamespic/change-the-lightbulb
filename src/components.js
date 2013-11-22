@@ -4,7 +4,7 @@
 Crafty.c("AABB", {
   _aabbInitialised: false,
   init: function() {
-    this.requires("2D")
+    this.requires("LevelEntity, 2D")
     this._l || (this._l = 0)
     this._r || (this._r = this._w)
     this._t || (this._t = 0)
@@ -176,6 +176,7 @@ Crafty.c("Followable", {
   // Abstract class. Must define xPos() and yPos() methods, and emit
   // "FollowMe" events
   init: function() {
+    this.requires("LevelEntity")
   },
   distFrom: function(o) {
     var dx = this.xPos() - o.xPos(),
@@ -342,6 +343,7 @@ Crafty.c("MouseFollower", {
 Crafty.c("Camera", {
   _target: null,
   init: function() {
+    this.requires("LevelEntity")
     var self = this
     self._followMeHandler = function() {
       // Get bounds
@@ -513,6 +515,7 @@ Crafty.c("Sign", {
 
 Crafty.c("BackgroundMusic", {
   init: function() {
+    this.requires("LevelEntity")
     Crafty.audio.play("music", 1, 0.4)
   }
 })
@@ -1142,6 +1145,7 @@ function animateLiquids() {
 Crafty.c("LiquidAnimator", {
   flipTimeout: 500,
   init: function() {
+    this.requires("LevelEntity")
     this._flip()
   },
   _flip: function() {

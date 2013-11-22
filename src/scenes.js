@@ -201,7 +201,6 @@ function generateMessageList() {
 
 Crafty.scene("MainMenu", function() {
   displayMsgWindow(generateMessageList())
-  Crafty.viewport.scroll({_x: 0, _y: 0})
 })
 
 function followPlayerWithCamera(showCameraPos) {
@@ -238,38 +237,41 @@ function win() {
 }
 
 function generateTiledScene(sceneName, url, bg, disablePanning) {
-  Crafty.scene(sceneName, function() {
-    window.currentLevel = sceneName
-    var escapeListener = Crafty.e()
-    escapeListener.bind("KeyDown", function(e) {
-      if (e.key === Crafty.keys.ESC) {
-        Crafty.scene("MainMenu")
-      }
-    })
-    
-    //Crafty.e("FPS").attr({maxValues:1}).bind("MessureFPS", function(fps){console.log("FPS: " + fps.value);})
-    var map = Crafty.e("TiledLevel")
-    map.tiledLevel(url)
-    
-    map.bind("TiledLevelLoaded", function () {
-      var player = Crafty.e("Player").respawn()
-      // Hook up telekinesis
-      Crafty("Telekinesis").each(function(i) {
-        if (this.has("Telekinesis")) {
-          this.physicsOn().startTelekinesis(player)
+  Crafty.scene(sceneName,
+    function() {
+      window.currentLevel = sceneName
+      var escapeListener = Crafty.e()
+      escapeListener.bind("KeyDown", function(e) {
+        if (e.key === Crafty.keys.ESC) {
+          Crafty.scene("MainMenu")
         }
       })
-      // Hook up blockers
-      Crafty("PlayerBlocker").each(function(i) {
-        if (this.has("PlayerBlocker")) {
-          this.physicsOn().followSHM(player)
+      
+      //Crafty.e("FPS").attr({maxValues:1}).bind("MessureFPS", function(fps){console.log("FPS: " + fps.value);})
+      var map = Crafty.e("TiledLevel")
+      map.tiledLevel(url)
+      
+      map.bind("TiledLevelLoaded", function () {
+        var player = Crafty.e("Player").respawn()
+        // Hook up telekinesis
+        Crafty("Telekinesis").each(function(i) {
+          if (this.has("Telekinesis")) {
+            this.physicsOn().startTelekinesis(player)
+          }
+        })
+        // Hook up blockers
+        Crafty("PlayerBlocker").each(function(i) {
+          if (this.has("PlayerBlocker")) {
+            this.physicsOn().followSHM(player)
+          }
+        })
+        if (!disablePanning) {
+          followPlayerWithCamera(false)
         }
-      })
-      if (!disablePanning) {
-        followPlayerWithCamera(false)
-      }
-      Crafty.background(bg)
+        Crafty.background(bg)
     })
+  }, function() {
+    Crafty("LevelEntity").each(function() {this.destroy()})
   })
 }
 
