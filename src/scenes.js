@@ -443,6 +443,28 @@ Levels = [
     depends: ["Chimney"]
   },
   {
+    title: "Controls - Best Practice ",
+    body:  "<p>After a lengthy consultation, we have decided on our new" + 
+             " strategic enterprise control system.</p>" +
+             "<p>There are two major control systems used in the industry: " + 
+             " The older <b>arrow keys</b> layout, and the newer <b>WASD</b> layout." + 
+             " Both have their benefits, so we have selected a \"best-of-breed\"" + 
+             " approach. We recommend that you move left and right with" +
+             " the arrow keys, jump with the W key, and use the down arrow to climb down from ledges.</p>" +
+             "<p>Those of you with telekinetic powers should continue to" +
+             " use the existing scheme. Hold <b>left mouse button</b> to levitate items." +
+             " If you need to keep something still, you can hold down" + 
+             " <b>Shift</b> while levitating. This will" +
+             " keep the levitated item still.</p>" +
+             "<p>You can abort your current assignment and return to the" +
+             " menu with <b>Esc</b>.</p>" +
+             "<p>This new control system will synergise with our existing" +
+             " frameworks, allowing us to effect a step change in " +
+             " cost-optimisation.</p>" +
+             "<p>\"Kind\" regards, The Boss</p>",
+    depends: ["Chimney"]
+  },
+  {
     title: "Southern Power",
     level: "Chimney",
     body:  "<p>Southern Power has asked us to change the lightbulb" +
@@ -480,28 +502,6 @@ Levels = [
            "<p>Thanks again for all the help with play-testing</p>" +
            "<p>James</p>",
     depends: ["Controls - Best Practice"]
-  },
-  {
-    title: "Controls - Best Practice ",
-    body:  "<p>After a lengthy consultation, we have decided on our new" + 
-             " strategic enterprise control system.</p>" +
-             "<p>There are two major control systems used in the industry: " + 
-             " The older <b>arrow keys</b> layout, and the newer <b>WASD</b> layout." + 
-             " Both have their benefits, so we have selected a \"best-of-breed\"" + 
-             " approach. We recommend that you move left and right with" +
-             " the arrow keys, jump with the W key, and use the down arrow to climb down from ledges.</p>" +
-             "<p>Those of you with telekinetic powers should continue to" +
-             " use the existing scheme. Hold <b>left mouse button</b> to levitate items." +
-             " If you need to keep something still, you can hold down" + 
-             " <b>Shift</b> while levitating. This will" +
-             " keep the levitated item still.</p>" +
-             "<p>You can abort your current assignment and return to the" +
-             " menu with <b>Esc</b>.</p>" +
-             "<p>This new control system will synergise with our existing" +
-             " frameworks, allowing us to effect a step change in " +
-             " cost-optimisation.</p>" +
-             "<p>\"Kind\" regards, The Boss</p>",
-    depends: []
   },
   {
     title: "Email Recovery - Job Seeker's Allowance",
