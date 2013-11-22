@@ -241,12 +241,6 @@ function generateTiledScene(sceneName, url, bg, disablePanning) {
   Crafty.scene(sceneName,
     function() {
       window.currentLevel = sceneName
-      var escapeListener = Crafty.e()
-      escapeListener.bind("KeyDown", function(e) {
-        if (e.key === Crafty.keys.ESC) {
-          Crafty.scene("MainMenu")
-        }
-      })
       
       //Crafty.e("FPS").attr({maxValues:1}).bind("MessureFPS", function(fps){console.log("FPS: " + fps.value);})
       var map = Crafty.e("TiledLevel")
