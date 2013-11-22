@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="50" tileheight="50">
+<map version="1.0" orientation="orthogonal" width="23" height="31" tilewidth="50" tileheight="50">
  <tileset firstgid="1" source="snow.tsx"/>
  <tileset firstgid="21" source="items.tsx"/>
  <tileset firstgid="77" source="box.tsx"/>
@@ -7,7 +7,7 @@
  <tileset firstgid="123" source="blocker.tsx"/>
  <tileset firstgid="126" source="lightbulb.tsx"/>
  <tileset firstgid="128" source="talker.tsx"/>
- <objectgroup name="Background Objects" width="50" height="50">
+ <objectgroup name="Background Objects" width="23" height="31">
   <object x="285" y="1286" width="230" height="228">
    <properties>
     <property name="_color" value="grey"/>
@@ -27,7 +27,7 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="Foreground Objects" width="50" height="50">
+ <objectgroup name="Foreground Objects" width="23" height="31">
   <object x="55" y="1384" width="89" height="113">
    <properties>
     <property name="components" value="PlayerSpawn"/>
@@ -42,17 +42,17 @@
    </properties>
   </object>
  </objectgroup>
- <layer name="Background Tiles" width="50" height="50">
+ <layer name="Background Tiles" width="23" height="31">
   <data encoding="base64" compression="zlib">
-   eJztlksOgjAQhiesFHwsOJEX8Ay687Hk/omSMHEC02mrpTMm8yUNiH196U9LAwDNSqUma43nHt+P106lf5dDwX5r0szuj1DGRdvjBGVctD1aKLMu2h54nbs8fui3BlyuSpwD2h4dLD24fG3hs8e1TNH2uMPSQ3pXQvPV9uByJblY8qBZwGuqiyWP2P/Se2/V45TR9jlrPwj9rg1mqZt+bzLa7sDueqQyOuyF9toeKbmiDqH22t/tnVx94UDni2ejhXNQgnOwmCs8BzlCDpY8aBa4XEkOljyksWP7Ukq/NZByJe1LOf3WIJQraV8aEu6112MkZ19C5vuDtkfou12aFz03cD21c9UH5vAP78fIlTy7CfVy+60Fjnchz2Ie0jfYmalfA8xSrKTWo/Udx3Ecx3Ecx3Ecx0njBQqBDjE=
+   eJy91M0KwjAMB/Cwk3Z+HPpEfQGfQW9Tj3t/0MGKofyTJpoZCGjpfmuztAMRDRvmFvEPO62Z33kKtvn/c5CP7BLkIztRzPqRzce5/wiwC8X0KLJHYKPa7OnTWwkksu/A1mov7ctaE83v2XwffD8W37pubY70bT126byLx7N5fgb2UodxHds57ANYW2t/E4t7dNqWmnBXeh7dsSPp0brcrudJOjte13t2PK7n7KCaaK5n3ZrriV5NtH6w2qgmWj/Mht9STTz9UKPtAc8dq9m8r+u+UU2y4PzyLW9sfAq2rw5bu3MujZ0NaZ3H578A4m8OMQ==
   </data>
  </layer>
- <layer name="Foreground Tiles" width="50" height="50">
+ <layer name="Foreground Tiles" width="23" height="31">
   <data encoding="base64" compression="zlib">
-   eJztzrEJACAQBEF7sQfR5qxdAyMTw4d3BhYuvFIAcmnRBwAAgC/N6AMASfTdOLteAQAAALwsK7YBsg==
+   eJxjYBgFo4B6wGygHTAKRsEoGAWjgGJQN9AOGAXDFlgAsSWUrYyGBxsAAAVIAbI=
   </data>
  </layer>
- <objectgroup name="Green Key" width="50" height="50">
+ <objectgroup name="Green Key" width="23" height="31">
   <object gid="55" x="750" y="700">
    <properties>
     <property name="groundFriction" value="0.08"/>

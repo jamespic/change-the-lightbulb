@@ -507,4 +507,16 @@ Levels = [
              "<p>\"Kind\" regards, The Boss</p>",
     depends: []
   },
+  {
+    title: "Email Recovery - Job Seeker's Allowance",
+    level: "JobCentre",
+    body:  "<p>Our automated email recovery has recovered an old email:</p>" +
+           "<blockquote><p>Under new regulations, we are required to refer" +
+           " to all unemployed persons as \"scroungers\". Scroungers" +
+           " must report to the Job Centre, and remain there" +
+           " until they secure work.</p> <p>Please report you your nearest" +
+           " job centre</p></blockquote>",
+    depends: ["Credits"]
+  },
+  
 ]
