@@ -65,15 +65,15 @@
                  "name":"",
                  "properties":
                     {
-                     "message":"What do you want, a medal? You're replaceable. Get back to work.",
+                     "message":"What do you want, a medal? I know a guy who'll do this for half what you make. Get back to work.",
                      "msgHeight":"100",
-                     "msgWidth":"150"
+                     "msgWidth":"200"
                     },
                  "type":"",
                  "visible":true,
                  "width":0,
                  "x":278,
-                 "y":452
+                 "y":449
                 }],
          "opacity":1,
          "type":"objectgroup",

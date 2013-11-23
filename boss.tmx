@@ -28,11 +28,11 @@
   </object>
   <object gid="25" x="1307" y="957"/>
   <object gid="26" x="558" y="707"/>
-  <object gid="132" x="278" y="452">
+  <object gid="132" x="278" y="449">
    <properties>
-    <property name="message" value="What do you want, a medal? You're replaceable. Get back to work."/>
+    <property name="message" value="What do you want, a medal? I know a guy who'll do this for half what you make. Get back to work."/>
     <property name="msgHeight" value="100"/>
-    <property name="msgWidth" value="150"/>
+    <property name="msgWidth" value="200"/>
    </properties>
   </object>
  </objectgroup>
