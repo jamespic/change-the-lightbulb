@@ -289,6 +289,7 @@ generateTiledScene("Bribery", "bribery.json", Backgrounds.grassland)
 generateTiledScene("Volcano", "volcano.json", Backgrounds.desert)
 generateTiledScene("Shrooms", "shrooms.json", Backgrounds.shroom)
 generateTiledScene("Tower", "tower.json", Backgrounds.castle)
+generateTiledScene("Boss", "boss.json", Backgrounds.castle)
 generateTiledScene("Ski", "ski.json", Backgrounds.grassland)
 generateTiledScene("Credits", "credits.json", Backgrounds.grassland)
 
@@ -310,6 +311,19 @@ Levels = [
            '<a href="#" onclick="Crafty.scene(\'Credits\')">' +
            'click here for the credits</a></p>' +
            "<p>Thanks again, James</p>",
+    depends: ["Boss"]
+  },
+  {
+    title: "My Office",
+    level: "Boss",
+    body:  "<p>I've got a very important assignment for you. I need you " +
+           " to change the bulb in <strong>My Office</strong>. I" +
+           " haven't changed a lightbulb myself since I moved into a" +
+           " \"change architect\" role.</p>" +
+           "<p>Since this project has significant management visibility," +
+           " we'll have hour-long conference calls every hour, to make" +
+           " sure everything's on track.</p>" +
+           "<p>Get to it, The Boss</p>",
     depends: ["Ski", "Shrooms"]
   },
   {

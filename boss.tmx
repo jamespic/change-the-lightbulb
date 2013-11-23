@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="50" height="50" tilewidth="50" tileheight="50">
+ <tileset firstgid="1" source="castle.tsx"/>
+ <tileset firstgid="21" source="poker.tsx"/>
+ <tileset firstgid="27" source="items.tsx"/>
+ <tileset firstgid="83" source="misc.tsx"/>
+ <tileset firstgid="113" source="box.tsx"/>
+ <tileset firstgid="129" source="lightbulb.tsx"/>
+ <tileset firstgid="131" name="boss" tilewidth="50" tileheight="68">
+  <image source="p2_sprites.png" width="800" height="68"/>
+  <tile id="1">
+   <properties>
+    <property name="components" value="Talker"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="components" value="Talker"/>
+   </properties>
+  </tile>
+ </tileset>
+ <objectgroup name="Object Layer 1" width="50" height="50">
+  <object gid="25" x="813" y="957"/>
+  <object x="237" y="1029" width="76" height="113">
+   <properties>
+    <property name="components" value="PlayerSpawn"/>
+   </properties>
+  </object>
+  <object gid="25" x="1307" y="957"/>
+  <object gid="26" x="558" y="707"/>
+  <object gid="132" x="278" y="452">
+   <properties>
+    <property name="message" value="What do you want, a medal? You're replaceable. Get back to work."/>
+    <property name="msgHeight" value="100"/>
+    <property name="msgWidth" value="150"/>
+   </properties>
+  </object>
+ </objectgroup>
+ <layer name="Tile Layer 1" width="50" height="50">
+  <data encoding="base64" compression="zlib">
+   eJztWMtOxDAMtHLbIhCwfAIX/gG48gdw43HcKxfO/DmqRLRmNt7aSdx2kUeykrQzdpxYbdpERGkh64ns79vA7Rl3CX//MY9tgw3GuNa5Wbi180jQ9gL3t4N7OB65Ax2uJ/IQ/H72Eftx3K+Vu8Y87phJeKTDuhrAzgTtpsD1yANjSNZjP3rpW/ydSh7W55V2H7nld8iS+8HxXrgmPX9L19echwbbxrgSErWdMSzG57+W/UDdK4xvBb5nHjVrm+dxPcG7YXEGaHvncc/6XniDGB55jGv24eCbY448PgXfO6F/SX9r5+qIDvmedfXF+jX6qfMV8mtjTfnNa5p9vyh01vcA5z8ZdFrwfxe5fVbqeGvhe9UVxpBqhJ+/S3mUzucSf479GFE6E+H36ZRG4s9VV1qdRXMKdSXVEvexVF1pdBYN5621rrT/3S5+NRtjLO18LHPCcyLORxqP7Tntc/HMo1b/QPv3XAaOEzPPuqr9NkrQ4nU+TsAPBAKBQCAQCAQCgUCgFT87tRqP
+  </data>
+ </layer>
+</map>
