@@ -77,7 +77,7 @@ Crafty.scene("Load", function() {
       "jump_10.mp3",
       "jump_10.wav"
     ])
-    Crafty.audio.add("unlock", [
+    Crafty.audio.add("unlockDoor", [
       "coin10.ogg",
       "coin10.mp3",
       "coin10.wav"
@@ -201,7 +201,8 @@ function generateMessageList() {
 
 Crafty.scene("MainMenu", function() {
   displayMsgWindow(generateMessageList())
-  Crafty.viewport.scroll({_x: 0, _y: 0})
+  Crafty.viewport.scroll("_x", 0)
+  Crafty.viewport.scroll("_y", 0)
 })
 
 function followPlayerWithCamera(showCameraPos) {

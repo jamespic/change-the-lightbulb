@@ -307,7 +307,7 @@ Crafty.c("MouseFollower", {
       Crafty.addEvent(this, Crafty.stage.elem, "mousedown", this._followerMouseDown)
       this.bind("KeyDown", this._followerKeyDown)
       this.bind("KeyUp", this._followerKeyUp)
-      Crafty.bind("ViewportPanned", this._followerOnPan)
+      Crafty.bind("ViewportScroll", this._followerOnPan)
       this._following = true
     }
     return this
@@ -315,7 +315,7 @@ Crafty.c("MouseFollower", {
   unfollowMouse: function() {
     if (this._following) {
       this._following = false
-      Crafty.unbind("ViewportPanned", this._followerOnPan)
+      Crafty.unbind("ViewportScroll", this._followerOnPan)
       this.unbind("KeyUp", this._followerKeyUp)
       this.unbind("KeyDown", this._followerKeyDown)
       Crafty.removeEvent(this, Crafty.stage.elem, "mousedown", this._followerMouseDown)
@@ -365,8 +365,8 @@ Crafty.c("Camera", {
 
       var panned = false
       if ((newXPos !== Crafty.viewport._x) || (newYPos !== Crafty.viewport._y))  {
-        Crafty.viewport.scroll({_x: newXPos, _y: newYPos});
-        Crafty.trigger("ViewportPanned");
+        Crafty.viewport.scroll("_x", newXPos);
+        Crafty.viewport.scroll("_y", newYPos);
       }
     }
   },
@@ -923,20 +923,20 @@ Crafty.c("Player", {
     
     this.platformer()
     
-    this.animate("WalkRight", 5, 0, 15)
-    this.animate("JumpRight", 3, 0, 3)
-    this.animate("StillRight", 4, 0, 4)
+    this.reel("WalkRight", 500, 5, 0, 11)
+    this.reel("JumpRight", 1000, 3, 0, 1)
+    this.reel("StillRight", 1000, 4, 0, 1)
     animation_speed = 10
     this.bind('NewDirection', function(data) {
-      this.stop()
+      //this.stop()
       if (this._falling) {
-        this.animate("JumpRight", 1000, -1);
+        this.animate("JumpRight", 1);
         this.hideDots()
       } else if (data.x !== 0) {
-        this.animate('WalkRight', animation_speed, -1);
+        this.animate('WalkRight', -1);
         this.hideDots()
       } else {
-        this.animate("StillRight", animation_speed, -1)
+        this.animate("StillRight", 1)
         this.showDots()
       }
       if (data.x > 0) {
@@ -1035,7 +1035,7 @@ Crafty.c("Lightbulb", {
         x: this.x - 100,
         w: 250,
         h: 250,
-        alpha:0}, 100)
+        alpha:0}, 2000)
       this.bind("TweenEnd", function() {
         win()
       })
@@ -1063,16 +1063,26 @@ Crafty.c("LockedDoor", {
   },
   _disappear: function() {
     if (!this._disappearing) {
-      Crafty.audio.play("unlock", 1)
+      this._maybePlaySound()
       this._disappearing = true
       this.obstructFromAbove = false
       this.obstructFromBelow = false
       this.obstructFromSides = false
-      this.tween({alpha: 0.0}, 50)
+      this.tween({alpha: 0.0}, 1000)
       this.bind("TweenEnd", function(props) {
         this.destroy()
       })
     }
+  }
+  ,_maybePlaySound: function() {
+    var playing = false
+    //Stupid Chrome.. doesn't report "ended" events
+    Crafty.audio.channels.forEach(function(ch) {
+      if (ch && (ch.id == "unlockDoor") && !ch.obj.ended)
+      playing = true
+    })
+    
+    if (!playing) Crafty.audio.play("unlockDoor", 1, 0.9)
   }
 })
 
@@ -1189,8 +1199,8 @@ Crafty.c("Springer", {
 Crafty.c("Torch", {
   init: function() {
     this.requires("SpriteAnimation")
-    this.animate("flame", 4, 3, 5)
-    this.animate("flame", 30, -1)
+    this.reel("flame", 700, 4, 3, 2)
+    this.animate("flame", -1)
   }
 })
 
