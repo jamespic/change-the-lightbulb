@@ -12,8 +12,6 @@ Game = {
     })
     
     Crafty.e("CurrentLevelHolder")
-    // Work around for Chrome bug 30452 - no ended event for short sounds
-    Crafty.audio.setChannels(32)
 
     Crafty.scene("Load")
   }

@@ -482,16 +482,18 @@ Crafty.c("Phys", {
     var wasFalling = self._falling
     
     var q = Crafty.map.search(self, false);
+    var handled = {}
     self._falling = true // Falling, unless proven otherwise
     
     if (q) q.forEach(function(o) {
-      if ((o !== self) && o.has("HandlesCollisions") && o.intersects(self)) {
+      if ((o !== self) && o.has("HandlesCollisions") && o.intersects(self) && !handled[o[0]]) {
         /*
          * Both sides get an event - so far I'm only using PhysicsCollision,
          * but I can imagine cases where we'd want the behaviour to be on
          * the part of the moving object - maybe.
          */
         o.trigger("PhysicsCollision", self)
+        handled[o[0]] = true
       }
     })
     
@@ -877,8 +879,8 @@ Crafty.c("Scriptable", {
 Crafty.c("Talker", {
   message: "This character currently has no message...",
   _msgEntity: null,
-  msgWidth: "100",
-  msgHeight: "100",
+  msgWidth: 100,
+  msgHeight: 100,
   init: function() {
     this.requires("2D, AABB")
     this._talkerTick()
@@ -889,8 +891,8 @@ Crafty.c("Talker", {
       if (this._msgEntity === null) {
         var e = Crafty.e("HTML")
         this._msgEntity = e
-        var msgWidth = parseInt(this.msgWidth)
-        var msgHeight = parseInt(this.msgHeight)
+        var msgWidth = this.msgWidth
+        var msgHeight = this.msgHeight
         e.x = Math.round(this.x + this.w / 2) - msgWidth / 2 - 25
         e.y = this.y - msgHeight - 100
         e.w = msgWidth

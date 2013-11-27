@@ -39,11 +39,8 @@ development:
 - [vorbis-tools](https://wiki.xiph.org/Vorbis-tools) (LGPL 2)
 - [Ubuntu](http://www.ubuntu.com/) (various licenses)
 
-Crafty Tiled Importer and Crafty both needed some modifications. The modifications to
-Crafty Tiled Importer have been submitted back as a pull request. It wasn't practical
-to do the same with Crafty, as the Crafty codebase is in the middle of
-a refactor. I anticipate that the Crafty refactor, once complete, will make my changes
-redundant.
+Crafty Tiled Importer and Crafty both needed some modifications and bug fixes.
+All modifications have been submitted as pull requests.
 
 ## License
 

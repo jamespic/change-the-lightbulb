@@ -198,5 +198,11 @@
     <property name="components" value="BackgroundMusic"/>
    </properties>
   </object>
+  <object x="3874" y="320" width="416" height="60">
+   <properties>
+    <property name="_text" value="Richard Bishop"/>
+    <property name="components" value="Sign"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>
